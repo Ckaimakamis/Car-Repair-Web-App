@@ -8,7 +8,5 @@ public class CarRepairApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CarRepairApplication.class, args);
-
-
     }
 }
