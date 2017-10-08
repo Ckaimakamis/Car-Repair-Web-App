@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Repair {
 
-    private int ID;
+    private Integer ID;
     private Timestamp dateTime;
     private RepairType type;
     private RepairStage stage;

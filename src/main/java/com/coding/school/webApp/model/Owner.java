@@ -1,7 +1,8 @@
 package com.coding.school.webApp.model;
 
 public class Owner {
-    private int ID;
+
+    private Integer ID;
     private String firstName;
     private String lastName;
     private String vat;

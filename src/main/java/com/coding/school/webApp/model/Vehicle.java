@@ -2,6 +2,7 @@ package com.coding.school.webApp.model;
 
 public class Vehicle {
 
+    private Integer ID;
     private String plateNumber;
     private String model;
     private String year;
@@ -10,11 +11,19 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(String plateNumber, String model, String year, String color) {
+    public Vehicle(int ID, String plateNumber, String model, String year, String color) {
+        this.ID = ID;
         this.plateNumber = plateNumber;
         this.model = model;
         this.year = year;
         this.color = color;
+    }
+
+    public Integer getID() {
+        return ID;
+    }
+    public void setID(Integer ID) {
+        this.ID = ID;
     }
 
     public String getPlateNumber() { return plateNumber; }
