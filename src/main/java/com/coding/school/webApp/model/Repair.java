@@ -11,10 +11,21 @@ public class Repair {
     private double cost;
     private String operations;
 
+    public Repair(){
+    }
+
+    public Repair(int ID, Timestamp dateTime, RepairType type, RepairStage stage, double cost, String operations) {
+        this.ID = ID;
+        this.dateTime = dateTime;
+        this.type = type;
+        this.stage = stage;
+        this.cost = cost;
+        this.operations = operations;
+    }
+
     public int getID() {
         return ID;
     }
-
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -22,7 +33,6 @@ public class Repair {
     public Timestamp getDateTime() {
         return dateTime;
     }
-
     public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
@@ -30,7 +40,6 @@ public class Repair {
     public RepairType getType() {
         return type;
     }
-
     public void setType(RepairType type) {
         this.type = type;
     }
@@ -38,7 +47,6 @@ public class Repair {
     public RepairStage getStage() {
         return stage;
     }
-
     public void setStage(RepairStage stage) {
         this.stage = stage;
     }
@@ -46,7 +54,6 @@ public class Repair {
     public double getCost() {
         return cost;
     }
-
     public void setCost(double cost) {
         this.cost = cost;
     }
@@ -54,7 +61,6 @@ public class Repair {
     public String getOperations() {
         return operations;
     }
-
     public void setOperations(String operations) {
         this.operations = operations;
     }

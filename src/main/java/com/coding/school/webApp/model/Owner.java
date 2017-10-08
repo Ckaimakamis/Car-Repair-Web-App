@@ -13,13 +13,13 @@ public class Owner {
     }
 
     public Owner(int ID, String firstName, String lastName, String vat, String email, String password, OwnerRole role) {
-        this.setID(ID);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setVat(vat);
-        this.setEmail(email);
-        this.setPassword(password);
-        this.setRole(role);
+        this.ID = ID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.vat = vat;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public int getID() {
@@ -70,7 +70,6 @@ public class Owner {
     public void setRole(OwnerRole role) {
         this.role = role;
     }
-
 
     public enum OwnerRole {admin, user}
 }
