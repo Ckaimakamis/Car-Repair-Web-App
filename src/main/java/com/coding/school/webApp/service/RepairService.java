@@ -11,7 +11,7 @@ public class RepairService {
 
     @Autowired
     @Qualifier("RepairRepository")
-    RepairRepository repository;
+    private RepairRepository repository;
 
     public Repair findById(int ID){
         Repair repair = repository.findOne(ID);
