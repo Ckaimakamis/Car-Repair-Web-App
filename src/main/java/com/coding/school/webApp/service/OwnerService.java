@@ -13,10 +13,10 @@ public class OwnerService {
 
     @Autowired
     @Qualifier("OwnerRepository")
-    OwnerRepository repository;
+    OwnerRepository ownerRepository;
 
     public Owner findById(int ID){
-        Owner owner = repository.findOne(ID);
+        Owner owner = ownerRepository.findOne(ID);
         if(owner != null){
             return owner;
         } else{

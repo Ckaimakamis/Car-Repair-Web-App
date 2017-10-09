@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class OwnerControler {
     @Autowired
     @Qualifier("OwnerService")
-    OwnerService service;
+    OwnerService ownerService;
 
     @RequestMapping(name = "/owner", params = "ID")
     public Owner getOwnerById(@RequestParam("ID") Integer ID){
-        Owner owner = service.findById(ID);
+        Owner owner = ownerService.findById(ID);
         return owner;
     }
 
     String getOwnerVat(@RequestParam("ID") Integer ID){
-        Owner owner = service.findById(ID);
+        Owner owner = ownerService.findById(ID);
         return owner.getVat().toString();
     }
 }
