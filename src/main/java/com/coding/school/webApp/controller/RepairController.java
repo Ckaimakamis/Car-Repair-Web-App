@@ -13,7 +13,7 @@ public class RepairController {
 
     @Autowired
     @Qualifier("RepairService")
-    RepairService service;
+    private RepairService service;
 
     @RequestMapping(name = "/repair", params = "ID")
     String repairDemo(@RequestParam("ID") Integer ID){
