@@ -10,4 +10,9 @@ public class demoController {
     String demoPage() {
         return "index";
     }
+
+    @RequestMapping("/login")
+    String logInPage() {
+        return "loginForm";
+    }
 }
