@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<import "index.css" />
 <head>
   <title>Car Repair</title>
   <meta charset="utf-8">

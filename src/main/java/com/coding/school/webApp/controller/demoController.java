@@ -13,6 +13,6 @@ public class demoController {
 
     @RequestMapping("/login")
     String logInPage() {
-        return "login";
+        return "registerForm";
     }
 }
