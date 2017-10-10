@@ -45,18 +45,8 @@
                 <label><b>Surname</b></label>
                 <input type="password" placeholder="Enter Surname" name="psw" required>
 
-                <label><b>AFM</b></label>
-                <input type="text" placeholder="Enter AFM" name="uname" required>
-
                 <label><b>Password</b></label>
                 <input type="text" placeholder="Enter Password" name="uname" required>
-
-                <label><b>Vehicle Brand</b></label>
-                <input type="text" placeholder="Enter Brand" name="uname" required>
-
-                <label><b>Vehicle Plate</b></label>
-                <input type="text" placeholder="Enter Plate" name="uname" required>
-
 
                 <div class="col-25">
                     <label for="country">Type</label>
