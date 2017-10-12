@@ -32,6 +32,7 @@ public class Owner {
     private String password;
 
     @NotNull
+    @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
     private OwnerRole role;
 

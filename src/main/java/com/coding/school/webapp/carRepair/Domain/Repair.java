@@ -16,9 +16,13 @@ public class Repair {
     private Timestamp dateTime;
 
     @NotNull
+    @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
     private RepairType type;
 
+    @NotNull
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     private RepairStage stage;
 
     @NotNull

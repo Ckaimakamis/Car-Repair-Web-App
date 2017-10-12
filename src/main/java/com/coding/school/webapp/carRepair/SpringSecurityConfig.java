@@ -1,22 +1,21 @@
 package com.coding.school.webapp.carRepair;
 
-import com.coding.school.webapp.carRepair.Security.LoginAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private LoginAuthenticationProvider loginAuthenticationProvider;
+    private AuthenticationProvider authenticationProvider;
 
     @Autowired
     private AuthenticationSuccessHandler successHandler;
@@ -25,8 +24,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         // endpoints with disabled authentication
         web.ignoring().antMatchers("/**");
-        web.ignoring()
-                .antMatchers("/bootstrap/**","/css/**");
+        web.ignoring().antMatchers("/bootstrap/**","/css/**");
     }
 
 //    @Override
@@ -44,7 +42,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().fullyAuthenticated()
                 .and().csrf().disable()
                 .formLogin().successHandler(successHandler)
-                .loginPage("login")
+                .loginPage("/login")
+                .failureUrl("/login?error") //TODO maybe wrong
                 .permitAll()
                 .usernameParameter("email")
                 .passwordParameter("password")
@@ -57,7 +56,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(loginAuthenticationProvider);
+        auth.authenticationProvider(authenticationProvider);
     }
 
 }
