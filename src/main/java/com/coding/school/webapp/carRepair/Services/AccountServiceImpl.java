@@ -7,19 +7,28 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Map;
+
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService{
 
-    OwnerRepository repository;
+    private OwnerRepository repository;
+
+    private static Map<String, Owner> loggedInUsers;
 
     @Override
     public Owner login(String username, String password) throws AuthenticationException {
         Owner owner = repository.findByEmailAndPassword(username, password);
         if(owner != null) {
+            loggedInUsers.put(getCredentials(username, password), owner);
             return owner;
         }else{
             throw new InvalidCredentialsException("User not found!");
         }
+    }
+
+    private static String getCredentials(String username, String password) {
+        return username + ":" + password;
     }
 }

@@ -1,5 +1,6 @@
-package com.coding.school.webapp.carRepair.Security;
+package com.coding.school.webapp.carRepair;
 
+import com.coding.school.webapp.carRepair.Security.LoginAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,37 +18,42 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private LoginAuthenticationProvider loginAuthenticationProvider;
 
+    @Autowired
+    private AuthenticationSuccessHandler successHandler;
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         // endpoints with disabled authentication
         web.ignoring().antMatchers("/**");
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"))
-                .and().formLogin().defaultSuccessUrl("/")
-                .loginPage("/login").and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
+        web.ignoring()
+                .antMatchers("/bootstrap/**","/css/**");
     }
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/admin/**").hasAuthority("ADMIN")
-//                .anyRequest().fullyAuthenticated()
-//                .and().csrf().disable()
-//                .formLogin().successHandler(successHandler)
-//                .loginPage("login")
-//                .permitAll()
-//                .usernameParameter("email")
-//                .passwordParameter("password")
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login")
-//                .permitAll();
+//        http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"))
+//                .and().formLogin().defaultSuccessUrl("/")
+//                .loginPage("/login").and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
 //    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .anyRequest().fullyAuthenticated()
+                .and().csrf().disable()
+                .formLogin().successHandler(successHandler)
+                .loginPage("login")
+                .permitAll()
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                .permitAll();
+    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

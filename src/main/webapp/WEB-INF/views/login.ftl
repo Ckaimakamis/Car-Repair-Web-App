@@ -42,13 +42,13 @@
 
             <div class="container">
                 <label><b>Enter Username</b></label>
-                <input type="text" placeholder="Username" name="listName" required>
+                <input type="text" placeholder="Email" name="email" required>
                 <br>
                 <#--<label><b>Enter Your AFM</b></label>-->
                 <#--<input type="text" placeholder="AFM" name="listAFM" required>-->
                 <#--</br>-->
                 <label><b>Enter Password</b></label>
-                <input type="text" placeholder="Password" name="listPassword" required>
+                <input type="text" placeholder="Password" name="password" required>
                 <br>
 
 
