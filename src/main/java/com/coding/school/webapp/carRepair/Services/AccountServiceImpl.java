@@ -3,6 +3,7 @@ package com.coding.school.webapp.carRepair.Services;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Exceptions.InvalidCredentialsException;
 import com.coding.school.webapp.carRepair.Repositories.OwnerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import java.util.Map;
 @Transactional
 public class AccountServiceImpl implements AccountService{
 
+    @Autowired
     private OwnerRepository repository;
 
     private static Map<String, Owner> loggedInUsers;

@@ -20,19 +20,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationSuccessHandler successHandler;
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        // endpoints with disabled authentication
-        web.ignoring().antMatchers("/**");
-        web.ignoring().antMatchers("/bootstrap/**","/css/**");
-    }
-
 //    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"))
-//                .and().formLogin().defaultSuccessUrl("/")
-//                .loginPage("/login").and()
-//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
+//    public void configure(WebSecurity web) throws Exception {
+//        // endpoints with disabled authentication
+//        web.ignoring().antMatchers("/**");
 //    }
 
     @Override
@@ -43,7 +34,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable()
                 .formLogin().successHandler(successHandler)
                 .loginPage("/login")
-                .failureUrl("/login?error") //TODO maybe wrong
                 .permitAll()
                 .usernameParameter("email")
                 .passwordParameter("password")

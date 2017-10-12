@@ -23,14 +23,6 @@ public class LoginController {
 
     private static final String LOGIN_FORM = "loginForm";
 
-//    @RequestMapping(value = "/login", method = RequestMethod.GET)
-//    public String login(Model model, @RequestParam(name = "error", required = false, defaultValue = "") String error, HttpSession session){
-//        if(error != null){
-//            //Handle error
-//        }
-//        return "login";
-//    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, @RequestParam(name = "error", required = false) String error){
         if (error != null) {

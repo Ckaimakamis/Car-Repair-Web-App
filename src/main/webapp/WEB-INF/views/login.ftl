@@ -35,7 +35,7 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <form action="/login" method="POST" id="loginForm" name="loginForm">
+        <form action="/login" method="post" id="loginForm" name="loginForm">
             <div class="imgcontainer">
                 <img src="img_avatar2.png" alt="Avatar" class="avatar">
             </div>
