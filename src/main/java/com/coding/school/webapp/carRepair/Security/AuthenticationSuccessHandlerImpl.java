@@ -15,7 +15,7 @@ import java.util.Set;
 @Component
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
 
-    @Value("${page.home.admin}")
+    @Value("{page.home.admin}")
     private String adminHome;
 
     @Override

@@ -77,4 +77,15 @@ public class Repair {
         pending, in_progress, done;
     }
     public enum RepairType {big, small}
+
+    @ManyToOne(optional = false)
+    private Vehicle vehicle;
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 }

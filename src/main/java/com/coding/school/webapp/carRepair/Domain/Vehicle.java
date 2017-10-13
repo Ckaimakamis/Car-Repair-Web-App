@@ -2,6 +2,7 @@ package com.coding.school.webapp.carRepair.Domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 @Entity
 public class Vehicle {
@@ -54,5 +55,16 @@ public class Vehicle {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+
+    @OneToMany(mappedBy = "vehicle")
+    private Collection<Repair> repairs;
+
+    public Collection<Repair> getRepairs() {
+        return repairs;
+    }
+
+    public void setRepairs(Collection<Repair> repairs) {
+        this.repairs = repairs;
     }
 }
