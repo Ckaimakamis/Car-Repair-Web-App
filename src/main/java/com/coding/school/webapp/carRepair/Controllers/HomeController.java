@@ -14,17 +14,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
-    @Autowired
-    AccountService accountService;
-
-    private boolean isLoggedIn;
-
-    @PostConstruct
-    void checkOnlineUser(){
-
-    }
-
-    @RequestMapping(name = "/", method = RequestMethod.GET)
+    @RequestMapping(name = "/admin/home", method = RequestMethod.GET)
     String homePage(Model model, HttpSession session){
         return "index";
     }

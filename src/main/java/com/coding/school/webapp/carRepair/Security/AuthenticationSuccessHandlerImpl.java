@@ -18,15 +18,18 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
     @Value("{page.home.admin}")
     private String adminHome;
 
+    @Value("{page.home.user}")
+    private String userHome;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ADMIN")) {
-            httpServletResponse.sendRedirect("/index");
+            httpServletResponse.sendRedirect("/admin/home");
         }else{
-            httpServletResponse.sendRedirect("user/home");
+            httpServletResponse.sendRedirect("/user/home");
         }
     }
 }

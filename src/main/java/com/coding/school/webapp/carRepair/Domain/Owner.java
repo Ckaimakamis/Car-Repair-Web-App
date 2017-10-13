@@ -36,10 +36,13 @@ public class Owner {
     @Column(nullable = false)
     private OwnerRole role;
 
+    @OneToMany(mappedBy = "owner")
+    private Collection<Vehicle> vehicles;
 
     public Long getID() {
         return ID;
     }
+
     public void setID(Long ID) {
         this.ID = ID;
     }
@@ -47,6 +50,7 @@ public class Owner {
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -54,6 +58,7 @@ public class Owner {
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -61,6 +66,7 @@ public class Owner {
     public String getVat() {
         return vat;
     }
+
     public void setVat(String vat) {
         this.vat = vat;
     }
@@ -68,6 +74,7 @@ public class Owner {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -75,6 +82,7 @@ public class Owner {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -82,14 +90,10 @@ public class Owner {
     public OwnerRole getRole() {
         return role;
     }
+
     public void setRole(OwnerRole role) {
         this.role = role;
     }
-
-    public enum OwnerRole {admin, user}
-
-    @OneToMany(mappedBy = "owner")
-    private Collection<Vehicle> vehicles;
 
     public Collection<Vehicle> getVehicles() {
         return vehicles;
@@ -97,5 +101,9 @@ public class Owner {
 
     public void setVehicles(Collection<Vehicle> vehicles) {
         this.vehicles = vehicles;
+    }
+
+    public enum OwnerRole {
+        ADMIN, USER
     }
 }

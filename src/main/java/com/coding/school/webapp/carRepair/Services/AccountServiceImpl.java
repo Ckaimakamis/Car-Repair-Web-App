@@ -8,16 +8,17 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
 @Transactional
-public class AccountServiceImpl implements AccountService{
+public class  AccountServiceImpl implements AccountService{
 
     @Autowired
     private OwnerRepository repository;
 
-    private static Map<String, Owner> loggedInUsers;
+    private static Map<String, Owner> loggedInUsers = new HashMap<>();
 
     @Override
     public Owner login(String username, String password) throws AuthenticationException {
