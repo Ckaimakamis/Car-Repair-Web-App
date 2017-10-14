@@ -5,11 +5,99 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+        background-color: #2B3A37;
+        padding:15px;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+        padding-top: 20px;
+        background-color: #78909c;
+        height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+        background-color: #2B3A37;
+        /* background-color: white; */
+        color: white;
+        padding: 20px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+        .row.content {height:auto;}
+    }
+    #repairsId{
+        font-weight: bold;
+        font-size: 200%;
+        font-style: normal ;
+        color: white;
+    }
+
+    #login-dp{
+        min-width: 250px;
+        padding: 14px 14px 0;
+        overflow:hidden;
+        background-color:rgba(255,255,255,.8);
+    }
+    #login-dp .help-block{
+        font-size:12px
+    }
+    #login-dp .bottom{
+        background-color:rgba(255,255,255,.8);
+        border-top:1px solid #ddd;
+        clear:both;
+        padding:14px;
+    }
+    #login-dp .form-group {
+        margin-bottom: 10px;
+    }
+    .btn-fb{
+        color: #fff;
+        background-color:#3b5998;
+    }
+    .btn-fb:hover{
+        color: #fff;
+        background-color:#496ebc
+    }
+    .btn-tw{
+        color: #fff;
+        background-color:#55acee;
+    }
+    .btn-tw:hover{
+        color: #fff;
+        background-color:#59b5fa;
+    }
+    @media(max-width:768px){
+        #login-dp{
+            background-color: inherit;
+            color: #fff;
+        }
+        #login-dp .bottom{
+            background-color: inherit;
+            border-top:0 none;
+        }
+    }
+
+</style>
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -90,16 +178,28 @@
     <div class="col-sm-2 sidenav">
      
     </div>
-    <div class="col-sm-8 text-left"> 
-      <p>
-     <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Email or AFM">
-            </div>
-          <button type="submit" class="btn btn-default" >Search</button>
-        </form>
-      </p>
-    </div>
+        <div class="col-sm-8 text-left">
+            <p>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email or AFM">
+                    </div>
+                  <button type="submit" class="btn btn-default" >Search</button>
+                </form>
+
+            </p>
+            <br/>
+            <p>
+                <select id="country" name="Type">
+                    <option value="User">User</option>
+                    <option value="Repair">Repair</option>
+                </select>
+            </p>
+            <br/>
+            <p>
+
+            </p>
+        </div>
     <div class="col-sm-2 sidenav">
       
    </div>

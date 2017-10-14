@@ -12,7 +12,6 @@
 </head>
 <body>
 <style>
-
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
         margin-bottom: 0;
@@ -128,11 +127,8 @@
         font-style: normal ;
         color: white;
     }
-
-
-
-
 </style>
+
 <h2>${message!""}</h2>
 <h2 style="color: red">${errorMessage!""}</h2>
 
@@ -163,13 +159,10 @@
             <div class="container">
                 <label><b>Enter Username</b></label>
                 <input type="text" placeholder="Email" name="email" required>
-                <br>
-                <#--<label><b>Enter Your AFM</b></label>-->
-                <#--<input type="text" placeholder="AFM" name="listAFM" required>-->
-                <#--</br>-->
+                <br/>
                 <label><b>Enter Password</b></label>
                 <input type="text" placeholder="Password" name="password" required>
-                <br>
+                <br/>
 
 
                 <div class="col-25">
@@ -177,16 +170,15 @@
                 </div>
                 <div class="col-75">
                     <select id="country" name="Type">
-                        <option value="User">Admin</option>
-                        <option value="Owner">Owner</option>
-
+                        <option value="Owner">Admin</option>
+                        <option value="User">Owner</option>
                     </select>
                 </div>
 
 
                 <button type="submit">Login</button><button type="button" class="cancelbtn">Cancel</button>
 
-                </br>
+                <br/>
 
                 <input type="checkbox" checked="checked"> Remember me
 
