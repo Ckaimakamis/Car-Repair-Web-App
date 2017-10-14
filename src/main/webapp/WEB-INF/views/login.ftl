@@ -164,18 +164,6 @@
                 <input type="text" placeholder="Password" name="password" required>
                 <br/>
 
-
-                <div class="col-25">
-                    <label for="country">Type</label>
-                </div>
-                <div class="col-75">
-                    <select id="country" name="Type">
-                        <option value="Owner">Admin</option>
-                        <option value="User">Owner</option>
-                    </select>
-                </div>
-
-
                 <button type="submit">Login</button><button type="button" class="cancelbtn">Cancel</button>
 
                 <br/>
