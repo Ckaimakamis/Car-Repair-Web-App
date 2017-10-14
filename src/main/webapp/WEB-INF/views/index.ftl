@@ -239,6 +239,27 @@
 
         </div>
 
+        <div class="col-sm-8 text-left">
+
+            <div class="col-25">
+
+                <label for="searchType">Search for:</label>
+
+            </div>
+
+            <div class="col-75">
+
+                <select id="searchType" name="searchType">
+
+                    <option value="User">User</option>
+                    <option value="Repair">Repair</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
         <div class="col-sm-2 sidenav">
 
         </div>
