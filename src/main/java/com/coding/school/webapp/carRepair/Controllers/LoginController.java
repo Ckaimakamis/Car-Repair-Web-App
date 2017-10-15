@@ -32,6 +32,6 @@ public class LoginController {
             model.addAttribute("errorMessage", "User not found! Please try again");
         }
         model.addAttribute(LOGIN_FORM, new LoginForm());
-        return "index";
+        return "login";
     }
 }
