@@ -33,5 +33,6 @@ public class LoginController {
         }
         model.addAttribute(LOGIN_FORM, new LoginForm());
         return "login";
+
     }
 }
