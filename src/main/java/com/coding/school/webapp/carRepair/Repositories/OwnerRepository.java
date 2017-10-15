@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface OwnerRepository extends JpaRepository<Owner, Long>{
 
     Owner findByEmailAndPassword(String username, String password);
+
+    
 }

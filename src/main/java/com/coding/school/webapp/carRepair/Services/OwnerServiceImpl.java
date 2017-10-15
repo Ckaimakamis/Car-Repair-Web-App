@@ -21,4 +21,10 @@ public class OwnerServiceImpl implements OwnerService{
             return null;
         }
     }
+   public void registerOwner(Owner owner){
+        //prpei na elegxei an iparxei hdh o xristis mesa sti vash
+         ownerRepository.save(owner);
+
+    }
+
 }

@@ -128,36 +128,36 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/registerUser" accept-charset="UTF-8" id="login-nav">
+                                <form class="form" role="form" method="post" action="/registerUser" accept-charset="UTF-8" id="login-nav" name="user">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Username</label>
-                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="listEmail" required>
+                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="email" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerLastName">Surname</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter First Name"name="listFirstName" required>
+                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter First Name"name="firstName" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerLastName">AFM</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Last Name" name="listLastName"required>
+                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Last Name" name="lastName"required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerLastName">Password</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Password" name="listPassword"required>
+                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Password" name="password"required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="listRole" required>
+                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerVAT">Brand</label>
-                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter VAT"name="listVAT" required>
+                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter VAT"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
