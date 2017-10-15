@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Car Repair</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Car Repair</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 </head>
 <body>
 
@@ -116,93 +123,102 @@
             <li class="#"><a href="#">Home</a></li>
 
             <li class="dropdown">
-
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Owner</b> <span class="caret"></span></a>
-
                 <ul id="login-dp" class="dropdown-menu">
-
                     <li>
-
                         <div class="row">
-
                             <div class="col-md-12">
-
-                                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                <form class="form" role="form" method="post" action="/registerUser" accept-charset="UTF-8" id="login-nav">
 
                                     <div class="form-group">
-
-                                        <label class="sr-only" for="exampleInputEmail2">Username</label>
-
-                                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter Username" name="listName" required>
-
+                                        <label class="sr-only" for="registerEmail">Username</label>
+                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="listEmail" required>
                                     </div>
 
                                     <div class="form-group">
-
-                                        <label class="sr-only" for="exampleInputEmail2">Surname</label>
-
-                                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter Surname"name="listSurname" required>
-
+                                        <label class="sr-only" for="registerLastName">Surname</label>
+                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter First Name"name="listFirstName" required>
                                     </div>
 
                                     <div class="form-group">
-
-                                        <label class="sr-only" for="exampleInputEmail2">AFM</label>
-
-                                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter Afm" name="listAFM"required>
-
+                                        <label class="sr-only" for="registerLastName">AFM</label>
+                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Last Name" name="listLastName"required>
                                     </div>
 
                                     <div class="form-group">
-
-                                        <label class="sr-only" for="exampleInputEmail2">Password</label>
-
-                                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter Password" name="listPassword"required>
-
+                                        <label class="sr-only" for="registerLastName">Password</label>
+                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Password" name="listPassword"required>
                                     </div>
 
                                     <div class="form-group">
-
-                                        <label class="sr-only" for="exampleInputEmail2">Brand</label>
-
-                                        <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter Brand"name="listBrands" required>
-
+                                        <label class="sr-only" for="registerRole">Brand</label>
+                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="listRole" required>
                                     </div>
 
                                     <div class="form-group">
-
-                                        <label class="sr-only" for="exampleInputPassword2">Plate</label>
-
-                                        <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Enter Plate" name="listPlates"required>
-
-                                        <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-
+                                        <label class="sr-only" for="registerVAT">Brand</label>
+                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter VAT"name="listVAT" required>
                                     </div>
 
                                     <div class="form-group">
-
-                                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-
+                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
                                     </div>
 
                                 </form>
-
                             </div>
-
                         </div>
-
                     </li>
-
                 </ul>
+            </li>
 
-                <!--  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit Owner <span class="caret"></span></a>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Search</b> <span class="caret"></span></a>
+                <ul id="login-dp" class="dropdown-menu">
+                    <li>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form" role="form" method="post" action="/search" accept-charset="UTF-8" id="login-nav">
 
-              <ul class="dropdown-menu">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="credentials">Brand</label>
+                                        <input type="text" class="form-control" id="credentials" name="credentials"  placeholder="Email or VAT">
+                                    </div>
 
-                <li><a href="#">Page 2</a></li>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="date">Brand</label>
+                                        <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
+                                    </div>
 
-              </ul>-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="dateTo">Brand</label>
+                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="MM/DD/YYYY"/>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label class="sr-only" for="periodSeach">Brand</label>
+                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="searchType">Search for:</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <select id="searchType" name="searchType">
+                                            <option value="User">User</option>
+                                            <option value="Repair">Repair</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </li>
 
         </ul>
@@ -212,60 +228,9 @@
 </nav>
 
 <div class="container-fluid text-center">
-
     <div class="row content">
 
-        <div class="col-sm-2 sidenav">
-
-        </div>
-
-        <div class="col-sm-8 text-left">
-
-            <p>
-
-            <form class="navbar-form navbar-left" role="search">
-
-                <div class="form-group">
-
-                    <input type="text" class="form-control" placeholder="Email or AFM">
-
-                </div>
-
-                <button type="submit" class="btn btn-default" >Search</button>
-
-            </form>
-
-            </p>
-
-        </div>
-
-        <div class="col-sm-8 text-left">
-
-            <div class="col-25">
-
-                <label for="searchType">Search for:</label>
-
-            </div>
-
-            <div class="col-75">
-
-                <select id="searchType" name="searchType">
-
-                    <option value="User">User</option>
-                    <option value="Repair">Repair</option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-        <div class="col-sm-2 sidenav">
-
-        </div>
-
     </div>
-
 </div>
 
 
@@ -275,6 +240,61 @@
     <h3>Welcome to our Car Services</h3>
 
 </footer>
+
+<script>
+    $(document).ready(function(){
+        var searchType;
+        var credentialsInput = $('input[name="credentials"]');
+        var dateInput = $('input[name="date"]');
+        var dateToInput=$('input[name="dateTo"]');
+        var checkbox = $('input[name="periodSeach"]');
+        var caheckBox = document.querySelector("input[name=periodSeach]");
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        dateInput.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true
+        });
+        dateToInput.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true
+        });
+
+        function searchTypeEvent() {
+            searchType = $("#searchType").val();
+            console.log(searchType);
+            if(searchType === 'User') {
+                dateInput.hide();
+                dateToInput.hide();
+                checkbox.hide();
+                credentialsInput.attr('placeholder', 'Email or VAT');
+            }else {
+                dateInput.show();
+                checkbox.show();
+                credentialsInput.attr('placeholder', 'User VAT');
+            }
+        }
+
+        caheckBox.addEventListener('change', function() {
+            if(this.checked) {
+                dateToInput.show();
+                dateInput.attr('placeholder', 'Select Date From');
+                dateToInput.attr('placeholder', 'Select Date To');
+            } else {
+                dateToInput.hide();
+                dateInput.attr('placeholder', 'MM/DD/YYYY');
+            }
+        });
+
+        $('select').change(searchTypeEvent);
+        searchTypeEvent();
+
+
+    })
+</script>
 
 </body>
 
