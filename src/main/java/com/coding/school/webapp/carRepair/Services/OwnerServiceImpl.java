@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
+
 @Service
 @Transactional
 public class OwnerServiceImpl implements OwnerService{
@@ -21,10 +23,14 @@ public class OwnerServiceImpl implements OwnerService{
             return null;
         }
     }
-   public void registerOwner(Owner owner){
+   public boolean registerOwner(Owner owner){
         //prpei na elegxei an iparxei hdh o xristis mesa sti vash
-         ownerRepository.save(owner);
-
+       try {
+           ownerRepository.save(owner);
+           return true;
+       }catch (Exception e){
+           return false;
+       }
     }
 
 }

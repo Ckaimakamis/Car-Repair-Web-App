@@ -22,10 +22,7 @@ public class RegisterController {
     @RequestMapping(name = "/registerUser", method = RequestMethod.POST)
     //to model to pairnei o controller apo thn html g na to perasei sti methodo mas
     String addUser(@ModelAttribute("user") Owner model, HttpSession session){
-
         service.registerOwner(model);
-
-
         return "redirect:/admin/home";
     }
 }

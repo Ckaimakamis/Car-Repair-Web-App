@@ -4,8 +4,8 @@ import com.coding.school.webapp.carRepair.Domain.Owner;
 
 public interface OwnerService {
 
-     Owner findById(Long ID);
+    Owner findById(Long ID);
 
-        void registerOwner(Owner owner);
+    boolean registerOwner(Owner owner);
 
-     }
+}
