@@ -181,7 +181,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/search" accept-charset="UTF-8" id="login-nav">
+                                <form class="form" role="form" method="get" action="/search" accept-charset="UTF-8" id="login-nav" name="userSearch">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="credentials">Brand</label>

@@ -1,8 +1,6 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
-import com.coding.school.webapp.carRepair.Converters.OwnerConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
-import com.coding.school.webapp.carRepair.Model.RegisterForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +20,12 @@ public class RegisterController {
     OwnerService service;
 
     @RequestMapping(name = "/registerUser", method = RequestMethod.POST)
-    String addUser(@ModelAttribute("user") RegisterForm model, HttpSession session){
-        service.registerOwner(OwnerConverter.buildUserObject(model));
+    //to model to pairnei o controller apo thn html g na to perasei sti methodo mas| "user" onoma formas
+    String addUser(@ModelAttribute("user") Owner model, HttpSession session){
+
+        service.registerOwner(model);
+
+
         return "redirect:/admin/home";
     }
 }
