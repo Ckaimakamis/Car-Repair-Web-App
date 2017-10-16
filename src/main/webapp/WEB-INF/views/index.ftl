@@ -109,9 +109,6 @@
 
 <body>
 
-<h2>${message!""}</h2>
-<h2 style="color: red">${errorMessage!""}</h2>
-
 <nav class="navbar navbar-inverse">
 
     <div class="container-fluid">
@@ -233,7 +230,8 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-
+        <h2>${message!""}</h2>
+        <h2 style="color: red">${errorMessage!""}</h2>
     </div>
 </div>
 
