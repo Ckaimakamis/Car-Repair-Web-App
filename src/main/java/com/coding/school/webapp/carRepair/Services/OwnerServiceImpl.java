@@ -23,14 +23,14 @@ public class OwnerServiceImpl implements OwnerService{
             return null;
         }
     }
-   public boolean registerOwner(Owner owner){
-        //prpei na elegxei an iparxei hdh o xristis mesa sti vash
-       try {
-           ownerRepository.save(owner);
-           return true;
-       }catch (Exception e){
-           return false;
-       }
+
+    public boolean registerOwner(Owner owner){
+        try {
+            ownerRepository.save(owner);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 }
