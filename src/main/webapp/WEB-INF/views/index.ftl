@@ -109,6 +109,9 @@
 
 <body>
 
+<h2>${message!""}</h2>
+<h2 style="color: red">${errorMessage!""}</h2>
+
 <nav class="navbar navbar-inverse">
 
     <div class="container-fluid">
@@ -153,12 +156,12 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" required>
+                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" style="text-transform:uppercase" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerVAT">Brand</label>
-                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter VAT"name="vat" required>
+                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter vat"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
@@ -182,7 +185,7 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="credentials">Brand</label>
-                                        <input type="text" class="form-control" id="credentials" name="credentials"  placeholder="Email or VAT">
+                                        <input type="text" class="form-control" id="credentials" name="credentials"  placeholder="Email or vat">
                                     </div>
 
                                     <div class="form-group">
@@ -271,11 +274,11 @@
                 dateInput.hide();
                 dateToInput.hide();
                 checkbox.hide();
-                credentialsInput.attr('placeholder', 'Email or VAT');
+                credentialsInput.attr('placeholder', 'Email or vat');
             }else {
                 dateInput.show();
                 checkbox.show();
-                credentialsInput.attr('placeholder', 'User VAT');
+                credentialsInput.attr('placeholder', 'User vat');
             }
         }
 

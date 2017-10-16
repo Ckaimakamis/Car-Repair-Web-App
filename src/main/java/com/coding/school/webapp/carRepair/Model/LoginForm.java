@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public class LoginForm {
 
-    private static final String USERNAME_PATTERN = "^[a-zA-Z0-9]*$";
+    private static final String USERNAME_PATTERN = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
 
     private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&]*$";
 
