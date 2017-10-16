@@ -16,7 +16,6 @@ public class HomeController {
 
     @RequestMapping(name = "/admin/home", method = RequestMethod.GET)
     String homePage(Model model, HttpSession session){
-        model.addAttribute(REGISTER_FORM, new RegisterForm());
         return "index";
     }
 }
