@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @Service
 @Transactional
 public class RepairServiceImpl implements RepairService {
+
+    @Autowired
+    RepairRepository repairRepository;
 
     @Autowired
     private RepairRepository repository;
@@ -25,5 +29,10 @@ public class RepairServiceImpl implements RepairService {
     public ArrayList<Repair> findAll() {
         ArrayList<Repair> repairs = (ArrayList<Repair>) repository.findAll();
         return repairs;
+    }
+
+    @Override
+    public Repair findByDateTime(Timestamp dateTime) {
+        return repairRepository.findByDateTime(dateTime);
     }
 }

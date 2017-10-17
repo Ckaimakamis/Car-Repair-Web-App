@@ -51,4 +51,9 @@ public class OwnerServiceImpl implements OwnerService{
         return ownerRepository.findByEmail(email);
     }
 
+    @Override
+    public Owner findByEmailOrVat(String email, String vat) {
+        return ownerRepository.findByEmailOrVat(email,vat);
+    }
+
 }
