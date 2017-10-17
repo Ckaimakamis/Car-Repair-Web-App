@@ -177,11 +177,11 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/search" accept-charset="UTF-8" id="login-nav">
+                                <form class="form" role="form" method="post" action="/searchUser" accept-charset="UTF-8" id="login-nav" name = "searchForm">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="credentials">Brand</label>
-                                        <input type="text" class="form-control" id="credentials" name="credentials"  placeholder="Email or VAT">
+                                        <label class="sr-only" for="email">Email</label>
+                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter"name="email" required>
                                     </div>
 
                                     <div class="form-group">
@@ -206,12 +206,12 @@
                                     <div class="form-group">
                                         <select id="searchType" name="searchType">
                                             <option value="User">User</option>
-                                            <option value="Repair">Repair</option>
+                                           <option value="Repair">Repair</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
+                                        <button type="submit" value="Search" class="btn btn-primary btn-block">Search</button>
                                     </div>
 
                                 </form>
@@ -226,6 +226,52 @@
     </div>
 
 </nav>
+
+
+<h2>${errorMessage!""}</h2>
+
+<#if owner??>
+
+<table border="0">
+    <tr>
+        <td colspan="2" align="center"><h2>Owner Found</h2></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <h3>Here's the review of owner's details:</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>First Name:</td>
+        <td>${owner.firstName}</td>
+    </tr>
+    <tr>
+        <td>Last Name:</td>
+        <td>${owner.lastName}</td>
+    </tr>
+    <tr>
+        <td>E-Mail:</td>
+        <td>${owner.email}</td>
+    </tr>
+    <tr>
+        <td>VAT:</td>
+        <td>${owner.vat}</td>
+    </tr>
+    <tr>
+        <td>ID:</td>
+        <td>${owner.ID}</td>
+    </tr>
+    <tr>
+        <td>Role:</td>
+        <td>${owner.role}</td>
+    </tr>
+    <#--<tr>-->
+        <#--<td>Vehicle:</td>-->
+        <#--<td>${owner.vehicle}</td>-->
+    <#--</tr>-->
+
+</table>
+</#if>
 
 <div class="container-fluid text-center">
     <div class="row content">

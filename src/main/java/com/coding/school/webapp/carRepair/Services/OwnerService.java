@@ -6,6 +6,8 @@ public interface OwnerService {
 
      Owner findById(Long ID);
 
-        void registerOwner(Owner owner);
+     void registerOwner(Owner owner);
+
+     Owner findByEmail(String email);
 
      }

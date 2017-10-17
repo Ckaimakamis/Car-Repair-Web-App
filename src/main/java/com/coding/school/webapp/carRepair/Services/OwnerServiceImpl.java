@@ -27,4 +27,9 @@ public class OwnerServiceImpl implements OwnerService{
 
     }
 
+    @Override
+    public Owner findByEmail(String email) {
+        return ownerRepository.findByEmail(email);
+    }
+
 }
