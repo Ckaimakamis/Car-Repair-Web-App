@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <#--<link rel="stylesheet" type="text/css" href="css/index.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--jQuery -->
@@ -108,6 +109,9 @@
 
 <body>
 
+<h2>${message!""}</h2>
+<h2 style="color: red">${errorMessage!""}</h2>
+
 <nav class="navbar navbar-inverse">
 
     <div class="container-fluid">
@@ -152,12 +156,12 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" required>
+                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" style="text-transform:uppercase" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerVAT">Brand</label>
-                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter VAT"name="vat" required>
+                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter vat"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
@@ -177,11 +181,11 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/searchUser" accept-charset="UTF-8" id="login-nav" name = "searchForm">
+                                <form class="form" role="form" method="post" action="/search" accept-charset="UTF-8" id="login-nav">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="email">Email</label>
-                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter"name="email" required>
+                                        <label class="sr-only" for="credentials">Brand</label>
+                                        <input type="text" class="form-control" id="credentials" name="credentials"  placeholder="Email or vat">
                                     </div>
 
                                     <div class="form-group">
@@ -206,12 +210,12 @@
                                     <div class="form-group">
                                         <select id="searchType" name="searchType">
                                             <option value="User">User</option>
-                                           <option value="Repair">Repair</option>
+                                            <option value="Repair">Repair</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" value="Search" class="btn btn-primary btn-block">Search</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
                                     </div>
 
                                 </form>
@@ -226,52 +230,6 @@
     </div>
 
 </nav>
-
-
-<h2>${errorMessage!""}</h2>
-
-<#if owner??>
-
-<table border="0">
-    <tr>
-        <td colspan="2" align="center"><h2>Owner Found</h2></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">
-            <h3>Here's the review of owner's details:</h3>
-        </td>
-    </tr>
-    <tr>
-        <td>First Name:</td>
-        <td>${owner.firstName}</td>
-    </tr>
-    <tr>
-        <td>Last Name:</td>
-        <td>${owner.lastName}</td>
-    </tr>
-    <tr>
-        <td>E-Mail:</td>
-        <td>${owner.email}</td>
-    </tr>
-    <tr>
-        <td>VAT:</td>
-        <td>${owner.vat}</td>
-    </tr>
-    <tr>
-        <td>ID:</td>
-        <td>${owner.ID}</td>
-    </tr>
-    <tr>
-        <td>Role:</td>
-        <td>${owner.role}</td>
-    </tr>
-    <#--<tr>-->
-        <#--<td>Vehicle:</td>-->
-        <#--<td>${owner.vehicle}</td>-->
-    <#--</tr>-->
-
-</table>
-</#if>
 
 <div class="container-fluid text-center">
     <div class="row content">
@@ -316,11 +274,11 @@
                 dateInput.hide();
                 dateToInput.hide();
                 checkbox.hide();
-                credentialsInput.attr('placeholder', 'Email or VAT');
+                credentialsInput.attr('placeholder', 'Email or vat');
             }else {
                 dateInput.show();
                 checkbox.show();
-                credentialsInput.attr('placeholder', 'User VAT');
+                credentialsInput.attr('placeholder', 'User vat');
             }
         }
 

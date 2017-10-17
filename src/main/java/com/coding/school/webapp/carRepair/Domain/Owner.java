@@ -24,7 +24,7 @@ public class Owner {
     private String vat;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull
