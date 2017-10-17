@@ -3,8 +3,9 @@ package com.coding.school.webapp.carRepair.Model;
 import java.sql.Timestamp;
 
 public class SearchForm {
+
     private String email;
-    private String vat;
+
     private Timestamp dateTime;
 
     public String getEmail() {
@@ -13,14 +14,6 @@ public class SearchForm {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
     }
 
     public Timestamp getDateTime() {

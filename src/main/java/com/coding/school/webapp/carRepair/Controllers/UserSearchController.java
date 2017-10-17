@@ -1,6 +1,7 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
 import com.coding.school.webapp.carRepair.Domain.Owner;
+import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserSearchController {
 
     private static final String SEARCH_FORM = "searchForm";
+
     public static final String OWNER = "owner";
+
+    public static final String VEHICLES = "vehicles";
+
     @Autowired
     OwnerService ownerService;
 
@@ -32,13 +39,18 @@ public class UserSearchController {
                            HttpSession session,
                            RedirectAttributes redirectAttributes) {
 
-        Owner owner = ownerService.findByEmailOrVat(searchForm.getEmail() , searchForm.getVat());
+        Owner owner = ownerService.findByEmailOrVat(searchForm.getEmail() , searchForm.getEmail());
+        List<Vehicle> vehicles = null;
 
         if (owner == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "Owner not found");
+        }else {
+            vehicles = new ArrayList<>(owner.getVehicles());
         }
 
         redirectAttributes.addFlashAttribute(OWNER, owner);
+        redirectAttributes.addFlashAttribute(VEHICLES, vehicles);
+
         return "redirect:/searchOwner";
     }
 }

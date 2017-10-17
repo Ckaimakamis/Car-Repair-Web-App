@@ -233,57 +233,74 @@
 
 </nav>
 
-<#--//=======εμφανίζω σε table τα στοιχεία του user======================================================================-->
-<h2>${errorMessage!""}</h2>
-
-<#if owner??>
-
-<table border="0">
-    <tr>
-        <td colspan="2" align="center"><h2>Owner Found</h2></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">
-            <h3>Here's the review of owner's details:</h3>
-        </td>
-    </tr>
-    <tr>
-        <td>First Name:</td>
-        <td>${owner.firstName}</td>
-    </tr>
-    <tr>
-        <td>Last Name:</td>
-        <td>${owner.lastName}</td>
-    </tr>
-    <tr>
-        <td>E-Mail:</td>
-        <td>${owner.email}</td>
-    </tr>
-    <tr>
-        <td>VAT:</td>
-        <td>${owner.vat}</td>
-    </tr>
-    <tr>
-        <td>ID:</td>
-        <td>${owner.ID}</td>
-    </tr>
-    <tr>
-        <td>Role:</td>
-        <td>${owner.role}</td>
-    </tr>
-<#--<tr>-->
-<#--<td>Vehicle:</td>-->
-<#--<td>${owner.vehicle}</td>-->
-<#--</tr>-->
-
-</table>
-</#if>
-<#--\\======================================================================================================================-->
 
 <div class="container-fluid text-center">
     <div class="row content">
         <h2>${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
+
+<#--//=======εμφανίζω σε table τα στοιχεία του user======================================================================-->
+    <#if owner??>
+
+        <table border="0">
+            <tr>
+                <td colspan="2" align="center"><h2>Owner Found</h2></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <h3>Here's the review of owner's details:</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td>${owner.firstName}</td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>${owner.lastName}</td>
+            </tr>
+            <tr>
+                <td>E-Mail:</td>
+                <td>${owner.email}</td>
+            </tr>
+            <tr>
+                <td>VAT:</td>
+                <td>${owner.vat}</td>
+            </tr>
+            <tr>
+                <td>ID:</td>
+                <td>${owner.ID}</td>
+            </tr>
+            <tr>
+                <td>Role:</td>
+                <td>${owner.role}</td>
+            </tr>
+
+            <#if vehicles??>
+                <#list vehicles as vehicle>
+
+                    <tr>
+                        <td>Model:</td>
+                        <td>${vehicle.model}</td>
+                    </tr>
+                    <tr>
+                        <td>Plate:</td>
+                        <td>${vehicle.plateNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>Color:</td>
+                        <td>${vehicle.color}</td>
+                    </tr>
+                    <tr>
+                        <td>Year:</td>
+                        <td>${vehicle.year}</td>
+                    </tr>
+                </#list>
+            </#if>
+
+        </table>
+    </#if>
+<#--\\======================================================================================================================-->
     </div>
 </div>
 
