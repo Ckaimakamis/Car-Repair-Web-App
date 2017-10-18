@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <#--<link rel="stylesheet" type="text/css" href="css/index.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--jQuery -->
@@ -28,17 +27,14 @@
         background-color: #2B3A37;
         padding:15px;
     }
-
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
-
     /* Set gray background color and 100% height */
     .sidenav {
         padding-top: 20px;
         background-color: #78909c;
         height: 100%;
     }
-
     /* Set black background color, white text and some padding */
     footer {
         background-color: #2B3A37;
@@ -46,7 +42,6 @@
         color: white;
         padding: 20px;
     }
-
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
         .sidenav {
@@ -61,7 +56,6 @@
         font-style: normal ;
         color: white;
     }
-
     #login-dp{
         min-width: 250px;
         padding: 14px 14px 0;
@@ -106,7 +100,6 @@
             border-top:0 none;
         }
     }
-
 </style>
 
 <body>
@@ -134,8 +127,8 @@
                                 <form class="form" role="form" method="post" action="/registerUser" accept-charset="UTF-8" id="login-nav" name="user">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerEmail">Username</label>
-                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="email" required>
+                                        <label class="sr-only" for="registerEmail">Service id</label>
+                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter ID" name="email" required>
                                     </div>
 
                                     <div class="form-group">
@@ -144,24 +137,31 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">AFM</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Last Name" name="lastName"required>
+                                            <label class="sr-only" for="registerVAT">Cost</label>
+                                            <input type="text" class="form-control" id="registerVAT" placeholder="Enter COST"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">Password</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Password" name="password"required>
+                                            <label class="sr-only" for="registerVAT">Works</label>
+                                            <input type="text" class="form-control" id="registerVAT" placeholder="Enter Work"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" style="text-transform:uppercase" required>
+                                            <select id="searchType" name="searchType">
+                                                <option value="User">waiting</option>
+                                                <option value="Repair">ready</option>
+                                                <option value="Repair">ongoing</option>
+                                            </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerVAT">Brand</label>
-                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter vat"name="vat" required>
+                                            <select id="searchType" name="searchType">
+                                                <option value="User">little</option>
+                                                <option value="Repair">big</option>
+                                            </select>
                                     </div>
+
+                                  
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Register User</button>
@@ -182,14 +182,12 @@
                             <div class="col-md-12">
 
 
-<#--=======================================Εδώ έκανα αλλαγές για να κάνω search τον user==================================================-->
                                 <form class="form" role="form" method="post" action="/searchOwner" accept-charset="UTF-8" id="login-nav" name = "searchForm">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="email">Email</label>
                                         <input type="text" class="form-control" id="searchEmail" placeholder="Enter Email"name="email" required>
                                     </div>
-<#--=============================================================================================================================-->
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Brand</label>
                                         <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
@@ -221,15 +219,12 @@
                                     </div>
 
                                 </form>
-
-
                             </div>
                         </div>
                     </li>
-
                 </ul>
             </li>
-            <li class="#"><a href="#">Services</a></li>
+
         </ul>
 
     </div>
@@ -239,76 +234,9 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <h2>${message!""}</h2>
-        <h2 style="color: red">${errorMessage!""}</h2>
-
-<#--//=======εμφανίζω σε table τα στοιχεία του user======================================================================-->
-    <#if owner??>
-
-        <table border="0">
-            <tr>
-                <td colspan="2" align="center"><h2>Owner Found</h2></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <h3>Here's the review of owner's details:</h3>
-                </td>
-            </tr>
-            <tr>
-                <td>First Name:</td>
-                <td>${owner.firstName}</td>
-            </tr>
-            <tr>
-                <td>Last Name:</td>
-                <td>${owner.lastName}</td>
-            </tr>
-            <tr>
-                <td>E-Mail:</td>
-                <td>${owner.email}</td>
-            </tr>
-            <tr>
-                <td>VAT:</td>
-                <td>${owner.vat}</td>
-            </tr>
-            <tr>
-                <td>ID:</td>
-                <td>${owner.ID}</td>
-            </tr>
-            <tr>
-                <td>Role:</td>
-                <td>${owner.role}</td>
-            </tr>
-
-            <#if vehicles??>
-                <#list vehicles as vehicle>
-
-                    <tr>
-                        <td>Model:</td>
-                        <td>${vehicle.model}</td>
-                    </tr>
-                    <tr>
-                        <td>Plate:</td>
-                        <td>${vehicle.plateNumber}</td>
-                    </tr>
-                    <tr>
-                        <td>Color:</td>
-                        <td>${vehicle.color}</td>
-                    </tr>
-                    <tr>
-                        <td>Year:</td>
-                        <td>${vehicle.year}</td>
-                    </tr>
-                </#list>
-            </#if>
-
-        </table>
-    </#if>
-<#--\\======================================================================================================================-->
+      
     </div>
-</div>
-
-
-
+</div>    
 <footer class="container-fluid text-center">
 
     <h3>Welcome to our Car Services</h3>
@@ -318,7 +246,7 @@
 <script>
     $(document).ready(function(){
         var searchType;
-        var credentialsInput = $('input[name="searchEmail"]');
+        var credentialsInput = $('input[name="credentials"]');
         var dateInput = $('input[name="date"]');
         var dateToInput=$('input[name="dateTo"]');
         var checkbox = $('input[name="periodSeach"]');
@@ -336,7 +264,6 @@
             todayHighlight: true,
             autoclose: true
         });
-
         function searchTypeEvent() {
             searchType = $("#searchType").val();
             console.log(searchType);
@@ -351,7 +278,6 @@
                 credentialsInput.attr('placeholder', 'User vat');
             }
         }
-
         caheckBox.addEventListener('change', function() {
             if(this.checked) {
                 dateToInput.show();
@@ -362,11 +288,8 @@
                 dateInput.attr('placeholder', 'MM/DD/YYYY');
             }
         });
-
         $('select').change(searchTypeEvent);
         searchTypeEvent();
-
-
     })
 </script>
 
