@@ -35,7 +35,7 @@ public class OwnerServiceImpl implements OwnerService{
     @Override
     public void registerOwner(Owner owner) throws AuthenticationException{
         Owner existedOwner = ownerRepository.findByEmail(owner.getEmail());
-        if(owner != null){
+        if(existedOwner == null){
             ownerRepository.save(owner);
         }else {
             throw new UserExistException("Email already exists!");
@@ -44,6 +44,16 @@ public class OwnerServiceImpl implements OwnerService{
 
     private static String getCredentials(String username, String password) {
         return username + ":" + password;
+    }
+
+    @Override
+    public Owner findByEmail(String email) {
+        return ownerRepository.findByEmail(email);
+    }
+
+    @Override
+    public Owner findByEmailOrVat(String email, String vat) {
+        return ownerRepository.findByEmailOrVat(email,vat);
     }
 
 }

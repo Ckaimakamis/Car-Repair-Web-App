@@ -1,3 +1,5 @@
+<#import "/spring.ftl" as spring/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,9 +111,6 @@
 
 <body>
 
-<h2>${message!""}</h2>
-<h2 style="color: red">${errorMessage!""}</h2>
-
 <nav class="navbar navbar-inverse">
 
     <div class="container-fluid">
@@ -181,13 +180,16 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="get" action="/search" accept-charset="UTF-8" id="login-nav" name="userSearch">
+
+
+<#--=======================================Εδώ έκανα αλλαγές για να κάνω search τον user==================================================-->
+                                <form class="form" role="form" method="post" action="/searchOwner" accept-charset="UTF-8" id="login-nav" name = "searchForm">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="credentials">Brand</label>
-                                        <input type="text" class="form-control" id="credentials" name="credentials"  placeholder="Email or vat">
+                                        <label class="sr-only" for="email">Email</label>
+                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter Email"name="email" required>
                                     </div>
-
+<#--=============================================================================================================================-->
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Brand</label>
                                         <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
@@ -215,7 +217,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Search</button>
                                     </div>
 
                                 </form>
@@ -231,9 +233,74 @@
 
 </nav>
 
+
 <div class="container-fluid text-center">
     <div class="row content">
+        <h2>${message!""}</h2>
+        <h2 style="color: red">${errorMessage!""}</h2>
 
+<#--//=======εμφανίζω σε table τα στοιχεία του user======================================================================-->
+    <#if owner??>
+
+        <table border="0">
+            <tr>
+                <td colspan="2" align="center"><h2>Owner Found</h2></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <h3>Here's the review of owner's details:</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td>${owner.firstName}</td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>${owner.lastName}</td>
+            </tr>
+            <tr>
+                <td>E-Mail:</td>
+                <td>${owner.email}</td>
+            </tr>
+            <tr>
+                <td>VAT:</td>
+                <td>${owner.vat}</td>
+            </tr>
+            <tr>
+                <td>ID:</td>
+                <td>${owner.ID}</td>
+            </tr>
+            <tr>
+                <td>Role:</td>
+                <td>${owner.role}</td>
+            </tr>
+
+            <#if vehicles??>
+                <#list vehicles as vehicle>
+
+                    <tr>
+                        <td>Model:</td>
+                        <td>${vehicle.model}</td>
+                    </tr>
+                    <tr>
+                        <td>Plate:</td>
+                        <td>${vehicle.plateNumber}</td>
+                    </tr>
+                    <tr>
+                        <td>Color:</td>
+                        <td>${vehicle.color}</td>
+                    </tr>
+                    <tr>
+                        <td>Year:</td>
+                        <td>${vehicle.year}</td>
+                    </tr>
+                </#list>
+            </#if>
+
+        </table>
+    </#if>
+<#--\\======================================================================================================================-->
     </div>
 </div>
 

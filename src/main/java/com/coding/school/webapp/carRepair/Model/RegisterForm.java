@@ -16,15 +16,15 @@ public class RegisterForm {
 
     private static final String VAT_PATTERN = "^[0-9]*$";
 
-    @NotNull
+    @NotNull(message = "{register.email.null}")
     @Pattern(regexp = EMAIL_PATTERN, message = "{register.email.invalid}")
     private String email;
 
-    @NotNull
+    @NotNull(message = "{register.firstName.null}")
     @Pattern(regexp = CHARACTERS_PATTERN, message = "{register.firstname.invalid}")
     private String firstName;
 
-    @NotNull
+    @NotNull(message = "{register.lastName.null}")
     @Pattern(regexp = CHARACTERS_PATTERN, message = "{register.lastname.invalid}")
     private String lastName;
 
@@ -33,10 +33,10 @@ public class RegisterForm {
     @Size(min = PASSWORD_MINSIZE, message = "{register.password.size}")
     private String password;
 
-    @NotNull
+    @NotNull(message = "{register.role.null}")
     private String role;
 
-    @NotNull
+    @NotNull(message = "{register.vat.null}")
     @Pattern(regexp = VAT_PATTERN, message = "{register.vat.invalid")
     private String vat;
 
