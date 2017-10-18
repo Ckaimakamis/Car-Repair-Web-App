@@ -2,7 +2,6 @@ package com.coding.school.webapp.carRepair.Domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
 
 @Entity
 public class Owner {
@@ -35,6 +34,9 @@ public class Owner {
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
     private OwnerRole role;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "owner")
+    private Vehicle vehicle;
 
     public Long getID() {
         return ID;
@@ -92,18 +94,15 @@ public class Owner {
         this.role = role;
     }
 
-    public enum OwnerRole {
-        ADMIN, USER
-    }
-
-    @OneToOne(mappedBy = "owner")
-    private Vehicle vehicle;
-
     public Vehicle getVehicle() {
         return vehicle;
     }
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public enum OwnerRole {
+        ADMIN, USER
     }
 }
