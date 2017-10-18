@@ -17,7 +17,7 @@ public class HomeController {
 
     private static final String SEARCH_FORM = "searchForm";
 
-    @RequestMapping(name = "/admin/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
     String homePage(Model model, HttpSession session){
 
         model.addAttribute(SEARCH_FORM, new SearchForm());

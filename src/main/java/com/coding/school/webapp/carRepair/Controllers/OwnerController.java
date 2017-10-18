@@ -63,7 +63,7 @@ public class OwnerController {
         return "redirect:/searchOwner";
     }
 
-    @RequestMapping(name = "/registerUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     String addUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
                    HttpSession session, RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()) {
@@ -80,10 +80,10 @@ public class OwnerController {
         return "redirect:/admin/home";
     }
 
-//    @RequestMapping(name = "/editOwner", method = RequestMethod.POST)
-//    String editUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
-//                   HttpSession session, RedirectAttributes redirectAttributes){
-//
-//        return "";
-//    }
+    @RequestMapping(value = "/editOwner", method = RequestMethod.POST)
+    String editUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
+                   HttpSession session, RedirectAttributes redirectAttributes){
+
+        return "";
+    }
 }

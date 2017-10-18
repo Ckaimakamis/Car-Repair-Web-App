@@ -194,13 +194,5 @@
 
 </body>
 
-<script>
-
-    $(document).ready(function(){
-        var emailField = $('#email');
-        emailField.attr('text', '${owner.email}');
-    }
-
-</script>
 
 </html>
