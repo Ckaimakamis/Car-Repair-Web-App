@@ -56,4 +56,9 @@ public class OwnerServiceImpl implements OwnerService{
         return ownerRepository.findByEmailOrVat(email,vat);
     }
 
+    @Override
+    public Owner findByVat(String vat) {
+        return ownerRepository.findByVat(vat);
+    }
+
 }

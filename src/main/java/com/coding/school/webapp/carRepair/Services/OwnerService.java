@@ -13,4 +13,6 @@ public interface OwnerService {
     Owner findByEmail(String email);
 
     Owner findByEmailOrVat(String email , String vat);
+
+    Owner findByVat( String vat);
 }

@@ -202,7 +202,7 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="periodSeach">Brand</label>
-                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period search
+                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
                                     </div>
 
                                     <div class="form-group">
@@ -316,6 +316,7 @@
     $(document).ready(function(){
         var searchType;
         var credentialsInput = $('input[name="email"]');
+        var credentialsInput = $('input[name="searchEmail"]');
         var dateInput = $('input[name="date"]');
         var dateToInput=$('input[name="dateTo"]');
         var checkbox = $('input[name="periodSeach"]');
@@ -343,10 +344,12 @@
                 dateInput.hide();
                 dateToInput.hide();
                 checkbox.hide();
+                credentialsInput.attr('placeholder', 'Email or vat');
             }else {
                 credentialsInput.attr('placeholder', 'User VAT');
                 dateInput.show();
                 checkbox.show();
+                credentialsInput.attr('placeholder', 'User vat');
             }
         }
 

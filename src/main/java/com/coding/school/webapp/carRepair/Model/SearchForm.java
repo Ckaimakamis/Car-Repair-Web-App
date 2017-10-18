@@ -1,6 +1,16 @@
 package com.coding.school.webapp.carRepair.Model;
 
+import java.sql.Timestamp;
+
 public class SearchForm {
+
+    public String getVat() {
+        return vat;
+    }
+
+    public void setVat(String vat) {
+        this.vat = vat;
+    }
 
     private String email;
 
@@ -13,6 +23,9 @@ public class SearchForm {
 
     // If ckeckbox is checked then its value is "period search" else is null
     private String periodSeach;
+    private String vat;
+
+    private Timestamp dateTime;
 
     public String getEmail() {
         return email;

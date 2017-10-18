@@ -12,4 +12,7 @@ public interface OwnerRepository extends JpaRepository<Owner, Long>{
     Owner findByEmail(String email);
 
     Owner findByEmailOrVat(String email , String vat);
+
+    Owner findByVat( String vat);
+
 }
