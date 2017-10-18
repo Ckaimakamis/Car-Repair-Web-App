@@ -159,7 +159,7 @@
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar">
         </div>
-      
+
         <div class="container">
           <label><b>Enter Username</b></label>
           <input type="text" id="email" placeholder="email" name="email"  value=${owner.email} required>
@@ -181,10 +181,10 @@
 
         </br>
 
-            <button type="button" class=".btn-primary">Update</button>
-          
+            <button type="submit" class=".btn-primary"  OnClick="SetDest1()"    >Update</button>
+
             </br>
-            <button type="button" class="cancelbtn">Delete</button>
+            <button type="submit" class="cancelbtn">Delete</button>
         </div>
       </form>
     
@@ -193,6 +193,11 @@
 </div>
 
 </body>
+<script language="JavaScript">
+    function SetDest1() {
+        document.forms["ownerEditForm"].action = "/editOwner";
+    }
 
+</script>
 
 </html>

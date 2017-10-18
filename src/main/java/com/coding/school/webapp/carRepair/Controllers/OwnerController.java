@@ -83,7 +83,12 @@ public class OwnerController {
     @RequestMapping(value = "/editOwner", method = RequestMethod.POST)
     String editUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
                    HttpSession session, RedirectAttributes redirectAttributes){
+        try{
+            ownerService.registerOwner(OwnerConverter.buildUserObject(registerForm));
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
 
-        return "";
+        return "redirect:/admin/home";
     }
 }

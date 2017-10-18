@@ -43,6 +43,7 @@ public class OwnerServiceImpl implements OwnerService{
     }
 
     private static String getCredentials(String username, String password) {
+
         return username + ":" + password;
     }
 
