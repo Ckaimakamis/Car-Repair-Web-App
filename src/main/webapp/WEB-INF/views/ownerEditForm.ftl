@@ -181,10 +181,10 @@
 
         </br>
 
-            <button type="submit" class=".btn-primary"  OnClick="SetDest1()"    >Update</button>
+            <button type="submit" class=".btn-primary" OnClick="SetDest1()">Update</button>
 
             </br>
-            <button type="submit" class="cancelbtn">Delete</button>
+            <button type="submit" class="cancelbtn" OnClick="SetDest2">Delete </button>
         </div>
       </form>
     
@@ -194,8 +194,13 @@
 
 </body>
 <script language="JavaScript">
+
     function SetDest1() {
         document.forms["ownerEditForm"].action = "/editOwner";
     }
+    function SetDest2() {
+        document.forms["ownerEditForm"].action = "/deleteOwner";
+    }
+
 </script>
 </html>

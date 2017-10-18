@@ -92,4 +92,13 @@ public class OwnerController {
 
         return "redirect:/admin/home";
     }
+
+    @RequestMapping(value = "/deleteOwner", method = RequestMethod.POST)
+    String deleteUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm updateForm, BindingResult bindingResult,
+                    HttpSession session, RedirectAttributes redirectAttributes){
+
+        redirectAttributes.addFlashAttribute("message", "User Deleted :)");
+
+        return "redirect:/admin/home";
+    }
 }
