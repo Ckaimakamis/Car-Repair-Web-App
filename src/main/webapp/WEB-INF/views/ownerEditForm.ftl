@@ -184,7 +184,7 @@
             <button type="submit" class=".btn-primary" OnClick="SetDest1()">Update</button>
 
             </br>
-            <button type="submit" class="cancelbtn" OnClick="SetDest2">Delete </button>
+            <button type="submit" class="cancelbtn" OnClick="SetDest2()">Delete </button>
         </div>
       </form>
     
