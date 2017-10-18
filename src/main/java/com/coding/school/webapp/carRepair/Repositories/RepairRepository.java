@@ -4,9 +4,7 @@ import com.coding.school.webapp.carRepair.Domain.Repair;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
-
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
-    Repair findByDateTime (Timestamp dateTime);
+    Repair findByDateTime (String dateTime);
 }

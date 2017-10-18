@@ -36,9 +36,6 @@ public class Owner {
     @Column(nullable = false)
     private OwnerRole role;
 
-    @OneToMany(mappedBy = "owner")
-    private Collection<Vehicle> vehicles;
-
     public Long getID() {
         return ID;
     }
@@ -95,15 +92,18 @@ public class Owner {
         this.role = role;
     }
 
-    public Collection<Vehicle> getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(Collection<Vehicle> vehicles) {
-        this.vehicles = vehicles;
-    }
-
     public enum OwnerRole {
         ADMIN, USER
+    }
+
+    @OneToOne(mappedBy = "owner")
+    private Vehicle vehicle;
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }

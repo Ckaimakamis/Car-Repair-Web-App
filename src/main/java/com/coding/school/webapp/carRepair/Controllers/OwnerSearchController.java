@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class UserSearchController {
+public class OwnerSearchController {
 
     private static final String SEARCH_FORM = "searchForm";
 
     public static final String OWNER = "owner";
 
-    public static final String VEHICLES = "vehicles";
+    public static final String VEHICLES = "vehicle";
 
     @Autowired
     OwnerService ownerService;
@@ -31,7 +31,7 @@ public class UserSearchController {
     @RequestMapping(value = "/searchOwner", method = RequestMethod.GET)
     public String getSearchView(Model model) {
         model.addAttribute(SEARCH_FORM, new SearchForm());
-        return "index";
+        return "OwnerEditForm";
     }
 
     @RequestMapping(value = "/searchOwner", method = RequestMethod.POST)
@@ -40,16 +40,16 @@ public class UserSearchController {
                            RedirectAttributes redirectAttributes) {
 
         Owner owner = ownerService.findByEmailOrVat(searchForm.getEmail() , searchForm.getEmail());
-        List<Vehicle> vehicles = null;
+        Vehicle vehicle = null;
 
         if (owner == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "Owner not found");
         }else {
-            vehicles = new ArrayList<>(owner.getVehicles());
+            vehicle = owner.getVehicle();
         }
 
         redirectAttributes.addFlashAttribute(OWNER, owner);
-        redirectAttributes.addFlashAttribute(VEHICLES, vehicles);
+        redirectAttributes.addFlashAttribute(VEHICLES, vehicle);
 
         return "redirect:/searchOwner";
     }

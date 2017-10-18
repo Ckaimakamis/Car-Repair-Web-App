@@ -187,7 +187,7 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="email">Email</label>
-                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter Email"name="email" required>
+                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter Email or VAT"name="email" required>
                                     </div>
 <#--=============================================================================================================================-->
                                     <div class="form-group">
@@ -202,7 +202,7 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="periodSeach">Brand</label>
-                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
+                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period search
                                     </div>
 
                                     <div class="form-group">
@@ -229,7 +229,7 @@
 
                 </ul>
             </li>
-            <li class="#"><a href="#">Services</a></li>
+            <li class="Repairs"><a href="/repairs">Repairs</a></li>
         </ul>
 
     </div>
@@ -279,26 +279,23 @@
                 <td>${owner.role}</td>
             </tr>
 
-            <#if vehicles??>
-                <#list vehicles as vehicle>
-
-                    <tr>
-                        <td>Model:</td>
-                        <td>${vehicle.model}</td>
-                    </tr>
-                    <tr>
-                        <td>Plate:</td>
-                        <td>${vehicle.plateNumber}</td>
-                    </tr>
-                    <tr>
-                        <td>Color:</td>
-                        <td>${vehicle.color}</td>
-                    </tr>
-                    <tr>
-                        <td>Year:</td>
-                        <td>${vehicle.year}</td>
-                    </tr>
-                </#list>
+            <#if vehicle??>
+                <tr>
+                    <td>Model:</td>
+                    <td>${vehicle.model}</td>
+                </tr>
+                <tr>
+                    <td>Plate:</td>
+                    <td>${vehicle.plateNumber}</td>
+                </tr>
+                <tr>
+                    <td>Color:</td>
+                    <td>${vehicle.color}</td>
+                </tr>
+                <tr>
+                    <td>Year:</td>
+                    <td>${vehicle.year}</td>
+                </tr>
             </#if>
 
         </table>
@@ -318,7 +315,7 @@
 <script>
     $(document).ready(function(){
         var searchType;
-        var credentialsInput = $('input[name="credentials"]');
+        var credentialsInput = $('input[name="email"]');
         var dateInput = $('input[name="date"]');
         var dateToInput=$('input[name="dateTo"]');
         var checkbox = $('input[name="periodSeach"]');
@@ -337,21 +334,23 @@
             autoclose: true
         });
 
+        //This is called every time the User/Repair select is changed
         function searchTypeEvent() {
             searchType = $("#searchType").val();
             console.log(searchType);
             if(searchType === 'User') {
+                credentialsInput.attr('placeholder', 'Email or VAT');
                 dateInput.hide();
                 dateToInput.hide();
                 checkbox.hide();
-                credentialsInput.attr('placeholder', 'Email or vat');
             }else {
+                credentialsInput.attr('placeholder', 'User VAT');
                 dateInput.show();
                 checkbox.show();
-                credentialsInput.attr('placeholder', 'User vat');
             }
         }
 
+        //This is called evety time checkbox is changed
         caheckBox.addEventListener('change', function() {
             if(this.checked) {
                 dateToInput.show();

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-public class RegisterController {
+public class OwnerController {
 
     //kalw to interface san kalitero practice
     @Autowired
@@ -46,5 +46,12 @@ public class RegisterController {
         }
 
         return "redirect:/admin/home";
+    }
+
+    @RequestMapping(name = "/editOwner", method = RequestMethod.POST)
+    String editUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
+                   HttpSession session, RedirectAttributes redirectAttributes){
+
+        return "";
     }
 }

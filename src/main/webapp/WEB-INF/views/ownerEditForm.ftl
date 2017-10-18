@@ -30,7 +30,7 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-      <form action="/action_page.php">
+      <form  method="post" action="/editOwner" ><#--TODO make an endpoint for this-->
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar">
         </div>

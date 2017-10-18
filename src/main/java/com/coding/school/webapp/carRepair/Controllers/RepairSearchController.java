@@ -30,7 +30,7 @@ public class RepairSearchController {
                            HttpSession session,
                            RedirectAttributes redirectAttributes) {
 
-        Repair repair = repairService.findByDateTime(searchForm.getDateTime());
+        Repair repair = repairService.findByDateTime(searchForm.getDate());
 
         if (repair == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "Repair not found");

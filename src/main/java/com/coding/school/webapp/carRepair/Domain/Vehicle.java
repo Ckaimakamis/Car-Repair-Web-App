@@ -27,9 +27,6 @@ public class Vehicle {
     @Column(nullable = false)
     private String color;
 
-    @ManyToOne(optional = false)
-    private Owner owner;
-
     @OneToMany(mappedBy = "vehicle")
     private Collection<Repair> repairs;
 
@@ -57,19 +54,22 @@ public class Vehicle {
 
     public void setColor(String color) { this.color = color; }
 
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
     public Collection<Repair> getRepairs() {
         return repairs;
     }
 
     public void setRepairs(Collection<Repair> repairs) {
         this.repairs = repairs;
+    }
+
+    @OneToOne(optional = false)
+    private Owner owner;
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
