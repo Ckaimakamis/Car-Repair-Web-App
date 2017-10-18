@@ -197,7 +197,5 @@
     function SetDest1() {
         document.forms["ownerEditForm"].action = "/editOwner";
     }
-
 </script>
-
 </html>
