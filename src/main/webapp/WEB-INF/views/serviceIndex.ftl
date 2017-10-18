@@ -116,15 +116,15 @@
 
         <ul class="nav navbar-nav">
 
-            <li class="#"><a href="#">Home</a></li>
+            <li class="Repairs"><a href="/admin/home">Owners</a></li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Owner</b> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Vehicle</b> <span class="caret"></span></a>
                 <ul id="login-dp" class="dropdown-menu">
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/registerUser" accept-charset="UTF-8" id="login-nav" name="user">
+                                <form class="form" role="form" method="post" action="/searchVehicle" accept-charset="UTF-8" id="login-nav" name="user">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Service id</label>

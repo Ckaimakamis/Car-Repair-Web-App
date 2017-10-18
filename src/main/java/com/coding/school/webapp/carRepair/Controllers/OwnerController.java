@@ -2,10 +2,10 @@ package com.coding.school.webapp.carRepair.Controllers;
 
 import com.coding.school.webapp.carRepair.Converters.OwnerConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
-import com.coding.school.webapp.carRepair.Exceptions.UserExistException;
+import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Model.RegisterForm;
+import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -24,12 +24,44 @@ public class OwnerController {
 
     //kalw to interface san kalitero practice
     @Autowired
-    OwnerService service;
+    OwnerService ownerService;
 
     @Autowired
     private MessageSource messageSource;
 
+    private static final String SEARCH_FORM = "searchForm";
+
+    public static final String OWNER = "owner";
+
+    public static final String VEHICLES = "vehicle";
+
     private static final String REGISTER_FORM = "user";
+
+    @RequestMapping(value = "/searchOwner", method = RequestMethod.GET)
+    public String getSearchView(Model model) {
+
+        return "ownerEditForm";
+    }
+
+    @RequestMapping(value = "/searchOwner", method = RequestMethod.POST)
+    public String doSearch(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
+                           HttpSession session,
+                           RedirectAttributes redirectAttributes) {
+
+        Owner owner = ownerService.findByEmailOrVat(searchForm.getEmail() , searchForm.getEmail());
+        Vehicle vehicle = null;
+
+        if (owner == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Owner not found");
+        }else {
+            vehicle = owner.getVehicle();
+        }
+
+        redirectAttributes.addFlashAttribute(OWNER, owner);
+        redirectAttributes.addFlashAttribute(VEHICLES, vehicle);
+
+        return "redirect:/searchOwner";
+    }
 
     @RequestMapping(name = "/registerUser", method = RequestMethod.POST)
     String addUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
@@ -39,7 +71,7 @@ public class OwnerController {
             redirectAttributes.addFlashAttribute("errorMessage", message);
         }else{
             try{
-                service.registerOwner(OwnerConverter.buildUserObject(registerForm));
+                ownerService.registerOwner(OwnerConverter.buildUserObject(registerForm));
             }catch (Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
