@@ -155,7 +155,7 @@
       <h2>${message!""}</h2>
       <h2 style="color: red">${errorMessage!""}</h2>
     <#if owner??>
-      <form  method="post" action="/editOwner" name="ownerEditForm"><#--TODO make an endpoint for this-->
+      <form  method="post" action="/editOwner" name="ownerEditForm">
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar">
         </div>
@@ -181,7 +181,7 @@
 
         </br>
 
-            <button type="button" class=".btn-primary">Update</button>
+            <button type="submit" class=".btn-primary">Update</button>
           
             </br>
             <button type="button" class="cancelbtn">Delete</button>
