@@ -62,4 +62,10 @@ public class OwnerServiceImpl implements OwnerService{
         return ownerRepository.findByVat(vat);
     }
 
+    @Override
+    public void updateOwner(Owner owner) {
+        ownerRepository.updateOwner(owner.getEmail(), owner.getFirstName(), owner.getLastName(),
+                owner.getPassword(), owner.getRole(), owner.getVat());
+    }
+
 }

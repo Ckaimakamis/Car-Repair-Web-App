@@ -37,6 +37,8 @@ public class OwnerController {
 
     private static final String REGISTER_FORM = "user";
 
+    private static final String EDIT_FORM = "ownerEditForm";
+
     @RequestMapping(value = "/searchOwner", method = RequestMethod.GET)
     public String getSearchView(Model model) {
 
@@ -81,11 +83,13 @@ public class OwnerController {
     }
 
     @RequestMapping(value = "/editOwner", method = RequestMethod.POST)
-    String editUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
-                   HttpSession session, RedirectAttributes redirectAttributes) {
+    String editUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm updateForm, BindingResult bindingResult,
+                   HttpSession session, RedirectAttributes redirectAttributes){
 
+
+        ownerService.updateOwner(OwnerConverter.buildUserObject(updateForm));
+        redirectAttributes.addFlashAttribute("message", "User Updated :)");
 
         return "redirect:/admin/home";
-
     }
 }

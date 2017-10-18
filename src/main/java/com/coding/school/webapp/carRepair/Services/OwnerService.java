@@ -15,4 +15,6 @@ public interface OwnerService {
     Owner findByEmailOrVat(String email , String vat);
 
     Owner findByVat( String vat);
+
+    void updateOwner(Owner owner);
 }

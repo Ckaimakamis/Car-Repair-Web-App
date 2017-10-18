@@ -159,7 +159,7 @@
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar">
         </div>
-
+      
         <div class="container">
           <label><b>Enter Username</b></label>
           <input type="text" id="email" placeholder="email" name="email"  value=${owner.email} required>
