@@ -30,8 +30,8 @@ public class OwnerSearchController {
 
     @RequestMapping(value = "/searchOwner", method = RequestMethod.GET)
     public String getSearchView(Model model) {
-        model.addAttribute(SEARCH_FORM, new SearchForm());
-        return "OwnerEditForm";
+
+        return "ownerEditForm";
     }
 
     @RequestMapping(value = "/searchOwner", method = RequestMethod.POST)

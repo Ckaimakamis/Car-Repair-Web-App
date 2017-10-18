@@ -48,10 +48,10 @@ public class OwnerController {
         return "redirect:/admin/home";
     }
 
-    @RequestMapping(name = "/editOwner", method = RequestMethod.POST)
-    String editUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
-                   HttpSession session, RedirectAttributes redirectAttributes){
-
-        return "";
-    }
+//    @RequestMapping(name = "/editOwner", method = RequestMethod.POST)
+//    String editUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
+//                   HttpSession session, RedirectAttributes redirectAttributes){
+//
+//        return "";
+//    }
 }
