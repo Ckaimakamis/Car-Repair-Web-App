@@ -119,7 +119,7 @@
             <li class="Repairs"><a href="/admin/home">Owners</a></li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Vehicle</b> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Repain</b> <span class="caret"></span></a>
                 <ul id="login-dp" class="dropdown-menu">
                     <li>
                         <div class="row">
@@ -207,12 +207,12 @@
                                         <label for="searchType">Search for:</label>
                                     </div>
 
-                                    <div class="form-group">
+                                  <!--  <div class="form-group">
                                         <select id="searchType" name="searchType">
                                             <option value="User">User</option>
                                             <option value="Repair">Repair</option>
                                         </select>
-                                    </div>
+                                    </div>  -->
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
