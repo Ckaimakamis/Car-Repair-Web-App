@@ -315,7 +315,7 @@
 <script>
     $(document).ready(function(){
         var searchType;
-        var credentialsInput = $('input[name="credentials"]');
+        var credentialsInput = $('input[name="searchEmail"]');
         var dateInput = $('input[name="date"]');
         var dateToInput=$('input[name="dateTo"]');
         var checkbox = $('input[name="periodSeach"]');

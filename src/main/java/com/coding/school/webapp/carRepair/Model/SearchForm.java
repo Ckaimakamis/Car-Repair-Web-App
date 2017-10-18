@@ -4,7 +4,17 @@ import java.sql.Timestamp;
 
 public class SearchForm {
 
+    public String getVat() {
+        return vat;
+    }
+
+    public void setVat(String vat) {
+        this.vat = vat;
+    }
+
     private String email;
+
+    private String vat;
 
     private Timestamp dateTime;
 

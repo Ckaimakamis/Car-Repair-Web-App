@@ -1,7 +1,9 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
+import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Model.SearchForm;
+import com.coding.school.webapp.carRepair.Services.OwnerService;
 import com.coding.school.webapp.carRepair.Services.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ public class RepairSearchController {
     public static final String REPAIR = "repair";
     @Autowired
     RepairService repairService;
+    OwnerService ownerService;
 
     @RequestMapping(value = "/searchRepair", method = RequestMethod.GET)
     public String getSearchView(Model model) {
@@ -31,6 +34,7 @@ public class RepairSearchController {
                            RedirectAttributes redirectAttributes) {
 
         Repair repair = repairService.findByDateTime(searchForm.getDateTime());
+        Owner owner = ownerService.findByVat( searchForm.getVat());
 
         if (repair == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "Repair not found");
