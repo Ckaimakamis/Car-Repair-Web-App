@@ -17,4 +17,6 @@ public interface OwnerService {
     Owner findByVat( String vat);
 
     void updateOwner(Owner owner);
+
+    void deleteOwner(Owner owner);
 }

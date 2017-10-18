@@ -68,4 +68,9 @@ public class OwnerServiceImpl implements OwnerService{
                 owner.getPassword(), owner.getRole(), owner.getVat());
     }
 
+    @Override
+    public void deleteOwner(Owner owner) {
+        ownerRepository.delete(owner.getID());
+    }
+
 }
