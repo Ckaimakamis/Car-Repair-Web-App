@@ -191,32 +191,6 @@
                                     </div>
 <#--=============================================================================================================================-->
                                     <div class="form-group">
-                                        <label class="sr-only" for="date">Brand</label>
-                                        <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="sr-only" for="dateTo">Brand</label>
-                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="MM/DD/YYYY"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="sr-only" for="periodSeach">Brand</label>
-                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="searchType">Search for:</label>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <select id="searchType" name="searchType">
-                                            <option value="User">User</option>
-                                            <option value="Repair">Repair</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
                                     </div>
 
@@ -250,7 +224,7 @@
     <h3>Welcome to our Car Services</h3>
 
 </footer>
-
+<!--
 <script>
     $(document).ready(function(){
         var searchType;
@@ -309,7 +283,7 @@
 
 
     })
-</script>
+</script>   -->
 
 </body>
 

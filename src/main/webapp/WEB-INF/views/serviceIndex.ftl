@@ -119,7 +119,7 @@
             <li class="Repairs"><a href="/admin/home">Owners</a></li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Repain</b> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Repairs</b> <span class="caret"></span></a>
                 <ul id="login-dp" class="dropdown-menu">
                     <li>
                         <div class="row">
@@ -202,12 +202,12 @@
                                         <label class="sr-only" for="periodSeach">Brand</label>
                                         <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
                                     </div>
-
+                                    <!--
                                     <div class="form-group">
                                         <label for="searchType">Search for:</label>
                                     </div>
 
-                                  <!--  <div class="form-group">
+                                    <div class="form-group">
                                         <select id="searchType" name="searchType">
                                             <option value="User">User</option>
                                             <option value="Repair">Repair</option>
@@ -243,6 +243,7 @@
 
 </footer>
 
+<!--
 <script>
     $(document).ready(function(){
         var searchType;
@@ -292,7 +293,7 @@
         searchTypeEvent();
     })
 </script>
-
+-->
 </body>
 
 </html>
