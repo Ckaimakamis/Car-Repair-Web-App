@@ -61,6 +61,6 @@ public class RepairController {
         redirectAttributes.addFlashAttribute(OWNER, owner);
         redirectAttributes.addFlashAttribute(REPAIRS, repairsByDate);
 
-        return "redirect://admin/repair";
+        return "redirect:/admin/repair";
     }
 }
