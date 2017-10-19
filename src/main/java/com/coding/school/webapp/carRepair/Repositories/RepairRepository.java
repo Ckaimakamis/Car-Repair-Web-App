@@ -6,10 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
+
     Repair findByDateTime (String dateTime);
 
-
-    Repair findByID(Long ID);
+//    Repair findByID(Long ID);
 
     Repair findByCost(double cost);
 
