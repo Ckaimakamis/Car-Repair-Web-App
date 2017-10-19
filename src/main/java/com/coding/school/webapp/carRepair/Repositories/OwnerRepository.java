@@ -26,4 +26,5 @@ public interface OwnerRepository extends JpaRepository<Owner, Long>{
     void updateOwner(String email, String firstName, String lastName,
                      String password, Owner.OwnerRole role, String vat);
 
+
 }

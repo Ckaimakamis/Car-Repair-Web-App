@@ -27,7 +27,7 @@ public class Vehicle {
     @Column(nullable = false)
     private String color;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Repair> repairs;
 
     public Long getID() {
