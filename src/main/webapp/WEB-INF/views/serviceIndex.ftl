@@ -190,7 +190,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Date</label>
-                                        <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
+                                        <input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"/>
                                     </div>
 
                                     <#--<div class="form-group">-->

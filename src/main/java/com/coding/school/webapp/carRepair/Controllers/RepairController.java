@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,8 +27,6 @@ import java.util.List;
 public class RepairController {
 
     private static final String SEARCH_FORM = "searchRepairForm";
-
-    public static final String OWNER = "owner";
 
     public static final String REPAIRS = "repairs";
 
@@ -62,8 +61,7 @@ public class RepairController {
         }
 
         redirectAttributes.addFlashAttribute(REPAIRS, repairsByDate);
-        redirectAttributes.addFlashAttribute(OWNER, owner);
-
         return "redirect:/admin/repair";
     }
+
 }
