@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <#--<link rel="stylesheet" type="text/css" href="css/index.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--jQuery -->
@@ -28,17 +27,14 @@
         background-color: #2B3A37;
         padding:15px;
     }
-
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
-
     /* Set gray background color and 100% height */
     .sidenav {
         padding-top: 20px;
         background-color: #78909c;
         height: 100%;
     }
-
     /* Set black background color, white text and some padding */
     footer {
         background-color: #2B3A37;
@@ -46,7 +42,6 @@
         color: white;
         padding: 20px;
     }
-
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
         .sidenav {
@@ -61,7 +56,6 @@
         font-style: normal ;
         color: white;
     }
-
     #login-dp{
         min-width: 250px;
         padding: 14px 14px 0;
@@ -106,7 +100,6 @@
             border-top:0 none;
         }
     }
-
 </style>
 
 <body>
@@ -130,45 +123,40 @@
             <li class="Repairs"><a href="/admin/repairs">Repairs</a></li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Owner</b> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Vehicle</b> <span class="caret"></span></a>
                 <ul id="login-dp" class="dropdown-menu">
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/registerUser" accept-charset="UTF-8" id="login-nav" name="user">
+                                <form class="form" role="form" method="post" action="/admin/vehicleRegister" accept-charset="UTF-8" id="login-nav" name="vehicleRegisterForm">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerEmail">Username</label>
-                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="email" required>
+                                        <label class="sr-only" for="registerPlate">Service id</label>
+                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter Plate" name="plateNumber" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">Surname</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter First Name"name="firstName" required>
+                                        <label class="sr-only" for="registerModel">Surname</label>
+                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Model"name="model" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">AFM</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Last Name" name="lastName"required>
+                                            <label class="sr-only" for="registerYear">Cost</label>
+                                            <input type="text" class="form-control" id="registerYear" placeholder="Enter Year"name="year" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">Password</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter Password" name="password"required>
+                                            <label class="sr-only" for="registerColor">Works</label>
+                                            <input type="text" class="form-control" id="registerColor" placeholder="Enter Color"name="color" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" style="text-transform:uppercase" required>
+                                        <label class="sr-only" for="registerVAT">Works</label>
+                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter owner's VAT"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerVAT">Brand</label>
-                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter vat"name="vat" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Register Vehicle</button>
                                     </div>
 
                                 </form>
@@ -186,25 +174,25 @@
                             <div class="col-md-12">
 
 
-<#--=======================================Εδώ έκανα αλλαγές για να κάνω search τον user==================================================-->
-                                <form class="form" role="form" method="post" action="/searchOwner" accept-charset="UTF-8" id="login-nav" name = "searchForm">
+                                <form class="form" role="form" method="post" action="/admin/searchVehicle" accept-charset="UTF-8" id="login-nav" name = "vehicleSearchForm">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="email">Email</label>
-                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter Email or VAT"name="email" required>
+                                        <label class="sr-only" for="plate">Vat</label>
+                                        <input type="text" class="form-control" id="plate" name="plate" placeholder="Enter Plate" required>
                                     </div>
-<#--=============================================================================================================================-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="vat">Brand</label>
+                                        <input type="text" class="form-control" id="vat" name="vat" placeholder="Enter VAT"/>
+                                    </div>
+
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
                                     </div>
 
                                 </form>
-
-
                             </div>
                         </div>
                     </li>
-
                 </ul>
             </li>
 
@@ -218,76 +206,17 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <h2>${message!""}</h2>
+        <h2 style="color: red">${errorMessage!""}</h2>
+
+
     </div>
 </div>
-
-
 
 <footer class="container-fluid text-center">
 
     <h3>Welcome to our Car Services</h3>
 
 </footer>
-<!--
-<script>
-    $(document).ready(function(){
-        var searchType;
-        var credentialsInput = $('input[name="email"]');
-        var credentialsInput = $('input[name="searchEmail"]');
-        var dateInput = $('input[name="date"]');
-        var dateToInput=$('input[name="dateTo"]');
-        var checkbox = $('input[name="periodSeach"]');
-        var caheckBox = document.querySelector("input[name=periodSeach]");
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        dateInput.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
-        dateToInput.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
-
-        //This is called every time the User/Repair select is changed
-        function searchTypeEvent() {
-            searchType = $("#searchType").val();
-            console.log(searchType);
-            if(searchType === 'User') {
-                credentialsInput.attr('placeholder', 'Email or VAT');
-                dateInput.hide();
-                dateToInput.hide();
-                checkbox.hide();
-                credentialsInput.attr('placeholder', 'Email or vat');
-            }else {
-                credentialsInput.attr('placeholder', 'User VAT');
-                dateInput.show();
-                checkbox.show();
-                credentialsInput.attr('placeholder', 'User vat');
-            }
-        }
-
-        //This is called evety time checkbox is changed
-        caheckBox.addEventListener('change', function() {
-            if(this.checked) {
-                dateToInput.show();
-                dateInput.attr('placeholder', 'Select Date From');
-                dateToInput.attr('placeholder', 'Select Date To');
-            } else {
-                dateToInput.hide();
-                dateInput.attr('placeholder', 'MM/DD/YYYY');
-            }
-        });
-
-        $('select').change(searchTypeEvent);
-        searchTypeEvent();
-
-
-    })
-</script>   -->
 
 </body>
 

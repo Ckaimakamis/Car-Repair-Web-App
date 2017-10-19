@@ -67,7 +67,7 @@ public class OwnerController {
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     String addUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
-                   HttpSession session, RedirectAttributes redirectAttributes){
+                   RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()) {
             String message = messageSource.getMessage(bindingResult.getAllErrors().get(0), null);
             redirectAttributes.addFlashAttribute("errorMessage", message);
