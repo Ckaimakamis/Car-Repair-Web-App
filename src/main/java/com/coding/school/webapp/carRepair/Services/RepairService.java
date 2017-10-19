@@ -2,6 +2,7 @@ package com.coding.school.webapp.carRepair.Services;
 
 import com.coding.school.webapp.carRepair.Domain.Repair;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface RepairService {
@@ -10,5 +11,5 @@ public interface RepairService {
 
     ArrayList<Repair> findAll();
 
-    Repair findByDateTime (String dateTime);
+    Repair findByDateTime (Timestamp dateTime);
 }
