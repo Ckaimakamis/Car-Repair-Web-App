@@ -13,7 +13,7 @@ public class Repair {
 
     @NotNull
     @Column(nullable = false)
-    private Timestamp dateTime;
+    private String dateTime;
 
     @NotNull
     @Enumerated(value = EnumType.STRING)
@@ -30,7 +30,7 @@ public class Repair {
     private double cost;
 
     private String operations;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Vehicle vehicle;
 
     public Long getID() {
@@ -41,11 +41,11 @@ public class Repair {
         this.ID = ID;
     }
 
-    public Timestamp getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Timestamp dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 
