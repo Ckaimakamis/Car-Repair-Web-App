@@ -39,6 +39,24 @@ public class OwnerController {
 
     private static final String EDIT_FORM = "ownerEditForm";
 
+
+    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+    String addUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
+                   HttpSession session, RedirectAttributes redirectAttributes){
+        if (bindingResult.hasErrors()) {
+            String message = messageSource.getMessage(bindingResult.getAllErrors().get(0), null);
+            redirectAttributes.addFlashAttribute("errorMessage", message);
+        }else{
+            try{
+                ownerService.registerOwner(OwnerConverter.buildUserObject(registerForm));
+            }catch (Exception e){
+                redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            }
+        }
+
+        return "redirect:/admin/home";
+    }
+
     @RequestMapping(value = "/searchOwner", method = RequestMethod.GET)
     public String getSearchView(Model model) {
 
@@ -65,22 +83,6 @@ public class OwnerController {
         return "redirect:/searchOwner";
     }
 
-    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    String addUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
-                   HttpSession session, RedirectAttributes redirectAttributes){
-        if (bindingResult.hasErrors()) {
-            String message = messageSource.getMessage(bindingResult.getAllErrors().get(0), null);
-            redirectAttributes.addFlashAttribute("errorMessage", message);
-        }else{
-            try{
-                ownerService.registerOwner(OwnerConverter.buildUserObject(registerForm));
-            }catch (Exception e){
-                redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
-            }
-        }
-
-        return "redirect:/admin/home";
-    }
 
     @RequestMapping(value = "/editOwner", method = RequestMethod.POST)
     String editUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm updateForm, BindingResult bindingResult,

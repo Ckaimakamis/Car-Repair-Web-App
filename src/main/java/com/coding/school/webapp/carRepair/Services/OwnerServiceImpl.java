@@ -70,6 +70,7 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Override
     public void deleteOwner(Owner owner) {
+
         ownerRepository.delete(owner.getID());
     }
 
