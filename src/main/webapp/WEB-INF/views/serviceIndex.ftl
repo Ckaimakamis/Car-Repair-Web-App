@@ -116,7 +116,11 @@
 
         <ul class="nav navbar-nav">
 
-            <li class="Repairs"><a href="/admin/home">Owners</a></li>
+            <li class="Owners"><a href="/admin/home">Owners</a></li>
+
+            <li class="Vehicles"><a href="/admin/vehicles">Vehicles</a></li>
+
+            <li class="Repairs"><a href="/admin/repairs">Repairs</a></li>
 
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Create Repairs</b> <span class="caret"></span></a>

@@ -12,7 +12,7 @@ public class Vehicle {
     private Long ID;
 
     @NotNull
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String plateNumber;
 
     @NotNull
@@ -27,8 +27,11 @@ public class Vehicle {
     @Column(nullable = false)
     private String color;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Collection<Repair> repairs;
+
+    @OneToOne(optional = false)
+    private Owner owner;
 
     public Long getID() {
         return ID;
@@ -61,9 +64,6 @@ public class Vehicle {
     public void setRepairs(Collection<Repair> repairs) {
         this.repairs = repairs;
     }
-
-    @OneToOne(optional = false)
-    private Owner owner;
 
     public Owner getOwner() {
         return owner;

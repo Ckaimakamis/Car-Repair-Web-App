@@ -10,14 +10,9 @@ public class SearchForm {
 
     private String dateTo;
 
-    // Takes the type of search User/Repair
-    private String searchType;
-
-    // If ckeckbox is checked then its value is "period search" else is null
-    private String periodSeach;
     private String vat;
 
-    private Timestamp dateTime;
+    private String plateNumber;
 
     public String getEmail() {
         return email;
@@ -43,31 +38,19 @@ public class SearchForm {
         this.dateTo = dateTo;
     }
 
-    public String getPeriodSeach() {
-        return periodSeach;
-    }
-
-    public String getSearchType() {
-        return searchType;
-    }
-
-    public void setSearchType(String searchType) {
-        this.searchType = searchType;
-    }
-
-    public String isPeriodSeach() {
-        return periodSeach;
-    }
-
-    public void setPeriodSeach(String periodSeach) {
-        this.periodSeach = periodSeach;
-    }
-
     public String getVat() {
         return vat;
     }
 
     public void setVat(String vat) {
         this.vat = vat;
+    }
+
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
     }
 }
