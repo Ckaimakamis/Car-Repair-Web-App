@@ -182,14 +182,14 @@
                             <div class="col-md-12">
 
 
-                                <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchForm">
+                                <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="email">Vat</label>
                                         <input type="text" class="form-control" id="searchEmail" placeholder="Enter Vat"name="vat" required>
                                     </div>
                                     <div class="form-group">
-                                        <label class="sr-only" for="date">Brand</label>
+                                        <label class="sr-only" for="date">Date</label>
                                         <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
                                     </div>
 
@@ -236,29 +236,27 @@
     <div class="row content">
         <h2>${errorMessage!""}</h2>
 
-    <#if owner??>
+    <#if repairs??>
 
         <table border="0">
             <tr>
-                <td colspan="2" align="center"><h2>Owner Found</h2></td>
+                <td colspan="2" align="center"><h2>Repair Found</h2></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <h3>Here's the review of owner's details:</h3>
+                    <h3>Here's the review of repair's details:</h3>
                 </td>
             </tr>
-            <#if repairsByDate??>
-                <#list repairsByDate as repair>
-                    <tr>
-                        <td>Cost:</td>
-                        <td>${repair.cost}</td>
-                    </tr>
-                    <tr>
-                        <td>Date:</td>
-                        <td>${repair.dateTime}</td>
-                    </tr>
-                </#list>
-            </#if>
+            <#list repairs as repair>
+                <tr>
+                    <td>Cost:</td>
+                    <td>${repair.cost}</td>
+                </tr>
+                <tr>
+                    <td>Date:</td>
+                    <td>${repair.dateTime}</td>
+                </tr>
+            </#list>
         </table>
     </#if>
     </div>
