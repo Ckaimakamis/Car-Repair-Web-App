@@ -124,7 +124,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/searchVehicle" accept-charset="UTF-8" id="login-nav" name="user">
+                                <form class="form" role="form" method="post" action="/searchVehicle" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Service id</label>
@@ -142,21 +142,21 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Works</label>
+                                            <label class="sr-only" for="registerVAT">Operations</label>
                                             <input type="text" class="form-control" id="registerVAT" placeholder="Enter Work"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
                                             <select id="searchType" name="searchType">
-                                                <option value="User">waiting</option>
-                                                <option value="Repair">ready</option>
-                                                <option value="Repair">ongoing</option>
+                                                <option value="User">pending</option>
+                                                <option value="Repair">done</option>
+                                                <option value="Repair">in progress</option>
                                             </select>
                                     </div>
 
                                     <div class="form-group">
                                             <select id="searchType" name="searchType">
-                                                <option value="User">little</option>
+                                                <option value="User">small</option>
                                                 <option value="Repair">big</option>
                                             </select>
                                     </div>
