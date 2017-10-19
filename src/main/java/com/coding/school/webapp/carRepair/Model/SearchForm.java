@@ -4,14 +4,6 @@ import java.sql.Timestamp;
 
 public class SearchForm {
 
-    public String getVat() {
-        return vat;
-    }
-
-    public void setVat(String vat) {
-        this.vat = vat;
-    }
-
     private String email;
 
     private String date;
@@ -69,5 +61,13 @@ public class SearchForm {
 
     public void setPeriodSeach(String periodSeach) {
         this.periodSeach = periodSeach;
+    }
+
+    public String getVat() {
+        return vat;
+    }
+
+    public void setVat(String vat) {
+        this.vat = vat;
     }
 }

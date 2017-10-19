@@ -182,26 +182,26 @@
                             <div class="col-md-12">
 
 
-                                <form class="form" role="form" method="post" action="/searchOwner" accept-charset="UTF-8" id="login-nav" name = "searchForm">
+                                <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchForm">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="email">Email</label>
-                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter Email"name="email" required>
+                                        <label class="sr-only" for="email">Vat</label>
+                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter Vat"name="vat" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Brand</label>
                                         <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="dateTo">Brand</label>
-                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="MM/DD/YYYY"/>
-                                    </div>
+                                    <#--<div class="form-group">-->
+                                        <#--<label class="sr-only" for="dateTo">Brand</label>-->
+                                        <#--<input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="MM/DD/YYYY"/>-->
+                                    <#--</div>-->
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="periodSeach">Brand</label>
-                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
-                                    </div>
+                                    <#--<div class="form-group">-->
+                                        <#--<label class="sr-only" for="periodSeach">Brand</label>-->
+                                        <#--<input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach-->
+                                    <#--</div>-->
                                     <!--
                                     <div class="form-group">
                                         <label for="searchType">Search for:</label>
@@ -234,7 +234,33 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-      
+        <h2>${errorMessage!""}</h2>
+
+    <#if owner??>
+
+        <table border="0">
+            <tr>
+                <td colspan="2" align="center"><h2>Owner Found</h2></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <h3>Here's the review of owner's details:</h3>
+                </td>
+            </tr>
+            <#if repairsByDate??>
+                <#list repairsByDate as repair>
+                    <tr>
+                        <td>Cost:</td>
+                        <td>${repair.cost}</td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td>${repair.dateTime}</td>
+                    </tr>
+                </#list>
+            </#if>
+        </table>
+    </#if>
     </div>
 </div>    
 <footer class="container-fluid text-center">
