@@ -7,9 +7,21 @@ import java.util.ArrayList;
 
 public interface RepairService {
 
+
+   /* ArrayList<Repair> findAll();  */
+
+
     Repair findById(Long ID);
 
-    ArrayList<Repair> findAll();
+    Repair findByCost(Double cost);
 
+    Repair findByStage(Repair.RepairStage stage);
+
+    Repair findByOperations(String operations);
+
+    Repair findByType(Repair.RepairType type);
+
+
+    void registerRepair(Repair repair);
     Repair findByDateTime (Timestamp dateTime);
 }

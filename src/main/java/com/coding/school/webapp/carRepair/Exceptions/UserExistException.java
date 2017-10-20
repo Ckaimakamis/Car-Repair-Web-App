@@ -12,4 +12,5 @@ public class UserExistException extends AuthenticationException {
         super(msg);
     }
 
+
 }

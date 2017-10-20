@@ -1,6 +1,7 @@
 package com.coding.school.webapp.carRepair.Converters;
 
 import com.coding.school.webapp.carRepair.Domain.Owner;
+import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Model.RegisterForm;
 
 public class OwnerConverter {
@@ -19,4 +20,6 @@ public class OwnerConverter {
         owner.setVat(registrationForm.getVat());
         return owner;
     }
+
+
 }
