@@ -162,20 +162,33 @@
 
         <div class="container">
           <label><b> Enter Plate Number</b></label>
+            </br>
           <input type="text" id="plateNumber" placeholder="Plate Number" name="plateNumber" value=${vehicle.plateNumber} required>
         </br>
           <label><b>Enter Model</b></label>
+            </br>
           <input type="text" id="model" placeholder="Model" name="model"  value=${vehicle.model} required>
         </br>
           <label><b>Enter Year</b></label>
+            </br>
           <input type="text" id="year" placeholder="Year" name="year" value=${vehicle.year} required>
         </br>
           <label><b>Enter Color</b></label>
+            </br>
           <input type="text" id="color" placeholder="Color" name="color" value=${vehicle.color} required>
         </br>
         <#if owner??>
-          <label><b>Vehicle - Brand</b></label>
-          <input type="text" id="vat" placeholder="vat" name="vat" value=${owner.vat} required>
+            <label><b>First Name</b></label>
+            </br>
+          <input type="text" id="vat" placeholder="VAT" name="vat" value=${owner.firstName} disabled>
+        </br>
+            <label><b>Last Name</b></label>
+            </br>
+          <input type="text" id="lastName" placeholder="Last Name" name="lastName" value=${owner.lastName} disabled>
+        </br>
+            <label><b>VAT</b></label>
+            </br>
+          <input type="text" id="firstName" placeholder="First Name" name="vat" value=${owner.vat} disabled>
         </#if>
         </br>
 

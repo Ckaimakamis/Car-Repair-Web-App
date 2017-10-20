@@ -45,4 +45,17 @@ public class VehicleServiceImpl implements VehicleService{
     public Vehicle findByOwner(Owner owner) {
         return  vehicleRepository.findByOwner(owner);
     }
+
+    @Override
+    public void updateVehicle(Vehicle vehicle) {
+        vehicleRepository.updateVehicle(vehicle.getPlateNumber(), vehicle.getModel(),
+                vehicle.getYear(), vehicle.getColor());
+    }
+
+    @Override
+    public void deleteVehicle(Vehicle vehicle) {
+        vehicleRepository.delete(vehicle);
+    }
+
+
 }

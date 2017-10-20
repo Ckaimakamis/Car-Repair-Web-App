@@ -12,4 +12,8 @@ public interface VehicleService {
     Vehicle findByPlateNumberOrVat(String plate, String vat);
 
     Vehicle findByOwner(Owner owner);
+
+    void updateVehicle(Vehicle vehicle);
+
+    void deleteVehicle(Vehicle vehicle);
 }

@@ -21,7 +21,7 @@ public interface OwnerRepository extends JpaRepository<Owner, Long>{
 
     @Transactional
     @Modifying
-    @Query("UPDATE Owner as o SET o.email=?1, o.firstName=?2, o.lastName=?3, " +
+    @Query("UPDATE Owner o SET o.email=?1, o.firstName=?2, o.lastName=?3, " +
             "o.password=?4, o.role=?5, o.vat=?6 WHERE o.email=?1")
     void updateOwner(String email, String firstName, String lastName,
                      String password, Owner.OwnerRole role, String vat);
