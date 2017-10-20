@@ -46,18 +46,25 @@ public class RepairController {
                            RedirectAttributes redirectAttributes) throws ParseException {
 
         Vehicle vehicle = vehicleService.findByPlateNumber(searchRepairForm.getPlateNumber());
-
-
         Owner owner = ownerService.findByVat(searchRepairForm.getVat());
-        List<Repair> repairs = new ArrayList<>(owner.getVehicle().getRepairs());
-        List<Repair> repairsByDate = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        List<Repair> repairs = new ArrayList<>(owner.getVehicle().getRepairs());
+        List<Repair> repairsByDate = new ArrayList<>();
+        List<Repair> repairs = new ArrayList<>();
+
+        if (owner != null) {
+            repairs = (List<Repair>) owner.getVehicle().getRepairs();
+        }else if (vehicle != null){
+            repairs = (List<Repair>) vehicle.getRepairs();
+        }else {
+            repairs = null;
+        }
 
         for (Repair repair : repairs) {
             String stringRepairDate = dateFormat.format(repair.getDateTime());
             java.util.Date repairDate = dateFormat.parse(stringRepairDate);
 
-            if (searchRepairForm.getPeriodSearch().equals("period search")) {
+            if (searchRepairForm.getPeriodSearch() != null) {
                 java.util.Date fromDate = dateFormat.parse(searchRepairForm.getDate());
                 java.util.Date toDate = dateFormat.parse(searchRepairForm.getDateTo());
                 if ((repairDate.after(fromDate) || repairDate.equals(fromDate)) &&
