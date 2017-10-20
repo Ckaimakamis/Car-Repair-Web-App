@@ -154,7 +154,7 @@
   <div class="row content">
       <h2>${message!""}</h2>
       <h2 style="color: red">${errorMessage!""}</h2>
-    <#if owner??>
+    <#if vehicle??>
       <form  method="post" action="/admin/editVehicle" name="vehicleEditForm">
         <div class="imgcontainer">
           <img src="img_avatar2.png" alt="Avatar" class="avatar">
@@ -162,19 +162,21 @@
 
         <div class="container">
           <label><b> Enter Plate Number</b></label>
-          <input type="text" id="plateNumber" placeholder="Plate Number" name="plateNumber" value=${owner.firstName} required>
+          <input type="text" id="plateNumber" placeholder="Plate Number" name="plateNumber" value=${vehicle.plateNumber} required>
         </br>
           <label><b>Enter Model</b></label>
-          <input type="text" id="model" placeholder="Model" name="model"  value=${owner.email} required>
+          <input type="text" id="model" placeholder="Model" name="model"  value=${vehicle.model} required>
         </br>
           <label><b>Enter Year</b></label>
-          <input type="text" id="year" placeholder="Year" name="year" value=${owner.lastName} required>
+          <input type="text" id="year" placeholder="Year" name="year" value=${vehicle.year} required>
         </br>
           <label><b>Enter Color</b></label>
-          <input type="text" id="color" placeholder="Color" name="color" value=${owner.password} required>
-        </br>     
+          <input type="text" id="color" placeholder="Color" name="color" value=${vehicle.color} required>
+        </br>
+        <#if owner??>
           <label><b>Vehicle - Brand</b></label>
           <input type="text" id="vat" placeholder="vat" name="vat" value=${owner.vat} required>
+        </#if>
         </br>
 
             <button type="submit" class=".btn-primary" OnClick="SetDest1()">Update</button>
@@ -192,10 +194,10 @@
 <script language="JavaScript">
 
     function SetDest1() {
-        document.forms["ownerEditForm"].action = "/editOwner";
+        document.forms["vehicleEditForm"].action = "/admin/editVehicle";
     }
     function SetDest2() {
-        document.forms["ownerEditForm"].action = "/deleteOwner";
+        document.forms["vehicleEditForm"].action = "/admin/deleteVehicle";
     }
 
 </script>

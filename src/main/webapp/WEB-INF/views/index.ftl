@@ -228,66 +228,6 @@
     <h3>Welcome to our Car Services</h3>
 
 </footer>
-<!--
-<script>
-    $(document).ready(function(){
-        var searchType;
-        var credentialsInput = $('input[name="email"]');
-        var credentialsInput = $('input[name="searchEmail"]');
-        var dateInput = $('input[name="date"]');
-        var dateToInput=$('input[name="dateTo"]');
-        var checkbox = $('input[name="periodSeach"]');
-        var caheckBox = document.querySelector("input[name=periodSeach]");
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        dateInput.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
-        dateToInput.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
-
-        //This is called every time the User/Repair select is changed
-        function searchTypeEvent() {
-            searchType = $("#searchType").val();
-            console.log(searchType);
-            if(searchType === 'User') {
-                credentialsInput.attr('placeholder', 'Email or VAT');
-                dateInput.hide();
-                dateToInput.hide();
-                checkbox.hide();
-                credentialsInput.attr('placeholder', 'Email or vat');
-            }else {
-                credentialsInput.attr('placeholder', 'User VAT');
-                dateInput.show();
-                checkbox.show();
-                credentialsInput.attr('placeholder', 'User vat');
-            }
-        }
-
-        //This is called evety time checkbox is changed
-        caheckBox.addEventListener('change', function() {
-            if(this.checked) {
-                dateToInput.show();
-                dateInput.attr('placeholder', 'Select Date From');
-                dateToInput.attr('placeholder', 'Select Date To');
-            } else {
-                dateToInput.hide();
-                dateInput.attr('placeholder', 'MM/DD/YYYY');
-            }
-        });
-
-        $('select').change(searchTypeEvent);
-        searchTypeEvent();
-
-
-    })
-</script>   -->
 
 </body>
 

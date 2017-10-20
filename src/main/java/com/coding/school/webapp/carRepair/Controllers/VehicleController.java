@@ -3,6 +3,7 @@ package com.coding.school.webapp.carRepair.Controllers;
 import com.coding.school.webapp.carRepair.Converters.VehicleConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
+import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Model.VehicleRegisterForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import com.coding.school.webapp.carRepair.Services.VehicleService;
@@ -34,7 +35,13 @@ public class VehicleController {
 
     private static final String VEHICLE_REGISTER_FORM = "vehicleRegisterForm";
 
-    private static final String VEHICLE_EDIT_FORM = "ownerEditForm";
+    private static final String VEHICLE_EDIT_FORM = "vehicleEditForm";
+
+    private static final String SEARCH_FORM = "vehicleSearchForm";
+
+    private static final String VEHICLE = "vehicle";
+
+    private static final String OWNER = "owner";
 
     @RequestMapping(value = "/admin/vehicles", method = RequestMethod.GET)
     String serveVehiclePage(Model model){
@@ -43,7 +50,7 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/admin/vehicleRegister", method = RequestMethod.POST)
-    String RegisterVehicle(@Valid @ModelAttribute(VEHICLE_REGISTER_FORM) VehicleRegisterForm registerForm, BindingResult bindingResult,
+    public String registerVehicle(@Valid @ModelAttribute(VEHICLE_REGISTER_FORM) VehicleRegisterForm registerForm, BindingResult bindingResult,
                            RedirectAttributes redirectAttributes){
 
         if (bindingResult.hasErrors()) {
@@ -76,5 +83,36 @@ public class VehicleController {
         }
 
         return "redirect:/admin/vehicles";
+    }
+
+    @RequestMapping(value = "/admin/searchVehicle", method = RequestMethod.GET)
+    public String getSearchView(Model model) {
+
+        return "vehicleEditForm";
+    }
+
+    @RequestMapping(value = "/admin/searchVehicle", method = RequestMethod.POST)
+    public String searchVehicle(@Valid @ModelAttribute(SEARCH_FORM) SearchForm searchForm, BindingResult bindingResult,
+                                RedirectAttributes redirectAttributes){
+
+        Vehicle vehicle = null;
+        Owner owner = null;
+
+        if(!searchForm.getPlateNumber().equals("")){
+            vehicle = vehicleService.findByPlateNumberOrVat(searchForm.getPlateNumber(), searchForm.getVat());
+        }else if(!searchForm.getVat().equals("")){
+            owner = ownerService.findByVat(searchForm.getVat());
+            vehicle = vehicleService.findByOwner(owner);
+        }
+
+        if (vehicle == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Vehicle not found");
+        }else {
+            redirectAttributes.addFlashAttribute(OWNER, owner);
+        }
+
+        redirectAttributes.addFlashAttribute(VEHICLE, vehicle);
+
+        return "redirect:/admin/searchVehicle";
     }
 }
