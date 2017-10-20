@@ -186,7 +186,7 @@
                             <div class="col-md-12">
 
 
-                                <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
+                                <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="email">Vat</label>
@@ -197,15 +197,15 @@
                                         <input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"/>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="dateTo">Brand</label>
-                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>
-                                    </div>
+                                    <#--<div class="form-group">-->
+                                        <#--<label class="sr-only" for="dateTo">Brand</label>-->
+                                        <#--<input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>-->
+                                    <#--</div>-->
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="periodSeach">Brand</label>
-                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
-                                    </div>
+                                    <#--<div class="form-group">-->
+                                        <#--<label class="sr-only" for="periodSeach">Brand</label>-->
+                                        <#--<input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach-->
+                                    <#--</div>-->
                                     <!--
                                     <div class="form-group">
                                         <label for="searchType">Search for:</label>

@@ -18,7 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,20 +42,36 @@ public class RepairController {
         return "serviceIndex";
     }
 
-    @RequestMapping(value = "/admin/searchRepair", method = RequestMethod.POST)
+    @RequestMapping(value = "/searchRepair", method = RequestMethod.POST)
     public String doSearch(@ModelAttribute(SEARCH_FORM) SearchRepairForm searchRepairForm,
                            HttpSession session,
-                           RedirectAttributes redirectAttributes) {
+                           RedirectAttributes redirectAttributes) throws ParseException {
 
         Owner owner = ownerService.findByVat(searchRepairForm.getVat());
         List<Repair> repairs = new ArrayList<>(owner.getVehicle().getRepairs());
         List<Repair> repairsByDate = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-//        if (searchRepairForm.getPeriodSeach().equals("period seach"))
-        for(Repair repair:repairs) {
-            String repairDate = new SimpleDateFormat("yyyy-MM-dd").format(repair.getDateTime());
-            if(repairDate.equals(searchRepairForm.getDate())){
-                repairsByDate.add(repair);
+        if (searchRepairForm.getPeriodSeach().equals("period seach")){
+
+            java.util.Date fromDate = dateFormat.parse(searchRepairForm.getDate());
+            java.util.Date toDate = dateFormat.parse(searchRepairForm.getDateTo());
+
+            for (Repair repair : repairs) {
+                String stringRepairDate = dateFormat.format(repair.getDateTime());
+                java.util.Date repairDate = dateFormat.parse(stringRepairDate);
+
+                if ((repairDate.after(fromDate)||repairDate.equals(fromDate)) &&
+                        (repairDate.before(toDate))||repairDate.equals(toDate)) {
+                    repairsByDate.add(repair);
+                }
+            }
+        }else {
+            for (Repair repair : repairs) {
+                String repairDate = dateFormat.format(repair.getDateTime());
+                if (repairDate.equals(searchRepairForm.getDate())) {
+                    repairsByDate.add(repair);
+                }
             }
         }
 
