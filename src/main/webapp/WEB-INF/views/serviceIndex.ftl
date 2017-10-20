@@ -204,25 +204,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="dateTo">Brand</label>
+                                        <label class="sr-only" for="dateTo">Date To</label>
                                         <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="periodSearch">Brand</label>
+                                        <label class="sr-only" for="periodSearch">Search Type</label>
                                         <input type="checkbox" id="periodSearch" name="periodSearch" value="period search" placeholder="period search"> period search
                                     </div>
-                                    <!--
-                                    <div class="form-group">
-                                        <label for="searchType">Search for:</label>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <select id="searchType" name="searchType">
-                                            <option value="User">User</option>
-                                            <option value="Repair">Repair</option>
-                                        </select>
-                                    </div>  -->
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
@@ -277,42 +266,30 @@
 
 </footer>
 
-<!--
+</body>
+
 <script>
     $(document).ready(function(){
-        var searchType;
-        var credentialsInput = $('input[name="credentials"]');
         var dateInput = $('input[name="date"]');
         var dateToInput=$('input[name="dateTo"]');
-        var checkbox = $('input[name="periodSeach"]');
-        var caheckBox = document.querySelector("input[name=periodSeach]");
+        var checkbox = $('input[name="periodSearch"]');
+        var caheckBox = document.querySelector("input[name=periodSearch]");
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         dateInput.datepicker({
-            format: 'mm/dd/yyyy',
+            format: 'yyyy-MM-dd',
             container: container,
             todayHighlight: true,
             autoclose: true
         });
         dateToInput.datepicker({
-            format: 'mm/dd/yyyy',
+            format: 'yyyy-MM-dd',
             container: container,
             todayHighlight: true,
             autoclose: true
         });
-        function searchTypeEvent() {
-            searchType = $("#searchType").val();
-            console.log(searchType);
-            if(searchType === 'User') {
-                dateInput.hide();
-                dateToInput.hide();
-                checkbox.hide();
-                credentialsInput.attr('placeholder', 'Email or vat');
-            }else {
-                dateInput.show();
-                checkbox.show();
-                credentialsInput.attr('placeholder', 'User vat');
-            }
-        }
+
+        dateToInput.hide();
+
         caheckBox.addEventListener('change', function() {
             if(this.checked) {
                 dateToInput.show();
@@ -323,11 +300,9 @@
                 dateInput.attr('placeholder', 'MM/DD/YYYY');
             }
         });
-        $('select').change(searchTypeEvent);
-        searchTypeEvent();
+
     })
+
 </script>
--->
-</body>
 
 </html>
