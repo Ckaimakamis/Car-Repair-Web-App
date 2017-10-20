@@ -25,21 +25,8 @@ public class RepairServiceImpl implements RepairService {
     private RepairRepository repairRepository;
 
 
-    @Override
     public Repair findByCost(Double cost){
         Repair repair = repairRepository.findByCost(cost);
-        return repair;
-    }
-
-    @Override
-    public Repair findByDateTime(String dateTime) {
-        Repair repair = repository.findByDateTime(dateTime);
-        return repairRepository.findByDateTime(dateTime);
-    }
-
-    @Override
-    public Repair findByCost(Double cost){
-        Repair repair = repository.findByCost(cost);
         return repairRepository.findByCost(cost);
     }
     @Override
