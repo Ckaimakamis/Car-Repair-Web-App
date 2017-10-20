@@ -30,7 +30,7 @@ public class Repair {
     private double cost;
 
     private String operations;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     private Vehicle vehicle;
 
     public Long getID() {

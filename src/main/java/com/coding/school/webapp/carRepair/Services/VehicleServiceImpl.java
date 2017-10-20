@@ -1,11 +1,23 @@
 package com.coding.school.webapp.carRepair.Services;
 
-import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
-import com.coding.school.webapp.carRepair.Exceptions.UserExistException;
-import org.springframework.security.core.AuthenticationException;
+import com.coding.school.webapp.carRepair.Exceptions.VehicleExistException;
+import com.coding.school.webapp.carRepair.Repositories.VehicleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class VehicleServiceImpl {
+@Service
+public class VehicleServiceImpl implements VehicleService{
 
+    @Autowired
+    private VehicleRepository vehicleRepository;
 
+    public void registerVehicle(Vehicle vehicle){
+        Vehicle existedVehicle = vehicleRepository.findByPlateNumberAndModel(vehicle.getPlateNumber(), vehicle.getModel());
+        if(existedVehicle == null){
+            vehicleRepository.save(vehicle);
+        }else {
+            throw new VehicleExistException("Vehicle already exists!");
+        }
+    }
 }

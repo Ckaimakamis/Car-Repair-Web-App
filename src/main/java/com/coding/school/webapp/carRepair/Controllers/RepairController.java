@@ -33,7 +33,7 @@ public class RepairController {
     @Autowired
     OwnerService ownerService;
 
-    @RequestMapping(value = "/admin/repair", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
     public String exposeRepairSite(Model model) {
 
         return "serviceIndex";

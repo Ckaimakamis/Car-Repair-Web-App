@@ -83,7 +83,6 @@ public class OwnerController {
         return "redirect:/searchOwner";
     }
 
-
     @RequestMapping(value = "/editOwner", method = RequestMethod.POST)
     String editUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm updateForm, BindingResult bindingResult,
                    HttpSession session, RedirectAttributes redirectAttributes){

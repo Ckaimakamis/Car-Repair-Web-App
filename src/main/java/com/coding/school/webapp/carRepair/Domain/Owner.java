@@ -35,7 +35,7 @@ public class Owner {
     @Column(nullable = false)
     private OwnerRole role;
 
-    @OneToOne(mappedBy = "owner",cascade = CascadeType.ALL )
+    @OneToOne(mappedBy = "owner",cascade = CascadeType.REMOVE)
     private Vehicle vehicle;
 
     public Long getID() {
