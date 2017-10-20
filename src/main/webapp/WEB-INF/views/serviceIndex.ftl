@@ -183,7 +183,7 @@
                 <ul id="login-dp" class="dropdown-menu">
                     <li>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12">  
 
 
                                 <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
