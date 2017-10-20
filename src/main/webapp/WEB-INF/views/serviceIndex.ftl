@@ -193,14 +193,14 @@
                                         <input type="text" class="form-control" id="searchEmail" placeholder="Enter Vat"name="vat" required>
                                     </div>
 
-                                    <#--<div class="form-group">-->
-                                        <#--<label class="sr-only" for="email">PlateNumber</label>-->
-                                        <#--<input type="text" class="form-control" id="searchEmail" placeholder="Enter PlateNumber"name="plateNumber" required>-->
-                                    <#--</div>-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="email">PlateNumber</label>
+                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter PlateNumber"name="plateNumber" >
+                                    </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Date</label>
-                                        <input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"/>
+                                        <input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" required/>
                                     </div>
 
                                     <div class="form-group">
@@ -209,7 +209,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="periodSearch">Search Type</label>
+                                        <label class="sr-only" for="periodSearch">Search</label>
+                                        <input type="checkbox" id="caseSearch" name="caseSearch" value="case search" placeholder="case search"> case search
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" for="periodSearch">Search</label>
                                         <input type="checkbox" id="periodSearch" name="periodSearch" value="period search" placeholder="period search"> period search
                                     </div>
 
@@ -270,10 +275,17 @@
 
 <script>
     $(document).ready(function(){
+        var vatInput = $('input[name="vat"]');
+        var plateNumberInput=$('input[name="plateNumber"]');
+
         var dateInput = $('input[name="date"]');
         var dateToInput=$('input[name="dateTo"]');
-        var checkbox = $('input[name="periodSearch"]');
-        var checkBox = document.querySelector("input[name=periodSearch]");
+        var checkboxPeriodSearch = $('input[name="periodSearch"]');
+        var checkBoxPeriodSearch = document.querySelector("input[name=periodSearch]");
+
+        var checkboxCaseSearch = $('input[name="caseSearch"]');
+        var checkBoxCaseSearch = document.querySelector("input[name=caseSearch]");
+
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         dateInput.datepicker({
             format: 'yyyy-mm-dd',
@@ -282,7 +294,7 @@
             autoclose: true
         });
         dateToInput.datepicker({
-            format: 'yyyy-MM-dd',
+            format: 'yyyy-mm-dd',
             container: container,
             todayHighlight: true,
             autoclose: true
@@ -290,14 +302,31 @@
 
         dateToInput.hide();
 
-        checkBox.addEventListener('change', function() {
+        checkBoxPeriodSearch.addEventListener('change', function() {
             if(this.checked) {
+                dateToInput.required = true;
                 dateToInput.show();
                 dateInput.attr('placeholder', 'Select Date From');
                 dateToInput.attr('placeholder', 'Select Date To');
             } else {
+                dateToInput.required = false;
                 dateToInput.hide();
                 dateInput.attr('placeholder', 'YYYY-MM-DD');
+            }
+        });
+
+        plateNumberInput.hide();
+        checkBoxCaseSearch.addEventListener('change', function() {
+            if(this.checked) {
+                vatInput.required = false;
+                plateNumberInput.required = true;
+                plateNumberInput.show();
+                vatInput.hide();
+            } else {
+                vatInput.required = true;
+                plateNumberInput.required = false;
+                plateNumberInput.hide();
+                vatInput.show();
             }
         });
 
