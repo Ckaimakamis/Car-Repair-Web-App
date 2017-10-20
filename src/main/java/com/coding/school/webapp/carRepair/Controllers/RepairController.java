@@ -36,6 +36,9 @@ public class RepairController {
     @Autowired
     OwnerService ownerService;
 
+    @Autowired
+    VehicleService vehicleService;
+
     @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
     public String exposeRepairSite(Model model) {
 
@@ -47,29 +50,27 @@ public class RepairController {
                            HttpSession session,
                            RedirectAttributes redirectAttributes) throws ParseException {
 
+        Vehicle vehicle = vehicleService.findByPlateNumber(searchRepairForm.getPlateNumber());
+
+
         Owner owner = ownerService.findByVat(searchRepairForm.getVat());
         List<Repair> repairs = new ArrayList<>(owner.getVehicle().getRepairs());
         List<Repair> repairsByDate = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        if (searchRepairForm.getPeriodSeach().equals("period seach")){
+        for (Repair repair : repairs) {
+            String stringRepairDate = dateFormat.format(repair.getDateTime());
+            java.util.Date repairDate = dateFormat.parse(stringRepairDate);
 
-            java.util.Date fromDate = dateFormat.parse(searchRepairForm.getDate());
-            java.util.Date toDate = dateFormat.parse(searchRepairForm.getDateTo());
-
-            for (Repair repair : repairs) {
-                String stringRepairDate = dateFormat.format(repair.getDateTime());
-                java.util.Date repairDate = dateFormat.parse(stringRepairDate);
-
-                if ((repairDate.after(fromDate)||repairDate.equals(fromDate)) &&
-                        (repairDate.before(toDate))||repairDate.equals(toDate)) {
+            if (searchRepairForm.getPeriodSeach().equals("period seach")) {
+                java.util.Date fromDate = dateFormat.parse(searchRepairForm.getDate());
+                java.util.Date toDate = dateFormat.parse(searchRepairForm.getDateTo());
+                if ((repairDate.after(fromDate) || repairDate.equals(fromDate)) &&
+                        (repairDate.before(toDate)) || repairDate.equals(toDate)) {
                     repairsByDate.add(repair);
                 }
-            }
-        }else {
-            for (Repair repair : repairs) {
-                String repairDate = dateFormat.format(repair.getDateTime());
-                if (repairDate.equals(searchRepairForm.getDate())) {
+            } else  {
+                if (stringRepairDate.equals(searchRepairForm.getDate())) {
                     repairsByDate.add(repair);
                 }
             }
@@ -80,7 +81,7 @@ public class RepairController {
         }
 
         redirectAttributes.addFlashAttribute(REPAIRS, repairsByDate);
-        return "redirect:/admin/repair";
+        return "redirect:/admin/repairs";
     }
 
 }

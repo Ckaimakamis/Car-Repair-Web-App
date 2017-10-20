@@ -6,11 +6,21 @@ public class SearchRepairForm {
 
     private String vat;
 
+    private String plateNumber;
+
     private String date;
 
     private String dateTo;
 
     private String periodSeach;
+
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
+    }
 
     public String getPeriodSeach() {
         return periodSeach;
