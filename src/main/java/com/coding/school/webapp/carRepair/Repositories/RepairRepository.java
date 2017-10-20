@@ -23,13 +23,6 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
 
     Repair findByDateTime (Timestamp dateTime);
 
-    Repair findByCost(Double cost);
-
-    Repair findByStage(Repair.RepairStage stage);
-
-    Repair findByOperations(String operations);
-
-    Repair findByType(Repair.RepairType type);
 
      void    registerRepair(Repair repair)  throws AuthenticationException;
 

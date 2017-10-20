@@ -2,15 +2,10 @@ package com.coding.school.webapp.carRepair.Services;
 
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Exceptions.RepairExistException;
-import com.coding.school.webapp.carRepair.Exceptions.UserExistException;
 import com.coding.school.webapp.carRepair.Repositories.RepairRepository;
-  import com.coding.school.webapp.carRepair.Domain.Owner;
-  import com.coding.school.webapp.carRepair.Domain.Repair;
-  import com.coding.school.webapp.carRepair.Exceptions.UserExistException;
-  import com.coding.school.webapp.carRepair.Repositories.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-  import org.springframework.security.core.AuthenticationException;
-  import org.springframework.stereotype.Service;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
@@ -22,8 +17,7 @@ public class RepairServiceImpl implements RepairService {
 
 
     @Autowired
-    private RepairRepository repairRepository;
-
+    RepairRepository repairRepository;
 
     public Repair findByCost(Double cost){
         Repair repair = repairRepository.findByCost(cost);
@@ -59,20 +53,4 @@ public class RepairServiceImpl implements RepairService {
                throw new RepairExistException("Repair already exists!");
            }
        }
-}
-
-
-
-
-
-   /* @Override
-    public ArrayList<Repair> findAll() {
-        ArrayList<Repair> repairs = (ArrayList<Repair>) repository.findAll();
-        return repairs;
-    }
-
-    @Override
-    public Repair findByDateTime(String dateTime) {
-        return repairRepository.findByDateTime(dateTime);
-    }
 }
