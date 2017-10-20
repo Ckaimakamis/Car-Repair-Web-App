@@ -20,4 +20,9 @@ public class VehicleServiceImpl implements VehicleService{
             throw new VehicleExistException("Vehicle already exists!");
         }
     }
+
+    @Override
+    public Vehicle findByPlateNumber(String plate) {
+        return vehicleRepository.findByPlateNumber(plate);
+    }
 }

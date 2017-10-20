@@ -5,4 +5,6 @@ import com.coding.school.webapp.carRepair.Domain.Vehicle;
 public interface VehicleService {
 
     void registerVehicle(Vehicle vehicle);
+
+    Vehicle findByPlateNumber(String plate);
 }

@@ -13,7 +13,7 @@ public class Repair {
 
     @NotNull
     @Column(nullable = false)
-    private String dateTime;
+    private Timestamp dateTime;
 
     @NotNull
     @Enumerated(value = EnumType.STRING)
@@ -41,11 +41,11 @@ public class Repair {
         this.ID = ID;
     }
 
-    public String getDateTime() {
+    public Timestamp getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
 

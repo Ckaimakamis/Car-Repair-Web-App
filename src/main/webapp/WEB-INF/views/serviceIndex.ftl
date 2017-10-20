@@ -128,7 +128,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/searchVehicle" accept-charset="UTF-8" id="login-nav" name="user">
+                                <form class="form" role="form" method="post" action="/searchVehicle" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Service id</label>
@@ -146,21 +146,21 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Works</label>
+                                            <label class="sr-only" for="registerVAT">Operations</label>
                                             <input type="text" class="form-control" id="registerVAT" placeholder="Enter Work"name="vat" required>
                                     </div>
 
                                     <div class="form-group">
                                             <select id="searchType" name="searchType">
-                                                <option value="User">waiting</option>
-                                                <option value="Repair">ready</option>
-                                                <option value="Repair">ongoing</option>
+                                                <option value="User">pending</option>
+                                                <option value="Repair">done</option>
+                                                <option value="Repair">in progress</option>
                                             </select>
                                     </div>
 
                                     <div class="form-group">
                                             <select id="searchType" name="searchType">
-                                                <option value="User">little</option>
+                                                <option value="User">small</option>
                                                 <option value="Repair">big</option>
                                             </select>
                                     </div>
@@ -186,26 +186,32 @@
                             <div class="col-md-12">
 
 
-                                <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchForm">
+                                <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="email">Vat</label>
                                         <input type="text" class="form-control" id="searchEmail" placeholder="Enter Vat"name="vat" required>
                                     </div>
+
+                                    <#--<div class="form-group">-->
+                                        <#--<label class="sr-only" for="email">PlateNumber</label>-->
+                                        <#--<input type="text" class="form-control" id="searchEmail" placeholder="Enter PlateNumber"name="plateNumber" required>-->
+                                    <#--</div>-->
+
                                     <div class="form-group">
-                                        <label class="sr-only" for="date">Brand</label>
-                                        <input type="text" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"/>
+                                        <label class="sr-only" for="date">Date</label>
+                                        <input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"/>
                                     </div>
 
-                                    <#--<div class="form-group">-->
-                                        <#--<label class="sr-only" for="dateTo">Brand</label>-->
-                                        <#--<input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="MM/DD/YYYY"/>-->
-                                    <#--</div>-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="dateTo">Brand</label>
+                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>
+                                    </div>
 
-                                    <#--<div class="form-group">-->
-                                        <#--<label class="sr-only" for="periodSeach">Brand</label>-->
-                                        <#--<input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach-->
-                                    <#--</div>-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="periodSearch">Brand</label>
+                                        <input type="checkbox" id="periodSearch" name="periodSearch" value="period search" placeholder="period search"> period search
+                                    </div>
                                     <!--
                                     <div class="form-group">
                                         <label for="searchType">Search for:</label>
@@ -240,29 +246,27 @@
     <div class="row content">
         <h2>${errorMessage!""}</h2>
 
-    <#if owner??>
+    <#if repairs??>
 
         <table border="0">
             <tr>
-                <td colspan="2" align="center"><h2>Owner Found</h2></td>
+                <td colspan="2" align="center"><h2>Repair Found</h2></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <h3>Here's the review of owner's details:</h3>
+                    <h3>Here's the review of repair's details:</h3>
                 </td>
             </tr>
-            <#if repairsByDate??>
-                <#list repairsByDate as repair>
-                    <tr>
-                        <td>Cost:</td>
-                        <td>${repair.cost}</td>
-                    </tr>
-                    <tr>
-                        <td>Date:</td>
-                        <td>${repair.dateTime}</td>
-                    </tr>
-                </#list>
-            </#if>
+            <#list repairs as repair>
+                <tr>
+                    <td>Cost:</td>
+                    <td>${repair.cost}</td>
+                </tr>
+                <tr>
+                    <td>Date:</td>
+                    <td>${repair.dateTime}</td>
+                </tr>
+            </#list>
         </table>
     </#if>
     </div>
