@@ -1,20 +1,30 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
+import com.coding.school.webapp.carRepair.Converters.OwnerConverter;
+import com.coding.school.webapp.carRepair.Converters.RepairConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
+import com.coding.school.webapp.carRepair.Model.RegisterForm;
+import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
+import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Model.SearchRepairForm;
+import com.coding.school.webapp.carRepair.Repositories.RepairRepository;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
+import com.coding.school.webapp.carRepair.Services.RepairService;
 import com.coding.school.webapp.carRepair.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,17 +38,50 @@ public class RepairController {
 
     public static final String REPAIRS = "repairs";
 
+    public static final String REGISTER_FORM ="createRepair";
+
+
     @Autowired
     OwnerService ownerService;
 
     @Autowired
     VehicleService vehicleService;
 
+    @Autowired
+    RepairService repairService;
+
+
+    @Autowired
+    private MessageSource messageSource;
+
+
     @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
     public String exposeRepairSite(Model model) {
 
         return "serviceIndex";
     }
+
+    @RequestMapping(value = "/registerRepair", method = RequestMethod.POST)
+    public String addUser(@Valid @ModelAttribute(REGISTER_FORM) RepairRegisterForm registrationForm, BindingResult bindingResult,
+                          HttpSession session, RedirectAttributes redirectAttributes){
+
+        if (bindingResult.hasErrors()) {
+            String message = messageSource.getMessage(bindingResult.getAllErrors().get(0), null);
+            redirectAttributes.addFlashAttribute("errorMessage", message);
+        }else{
+            try{
+                repairService.registerRepair(RepairConverter.buildRepairObject(registrationForm));
+            }catch (Exception e){
+                redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            }
+        }
+
+        return "redirect:/admin/home";
+    }
+
+
+
+
 
     @RequestMapping(value = "/searchRepair", method = RequestMethod.POST)
     public String doSearch(@ModelAttribute(SEARCH_FORM) SearchRepairForm searchRepairForm,
@@ -79,12 +122,13 @@ public class RepairController {
             }
         }
 
-        if (repairs.isEmpty()) {
+        if (repairs == null) {
             redirectAttributes.addFlashAttribute("errorMessage", "Repair not found");
         }
 
         redirectAttributes.addFlashAttribute(REPAIRS, repairsByDate);
-        return "redirect:/admin/repairs";
+
+        return "redirect:/admin/repair";
     }
 
 }

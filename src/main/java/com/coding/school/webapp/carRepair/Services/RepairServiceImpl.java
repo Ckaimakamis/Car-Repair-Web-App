@@ -1,5 +1,9 @@
- package com.coding.school.webapp.carRepair.Services;
+package com.coding.school.webapp.carRepair.Services;
 
+import com.coding.school.webapp.carRepair.Domain.Repair;
+import com.coding.school.webapp.carRepair.Exceptions.RepairExistException;
+import com.coding.school.webapp.carRepair.Exceptions.UserExistException;
+import com.coding.school.webapp.carRepair.Repositories.RepairRepository;
   import com.coding.school.webapp.carRepair.Domain.Owner;
   import com.coding.school.webapp.carRepair.Domain.Repair;
   import com.coding.school.webapp.carRepair.Exceptions.UserExistException;
@@ -12,19 +16,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-   @Service
-    @Transactional
-    public class RepairServiceImpl implements RepairService {
+@Service
+@Transactional
+public class RepairServiceImpl implements RepairService {
+
 
     @Autowired
-   RepairRepository repairRepository;
+    private RepairRepository repairRepository;
 
-    @Autowired
-    private RepairRepository repository;
 
     @Override
-    public Repair findById(Long ID){
-        Repair repair = repository.findOne(ID);
+    public Repair findByCost(Double cost){
+        Repair repair = repairRepository.findByCost(cost);
         return repair;
     }
 
@@ -41,29 +44,35 @@ import java.util.ArrayList;
     }
     @Override
     public Repair    findByStage(Repair.RepairStage stage){
-        Repair repair =repository.findByStage(stage);
-        return repairRepository.findByStage(stage);
+        Repair repair =repairRepository.findByStage(stage);
+        return repair;
     }
 
     @Override
     public Repair findByOperations(String operations){
-        Repair repair =repository.findByOperations(operations);
-        return  repairRepository.findByOperations(operations);
+        Repair repair =repairRepository.findByOperations(operations);
+        return   repair;
     }
     @Override
     public Repair findByType(Repair.RepairType type){
-        Repair repair =repository.findByType(type);
-        return repairRepository.findByType(type);
+        Repair repair =repairRepository.findByType(type);
+        return   repair;
        }
     @Override
+    public Repair findByDateTime (Timestamp dateTime){
+        return repairRepository.findByDateTime(dateTime);
+    }
+    @Override
     public void registerRepair(Repair repair) throws AuthenticationException {
-        Repair existedRepair= repairRepository.findById(repair.getID());
-           if(existedRepair== null){
-               repairRepository.save(repair);
+        Repair existedRepair;
+        existedRepair = repairRepository.findOne(repair.getID());
+        if(existedRepair== null){
+            repairRepository.save(repair);
            }else {
-               throw new UserExistException("Email already exists!");
+               throw new RepairExistException("Repair already exists!");
            }
        }
+}
 
 
 

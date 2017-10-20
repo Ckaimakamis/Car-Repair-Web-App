@@ -2,28 +2,21 @@ package com.coding.school.webapp.carRepair.Model;
 
 import com.coding.school.webapp.carRepair.Domain.Repair;
 
+import java.sql.Timestamp;
+
 public class RepairRegisterForm {
 
-    private Long ID;
-    private String dateTime;
+    private Timestamp dateTime;
     private Repair.RepairType type;
     private Repair.RepairStage stage;
     private double cost;
     private String operations;
 
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public String getDateTime() {
+    public Timestamp getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
 

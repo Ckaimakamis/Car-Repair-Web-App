@@ -131,11 +131,6 @@
                                 <form class="form" role="form" method="post" action="/searchVehicle" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerEmail">Service id</label>
-                                        <input type="text" class="form-control" id="registerEmail" placeholder="Enter ID" name="email" required>
-                                    </div>
-
-                                    <div class="form-group">
                                         <label class="sr-only" for="registerLastName">Surname</label>
                                         <input type="text" class="form-control" id="registerLastName" placeholder="Enter First Name"name="firstName" required>
                                     </div>
@@ -183,7 +178,7 @@
                 <ul id="login-dp" class="dropdown-menu">
                     <li>
                         <div class="row">
-                            <div class="col-md-12">  
+                            <div class="col-md-12">
 
 
                                 <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">

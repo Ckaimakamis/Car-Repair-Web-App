@@ -1,17 +1,14 @@
 package com.coding.school.webapp.carRepair.Services;
 
 import com.coding.school.webapp.carRepair.Domain.Repair;
+import org.springframework.stereotype.Service;
 
+import javax.naming.AuthenticationException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+@Service
 public interface RepairService {
-
-
-   /* ArrayList<Repair> findAll();  */
-
-
-    Repair findById(Long ID);
 
     Repair findByCost(Double cost);
 
@@ -22,6 +19,7 @@ public interface RepairService {
     Repair findByType(Repair.RepairType type);
 
 
-    void registerRepair(Repair repair);
+    void registerRepair(Repair repair) throws AuthenticationException;
+
     Repair findByDateTime (Timestamp dateTime);
 }
