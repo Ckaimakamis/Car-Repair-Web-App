@@ -178,7 +178,7 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="plate">Vat</label>
-                                        <input type="text" class="form-control" id="plate" name="plate" placeholder="Enter Plate" required>
+                                        <input type="text" class="form-control" id="plateNumber" name="plateNumber" placeholder="Enter Plate"/>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="vat">Brand</label>
