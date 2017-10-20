@@ -62,13 +62,14 @@ public class RepairController {
             String stringRepairDate = dateFormat.format(repair.getDateTime());
             java.util.Date repairDate = dateFormat.parse(stringRepairDate);
 
-            if (searchRepairForm.getPeriodSeach().equals("period seach")) {
+            if (searchRepairForm.getPeriodSearch().equals("period search")) {
                 java.util.Date fromDate = dateFormat.parse(searchRepairForm.getDate());
                 java.util.Date toDate = dateFormat.parse(searchRepairForm.getDateTo());
                 if ((repairDate.after(fromDate) || repairDate.equals(fromDate)) &&
                         (repairDate.before(toDate)) || repairDate.equals(toDate)) {
                     repairsByDate.add(repair);
                 }
+
             } else  {
                 if (stringRepairDate.equals(searchRepairForm.getDate())) {
                     repairsByDate.add(repair);

@@ -12,7 +12,7 @@ public class SearchRepairForm {
 
     private String dateTo;
 
-    private String periodSeach;
+    private String periodSearch;
 
     public String getPlateNumber() {
         return plateNumber;
@@ -22,12 +22,12 @@ public class SearchRepairForm {
         this.plateNumber = plateNumber;
     }
 
-    public String getPeriodSeach() {
-        return periodSeach;
+    public String getPeriodSearch() {
+        return periodSearch;
     }
 
-    public void setPeriodSeach(String periodSeach) {
-        this.periodSeach = periodSeach;
+    public void setPeriodSearch(String periodSearch) {
+        this.periodSearch = periodSearch;
     }
 
     public String getDateTo() {

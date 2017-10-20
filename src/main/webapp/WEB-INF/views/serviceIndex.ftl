@@ -193,10 +193,10 @@
                                         <input type="text" class="form-control" id="searchEmail" placeholder="Enter Vat"name="vat" required>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="email">PlateNumber</label>
-                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter PlateNumber"name="plateNumber" required>
-                                    </div>
+                                    <#--<div class="form-group">-->
+                                        <#--<label class="sr-only" for="email">PlateNumber</label>-->
+                                        <#--<input type="text" class="form-control" id="searchEmail" placeholder="Enter PlateNumber"name="plateNumber" required>-->
+                                    <#--</div>-->
 
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Date</label>
@@ -209,8 +209,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="periodSeach">Brand</label>
-                                        <input type="checkbox" id="periodSeach" name="periodSeach" value="period seach" placeholder="period seach"> period seach
+                                        <label class="sr-only" for="periodSearch">Brand</label>
+                                        <input type="checkbox" id="periodSearch" name="periodSearch" value="period search" placeholder="period search"> period search
                                     </div>
                                     <!--
                                     <div class="form-group">
