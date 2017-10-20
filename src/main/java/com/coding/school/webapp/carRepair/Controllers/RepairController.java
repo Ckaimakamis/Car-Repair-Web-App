@@ -57,7 +57,7 @@ public class RepairController {
             String stringRepairDate = dateFormat.format(repair.getDateTime());
             java.util.Date repairDate = dateFormat.parse(stringRepairDate);
 
-            if (searchRepairForm.getPeriodSearch().equals("period search")) {
+            if (searchRepairForm.getPeriodSearch() != null) {
                 java.util.Date fromDate = dateFormat.parse(searchRepairForm.getDate());
                 java.util.Date toDate = dateFormat.parse(searchRepairForm.getDateTo());
                 if ((repairDate.after(fromDate) || repairDate.equals(fromDate)) &&

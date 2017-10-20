@@ -273,10 +273,10 @@
         var dateInput = $('input[name="date"]');
         var dateToInput=$('input[name="dateTo"]');
         var checkbox = $('input[name="periodSearch"]');
-        var caheckBox = document.querySelector("input[name=periodSearch]");
+        var checkBox = document.querySelector("input[name=periodSearch]");
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         dateInput.datepicker({
-            format: 'yyyy-MM-dd',
+            format: 'yyyy-mm-dd',
             container: container,
             todayHighlight: true,
             autoclose: true
@@ -290,14 +290,14 @@
 
         dateToInput.hide();
 
-        caheckBox.addEventListener('change', function() {
+        checkBox.addEventListener('change', function() {
             if(this.checked) {
                 dateToInput.show();
                 dateInput.attr('placeholder', 'Select Date From');
                 dateToInput.attr('placeholder', 'Select Date To');
             } else {
                 dateToInput.hide();
-                dateInput.attr('placeholder', 'MM/DD/YYYY');
+                dateInput.attr('placeholder', 'YYYY-MM-DD');
             }
         });
 
