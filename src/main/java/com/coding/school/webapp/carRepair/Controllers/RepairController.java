@@ -70,7 +70,7 @@ public class RepairController {
                     repairsByDate.add(repair);
                 }
 
-            } else  {
+            } else {
                 if (stringRepairDate.equals(searchRepairForm.getDate())) {
                     repairsByDate.add(repair);
                 }

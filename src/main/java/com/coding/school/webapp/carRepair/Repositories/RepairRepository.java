@@ -10,10 +10,6 @@ import java.sql.Timestamp;
 public interface RepairRepository extends JpaRepository<Repair, Long> {
     Repair findByDateTime (Timestamp dateTime);
 
-    default Repair findByID(Long ID) {
-        return null;
-    }
-
     Repair findByCost(double cost);
 
     Repair findByStage(Repair.RepairStage stage);
