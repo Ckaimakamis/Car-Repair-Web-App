@@ -48,7 +48,7 @@ public class RepairController {
         List<Repair> repairs = new ArrayList<>(owner.getVehicle().getRepairs());
         List<Repair> repairsByDate = new ArrayList<>();
 
-
+//        if (searchRepairForm.getPeriodSeach().equals("period seach"))
         for(Repair repair:repairs) {
             String repairDate = new SimpleDateFormat("yyyy-MM-dd").format(repair.getDateTime());
             if(repairDate.equals(searchRepairForm.getDate())){

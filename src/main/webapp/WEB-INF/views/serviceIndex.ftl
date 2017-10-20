@@ -199,7 +199,7 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="dateTo">Brand</label>
-                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="MM/DD/YYYY"/>
+                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>
                                     </div>
 
                                     <div class="form-group">
