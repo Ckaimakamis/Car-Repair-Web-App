@@ -161,23 +161,34 @@
         </div>
       
         <div class="container">
-          <label><b>Enter Username</b></label>
+          <label><b>Username</b></label>
+            </br>
           <input type="text" id="email" placeholder="email" name="email"  value=${owner.email} required>
         </br>
-          <label><b> Enter Surnames</b></label>
-          <input type="password" id="firstName" placeholder="firstName" name="firstName" value=${owner.firstName} required>
+          <label><b>First Name</b></label>
+            </br>
+          <input type="text" id="firstName" placeholder="firstName" name="firstName" value=${owner.firstName} required>
         </br>
-          <label><b>Enter Your AFM</b></label>
+          <label><b>Last Name</b></label>
+            </br>
           <input type="text" id="lastName" placeholder="lastName" name="lastName" value=${owner.lastName} required>
         </br>
-          <label><b>Enter Password</b></label>
-          <input type="text" id="password" placeholder="password" name="password" value=${owner.password} required>
+          <label><b>Password</b></label>
+            </br>
+          <input type="password" id="password" placeholder="password" name="password" value=${owner.password} required>
         </br>     
-          <label><b>Vehicle - Brand</b></label>
+          <label><b>VAT</b></label>
+            </br>
           <input type="text" id="vat" placeholder="vat" name="vat" value=${owner.vat} required>
         </br>
-          <label><b>Vehicle - Plates</b></label>
-          <input type="text" id="role" placeholder="role" name="role" value=${owner.role} required>
+          <label><b>Role</b></label>
+            </br>
+            <input type="text" id="role" placeholder="Role" name="role" value=${owner.role} required disabled>
+            </br>
+            <select id="roleSelect" name="roleSelect">
+                <option value="ADMIN">Admin</option>
+                <option value="USER">User</option>
+            </select>
 
         </br>
 
@@ -195,9 +206,18 @@
 </body>
 <script language="JavaScript">
 
+    var roleSelect = document.getElementById("roleSelect");
+    var role = $('input[name="role"]');
+
+    roleSelect.addEventListener('click', function() {
+        role.attr('value', roleSelect.options[roleSelect.selectedIndex].value);
+    })
+
     function SetDest1() {
+        role.attr('disabled', false);
         document.forms["ownerEditForm"].action = "/editOwner";
     }
+
     function SetDest2() {
         document.forms["ownerEditForm"].action = "/deleteOwner";
     }

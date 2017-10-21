@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Car Repair</title>
     <meta charset="utf-8">
@@ -159,7 +159,14 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Enter Role"name="role" style="text-transform:uppercase" required>
+                                        <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
+
+                                        <div class="sub-form-group">
+                                            <select id="roleSelect" name="roleSelect">
+                                                <option value="ADMIN">Admin</option>
+                                                <option value="USER">User</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -168,7 +175,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
+                                        <button type="submit" OnClick="changeDisable()" class="btn btn-primary btn-block">Register User</button>
                                     </div>
 
                                 </form>
@@ -230,5 +237,20 @@
 </footer>
 
 </body>
+
+<script language="JavaScript">
+
+    var roleSelect = document.getElementById("roleSelect");
+    var role = $('input[name="role"]');
+
+    roleSelect.addEventListener('click', function() {
+        role.attr('value', roleSelect.options[roleSelect.selectedIndex].value);
+    })
+
+    function changeDisable() {
+        role.attr('disabled', false);
+    }
+
+</script>
 
 </html>
