@@ -147,16 +147,16 @@
 
                                     <div class="form-group">
                                             <select id="searchType" name="searchType">
-                                                <option value="User">pending</option>
-                                                <option value="Repair">done</option>
-                                                <option value="Repair">in progress</option>
+                                                <option value="PENDING">pending</option>
+                                                <option value="IN_PROGRESS">in progress</option>
+                                                <option value="DONE">done</option>
                                             </select>
                                     </div>
 
                                     <div class="form-group">
                                             <select id="searchType" name="searchType">
-                                                <option value="User">small</option>
-                                                <option value="Repair">big</option>
+                                                <option value="SMALL">small</option>
+                                                <option value="BIG">big</option>
                                             </select>
                                     </div>
 
