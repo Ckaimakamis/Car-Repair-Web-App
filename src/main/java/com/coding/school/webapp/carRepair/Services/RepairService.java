@@ -18,7 +18,6 @@ public interface RepairService {
 
     Repair findByType(Repair.RepairType type);
 
-
     void registerRepair(Repair repair) throws AuthenticationException;
 
     Repair findByDateTime (Timestamp dateTime);

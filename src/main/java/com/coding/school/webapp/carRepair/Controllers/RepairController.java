@@ -36,9 +36,9 @@ public class RepairController {
 
     private static final String SEARCH_FORM = "searchRepairForm";
 
-    public static final String REPAIRS = "repairs";
+    private static final String REPAIRS = "repairs";
 
-    public static final String REGISTER_FORM ="createRepair";
+    private static final String REGISTER_FORM ="createRepair";
 
 
     @Autowired
