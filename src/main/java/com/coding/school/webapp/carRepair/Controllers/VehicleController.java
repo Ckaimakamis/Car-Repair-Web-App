@@ -98,6 +98,7 @@ public class VehicleController {
 
         if(!searchForm.getPlateNumber().equals("")){
             vehicle = vehicleService.findByPlateNumberOrVat(searchForm.getPlateNumber(), searchForm.getVat());
+            owner = vehicle.getOwner();
         }else if(!searchForm.getVat().equals("")){
             owner = ownerService.findByVat(searchForm.getVat());
             vehicle = vehicleService.findByOwner(owner);

@@ -58,7 +58,7 @@ public class RepairController {
     @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
     public String exposeRepairSite(Model model) {
 
-        return "serviceIndex";
+        return "repairIndex";
     }
 
     @RequestMapping(value = "/registerRepair", method = RequestMethod.POST)

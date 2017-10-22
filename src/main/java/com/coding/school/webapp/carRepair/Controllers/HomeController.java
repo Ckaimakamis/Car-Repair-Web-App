@@ -42,7 +42,7 @@ public class HomeController {
     String homePage(Model model, HttpSession session){
 
         model.addAttribute(SEARCH_FORM, new SearchForm());
-        return "index";
+        return "adminHomeIndex";
     }
 
 
@@ -63,7 +63,7 @@ public class HomeController {
 
         model.addAttribute(REPAIR_DATA,repairs);
 
-        return "userHome";
+        return "userHomeIndex";
     }
 
 }

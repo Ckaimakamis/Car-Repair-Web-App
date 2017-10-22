@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -35,9 +36,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
-                .permitAll();
+                .permitAll()
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login")
 //                .and().antMatcher("/login").anonymous();
-        http.authorizeRequests().antMatchers("/static/css/**").permitAll();
+//        http.authorizeRequests().antMatchers("/static/css/**").permitAll().anyRequest().permitAll();
+                .and()
+                .authorizeRequests()
+                .antMatchers("/resources/static/css/**", "/resources/static/js/**", "/resources/static/images/**")
+                .permitAll().anyRequest().permitAll();
     }
 
     @Autowired
