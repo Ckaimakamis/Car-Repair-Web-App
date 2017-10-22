@@ -48,7 +48,10 @@ public class OwnerController {
             redirectAttributes.addFlashAttribute("errorMessage", message);
         }else{
             try{
-                ownerService.registerOwner(OwnerConverter.buildUserObject(registerForm));
+                Owner owner = OwnerConverter.buildUserObject(registerForm);
+                ownerService.registerOwner(owner);
+                redirectAttributes.addFlashAttribute("message", "owner "+ owner.getFirstName()
+                        + " " + owner.getLastName() + " successfully inserted! :)");
             }catch (Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }

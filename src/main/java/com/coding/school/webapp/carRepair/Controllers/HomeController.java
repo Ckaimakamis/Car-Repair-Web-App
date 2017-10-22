@@ -3,7 +3,6 @@ package com.coding.school.webapp.carRepair.Controllers;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
-import com.coding.school.webapp.carRepair.Model.RegisterForm;
 import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import com.coding.school.webapp.carRepair.Services.RepairService;
@@ -13,15 +12,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.constraints.Null;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,6 +38,7 @@ public class HomeController {
 
     @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
     String homePage(Model model, HttpSession session){
+
         model.addAttribute(SEARCH_FORM, new SearchForm());
         return "index";
     }

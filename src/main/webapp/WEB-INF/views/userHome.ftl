@@ -131,13 +131,6 @@
 
 </nav>
 
-
-<#--<div class="container-fluid text-center">-->
-    <#--<div class="row content">-->
-        <#--<h2>${message!""}</h2>-->
-    <#--</div>-->
-<#--</div>-->
-
 <div>
     <table class="table">
         <thead>
