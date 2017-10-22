@@ -47,8 +47,7 @@ public class HomeController {
     @RequestMapping(value = "/user/home", method = RequestMethod.GET)
     String userHomePage(Model model, HttpSession session){
 
-        Authentication auth =
-                SecurityContextHolder.getContext().getAuthentication();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         String username = (String) auth.getPrincipal(); // username is user email
 

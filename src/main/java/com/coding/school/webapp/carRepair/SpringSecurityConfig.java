@@ -20,12 +20,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationSuccessHandler successHandler;
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        // endpoints with disabled authentication
-//        web.ignoring().antMatchers("/**");
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
