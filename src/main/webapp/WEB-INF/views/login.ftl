@@ -37,7 +37,7 @@
     <div class="row content">
         <form action="/login" method="post" id="loginForm" name="loginForm">
             <div class="imgcontainer">
-                <!--<img src="webapp/WEB-INF/views/img_avatar2.png" alt="Avatar" class="avatar"> -->
+                <img src="/images/img_avatar2.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">

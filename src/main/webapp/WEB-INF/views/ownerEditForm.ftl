@@ -38,10 +38,7 @@
       <h2>${message!""}</h2>
       <h2 style="color: red">${errorMessage!""}</h2>
     <#if owner??>
-      <form  method="post" action="/editOwner" name="ownerEditForm"><#--TODO make an endpoint for this-->
-        <div class="imgcontainer">
-          <img src="img_avatar2.png" alt="Avatar" class="avatar">
-        </div>
+      <form  method="post" action="/editOwner" name="ownerEditForm">
       
         <div class="container">
           <label><b>Username</b></label>

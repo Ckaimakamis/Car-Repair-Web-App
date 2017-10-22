@@ -39,10 +39,6 @@
       <h2 style="color: red">${errorMessage!""}</h2>
     <#if vehicle??>
       <form  method="post" action="/admin/editVehicle" name="vehicleEditForm">
-        <div class="imgcontainer">
-          <img src="img_avatar2.png" alt="Avatar" class="avatar">
-        </div>
-
         <div class="container">
           <label><b> Enter Plate Number</b></label>
             </br>
