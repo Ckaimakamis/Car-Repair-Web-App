@@ -27,6 +27,8 @@ public class HomeController {
 
     private static final String REPAIR_DATA = "repairs";
 
+    private static final String VEHICLE = "vehicle";
+
     @Autowired
     RepairService repairService;
 
@@ -53,6 +55,10 @@ public class HomeController {
 
         Owner owner = ownerService.findByEmail(username);
         Vehicle vehicle = vehicleService.findByOwner(owner);
+        if(vehicle != null){
+            model.addAttribute(VEHICLE, vehicle);
+        }
+
         List<Repair> repairs = repairService.findByVehicle(vehicle);
 
         model.addAttribute(REPAIR_DATA,repairs);

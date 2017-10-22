@@ -154,6 +154,12 @@
                 <td>${newRepair.cost}</td>
             </tr>
         </#list>
+        <#if !repairs??>
+            <#if vehicle??>
+                <h2>You have no Repairs for your ${vehicle.plateNumber} ${vehicle.model} yet</h2>
+            </#if>
+
+        </#if>
 
         </tbody>
     </table>
