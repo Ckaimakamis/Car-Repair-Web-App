@@ -44,9 +44,6 @@ public class HomeController {
 
     @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
     String homePage(Model model, HttpSession session){
-
-
-
         model.addAttribute(SEARCH_FORM, new SearchForm());
         return "index";
     }
