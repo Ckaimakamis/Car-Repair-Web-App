@@ -43,7 +43,7 @@
                 <th>Cost</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody align="left">
             <#list repairs as newRepair>
             <tr>
                 <td>${newRepair.dateTime}</td>
