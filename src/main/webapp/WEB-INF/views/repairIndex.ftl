@@ -103,7 +103,10 @@
 
                                 <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
 
-
+                                    <div class="form-group">
+                                        <label class="sr-only" for="date">Date</label>
+                                        <input type= "datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD">
+                                    </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
@@ -178,18 +181,18 @@
         var checkBoxCaseSearch = document.querySelector("input[name=caseSearch]");
 
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        dateInput.datepicker({
-            format: 'yyyy-mm-dd',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
-        dateToInput.datepicker({
-            format: 'yyyy-mm-dd',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
+//        dateInput.datepicker({
+//            format: 'yyyy-mm-dd',
+//            container: container,
+//            todayHighlight: true,
+//            autoclose: true
+//        });
+//        dateToInput.datepicker({
+//            format: 'yyyy-mm-dd',
+//            container: container,
+//            todayHighlight: true,
+//            autoclose: true
+//        });
 
         dateToInput.hide();
 
