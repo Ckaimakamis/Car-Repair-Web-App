@@ -47,20 +47,21 @@
                                 <form class="form" role="form" method="post" action="/admin/registerRepair" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="date">Date</label>
                                         <input type="datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" required/>
                                     </div>
 
                                     <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Cost</label>
                                             <input type="text" class="form-control" id="cost" placeholder="Enter COST"name="cost" required>
                                     </div>
 
                                     <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Operations</label>
                                             <input type="text" class="form-control" id="operations" placeholder="Enter Work"name="operations" required>
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="plateNumber" placeholder="Enter Vehicle's Plate" name="plateNumber" required>
+                                    </div>
 
                                     <div class="form-group">
                                             <select id="repairStage" name="repairStage">
@@ -77,10 +78,7 @@
                                             </select>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="plateNumber">Operations</label>
-                                        <input type="text" class="form-control" id="plateNumber" placeholder="Enter vehicle's Plate" name="plateNumber" required>
-                                    </div>
+
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Create Repair</button>
