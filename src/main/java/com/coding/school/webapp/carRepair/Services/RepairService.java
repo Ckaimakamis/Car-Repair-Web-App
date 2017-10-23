@@ -26,4 +26,6 @@ public interface RepairService {
 
    List<Repair> findByVehicle(Vehicle vehicle);
 
+
+
 }

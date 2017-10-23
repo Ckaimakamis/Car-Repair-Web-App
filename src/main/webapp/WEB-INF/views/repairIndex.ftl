@@ -61,6 +61,7 @@
                                             <input type="text" class="form-control" id="registerVAT" placeholder="Enter Work"name="vat" required>
                                     </div>
 
+
                                     <div class="form-group">
                                             <select id="searchType" name="searchType">
                                                 <option value="PENDING">pending</option>
