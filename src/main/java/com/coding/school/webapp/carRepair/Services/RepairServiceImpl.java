@@ -9,7 +9,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +45,16 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public Repair findByDateTime (Timestamp dateTime){
         return repairRepository.findByDateTime(dateTime);
+    }
+
+    @Override
+    public List<Repair> findNextRepairs(int size) {
+        LocalDateTime now = LocalDateTime.now();
+        List<Repair> repairs = repairRepository.findRepairs(now);
+        if(repairs.size() > size){
+            return repairs.subList(0, size-1);
+        }
+        return repairs;
     }
 
     @Override

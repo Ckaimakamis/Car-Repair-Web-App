@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public interface RepairService {
 
+
     Repair findByCost(double cost);
 
     Repair findByStage(Repair.RepairStage stage);
@@ -22,10 +23,9 @@ public interface RepairService {
 
     void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException;
 
-    Repair findByDateTime (Timestamp dateTime);
+    Repair findByDateTime(Timestamp dateTime);
 
-   List<Repair> findByVehicle(Vehicle vehicle);
+    List<Repair> findNextRepairs(int size);
 
-
-
+    List<Repair> findByVehicle(Vehicle vehicle);
 }

@@ -1,15 +1,11 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
-import com.coding.school.webapp.carRepair.Converters.OwnerConverter;
 import com.coding.school.webapp.carRepair.Converters.RepairConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
-import com.coding.school.webapp.carRepair.Model.RegisterForm;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
-import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Model.SearchRepairForm;
-import com.coding.school.webapp.carRepair.Repositories.RepairRepository;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import com.coding.school.webapp.carRepair.Services.RepairService;
 import com.coding.school.webapp.carRepair.Services.VehicleService;
@@ -55,8 +51,8 @@ public class RepairController {
 
 
     @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
-    public String exposeRepairSite(Model model) {
-
+    public String exposeRepairSite(Model model, HttpSession session) {
+        model.addAttribute(REPAIRS, session.getAttribute(REPAIRS));
         return "repairIndex";
     }
 
