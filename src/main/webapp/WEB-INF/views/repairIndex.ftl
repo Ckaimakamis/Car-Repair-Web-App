@@ -124,31 +124,36 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <h2>${errorMessage!""}</h2>
-
-    <#if repairs??>
-
-        <table border="0">
+        <table class="table">
+            <thead>
             <tr>
-                <td colspan="2" align="center"><h2>Repair Found</h2></td>
+                <th>Date Time</th>
+                <th>Type</th>
+                <th>Operations</th>
+                <th>Stage</th>
+                <th>Cost</th>
+                <th>Plate</th>
+                <th>Vehicle</th>
+                <th>Owner</th>
             </tr>
+            </thead>
+            <tbody align="left">
+            <#list repairs as newRepair>
             <tr>
-                <td colspan="2" align="center">
-                    <h3>Here's the review of repair's details:</h3>
-                </td>
+                <td>${newRepair.dateTime}</td>
+                <td>${newRepair.type}</td>
+                <td>${newRepair.operations}</td>
+                <td>${newRepair.stage}</td>
+                <td>${newRepair.cost} $</td>
+                <td>${newRepair.vehicle.plateNumber}</td>
+                <td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
+                <td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
             </tr>
-            <#list repairs as repair>
-                <tr>
-                    <td>Cost:</td>
-                    <td>${repair.cost}</td>
-                </tr>
-                <tr>
-                    <td>Date:</td>
-                    <td>${repair.dateTime}</td>
-                </tr>
             </#list>
+            </tbody>
         </table>
-    </#if>
+        <h2>${message!""}</h2>
+        <h2 style="color: red">${errorMessage!""}</h2>
     </div>
 </div>    
 <footer class="container-fluid text-center">

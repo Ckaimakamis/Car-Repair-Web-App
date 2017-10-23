@@ -135,25 +135,26 @@
                 <th>Operations</th>
                 <th>Stage</th>
                 <th>Cost</th>
+                <th>Plate</th>
                 <th>Vehicle</th>
                 <th>Owner</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody align="left">
             <#list repairs as newRepair>
             <tr>
                 <td>${newRepair.dateTime}</td>
                 <td>${newRepair.type}</td>
                 <td>${newRepair.operations}</td>
                 <td>${newRepair.stage}</td>
-                <td>${newRepair.cost}</td>
+                <td>${newRepair.cost} $</td>
+                <td>${newRepair.vehicle.plateNumber}</td>
                 <td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
                 <td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
             </tr>
             </#list>
             </tbody>
         </table>
-
         <h2>${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     </div>

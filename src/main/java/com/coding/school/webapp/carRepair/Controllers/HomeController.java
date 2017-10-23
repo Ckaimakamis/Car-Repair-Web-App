@@ -46,6 +46,7 @@ public class HomeController {
         List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
 
         model.addAttribute(REPAIR_DATA, repairs);
+        session.setAttribute(REPAIR_DATA, repairs);
         model.addAttribute(SEARCH_FORM, new SearchForm());
         return "adminHomeIndex";
     }

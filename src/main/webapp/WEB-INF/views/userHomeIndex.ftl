@@ -50,7 +50,7 @@
                 <td>${newRepair.type}</td>
                 <td>${newRepair.operations}</td>
                 <td>${newRepair.stage}</td>
-                <td>${newRepair.cost}</td>
+                <td>${newRepair.cost} $</td>
             </tr>
             </#list>
             </tbody>
