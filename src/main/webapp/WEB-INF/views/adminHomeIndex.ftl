@@ -44,7 +44,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/registerUser" accept-charset="UTF-8" id="login-nav" name="user">
+                                <form class="form" role="form" method="post" action="/registerRepair" accept-charset="UTF-8" id="login-nav" name="user">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Username</label>

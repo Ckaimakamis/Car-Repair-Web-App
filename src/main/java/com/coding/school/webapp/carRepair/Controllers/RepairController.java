@@ -40,6 +40,9 @@ public class RepairController {
 
     private static final String REGISTER_FORM ="createRepair";
 
+    @Autowired
+    RepairService repairService;
+
 
     @Autowired
     OwnerService ownerService;
@@ -47,8 +50,7 @@ public class RepairController {
     @Autowired
     VehicleService vehicleService;
 
-    @Autowired
-    RepairService repairService;
+
 
 
     @Autowired
@@ -70,17 +72,17 @@ public class RepairController {
             redirectAttributes.addFlashAttribute("errorMessage", message);
         }else{
             try{
-                repairService.registerRepair(RepairConverter.buildRepairObject(registrationForm));
+                Repair repair=RepairConverter.buildRepairObject(registrationForm);
+                repairService.registerRepair(repair);
+                redirectAttributes.addFlashAttribute("message", "repair "+ repair.getOperations()
+                        + " " + repair.getOperations() + " successfully inserted! :)");
             }catch (Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
         }
 
-        return "redirect:/admin/home";
+        return "redirect:/admin/repairs";
     }
-
-
-
 
 
     @RequestMapping(value = "/searchRepair", method = RequestMethod.POST)

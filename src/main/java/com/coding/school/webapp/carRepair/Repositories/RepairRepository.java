@@ -12,7 +12,9 @@ import java.util.List;
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
 
-    Repair findByCost(Double cost);
+
+
+    Repair findByCost(double cost);
 
     Repair findByStage(Repair.RepairStage stage);
 

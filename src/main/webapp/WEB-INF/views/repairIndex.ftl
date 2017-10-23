@@ -44,7 +44,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/searchVehicle" accept-charset="UTF-8" id="login-nav" name="createRepair">
+                                <form class="form" role="form" method="post" action="register" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerLastName">Surname</label>

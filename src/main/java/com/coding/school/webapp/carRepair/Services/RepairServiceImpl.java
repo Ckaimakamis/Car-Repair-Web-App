@@ -21,7 +21,8 @@ public class RepairServiceImpl implements RepairService {
     @Autowired
     RepairRepository repairRepository;
 
-    public Repair findByCost(Double cost){
+    @Override
+    public Repair findByCost(double cost){
         return repairRepository.findByCost(cost);
     }
     @Override
@@ -36,26 +37,27 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public Repair findByType(Repair.RepairType type){
-        return repairRepository.findByType(type);
-    }
-
+        return   repairRepository.findByType(type);
+       }
     @Override
     public Repair findByDateTime (Timestamp dateTime){
+
         return repairRepository.findByDateTime(dateTime);
     }
 
     @Override
-    public List<Repair> findByVehicle(Vehicle vehicle) { return repairRepository.findByVehicle(vehicle); }
+    public List<Repair> findByVehicle(Vehicle vehicle){
+        return repairRepository.findByVehicle(vehicle);
+    }
 
     @Override
     public void registerRepair(Repair repair) throws AuthenticationException {
-        Repair existedRepair;
-        existedRepair = repairRepository.findOne(repair.getID());
+        Repair existedRepair= repairRepository.findOne(repair.getID());
         if(existedRepair== null){
             repairRepository.save(repair);
-        }else {
-            throw new RepairExistException("Repair already exists!");
-        }
-    }
+           }else {
+               throw new RepairExistException("Repair already exists!");
+           }
+       }
 
 }

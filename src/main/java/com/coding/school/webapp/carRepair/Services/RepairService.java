@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public interface RepairService {
 
-    Repair findByCost(Double cost);
+    Repair findByCost(double cost);
 
     Repair findByStage(Repair.RepairStage stage);
 
@@ -24,5 +24,5 @@ public interface RepairService {
 
     Repair findByDateTime (Timestamp dateTime);
 
-    List<Repair> findByVehicle(Vehicle vehicle);
+   List<Repair> findByVehicle(Vehicle vehicle);
 }
