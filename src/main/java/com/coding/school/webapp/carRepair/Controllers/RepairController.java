@@ -70,14 +70,18 @@ public class RepairController {
         }else{
             try{
                 Repair repair = RepairConverter.buildRepairObject(registrationForm);
-                repairService.registerRepair(repair);
+                Vehicle vehicle = vehicleService.findByPlateNumber(registrationForm.getPlateNumber());
+                if(vehicle == null){
+                    redirectAttributes.addFlashAttribute("errorMessage", "There is no vehicle with plate number "
+                            + registrationForm.getPlateNumber());
+                    return "redirect:/admin/repairs";
+                }
+                repairService.registerRepair(repair, vehicle);
                 redirectAttributes.addFlashAttribute("message", "repair "+ repair.getOperations()
                         + " " + repair.getOperations() + " successfully inserted! :)");
             }catch(Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
-
-
         }
 
         return "redirect:/admin/repairs";
@@ -91,10 +95,10 @@ public class RepairController {
 
         Vehicle vehicle = vehicleService.findByPlateNumber(searchRepairForm.getPlateNumber());
         Owner owner = ownerService.findByVat(searchRepairForm.getVat());
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        List<Repair> repairs = new ArrayList<>(owner.getVehicle().getRepairs());
         List<Repair> repairsByDate = new ArrayList<>();
-        List<Repair> repairs = new ArrayList<>();
+        List<Repair> repairs;
 
         if (owner != null) {
             repairs = (List<Repair>) owner.getVehicle().getRepairs();

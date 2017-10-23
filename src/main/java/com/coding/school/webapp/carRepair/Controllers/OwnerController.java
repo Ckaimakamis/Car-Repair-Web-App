@@ -22,7 +22,6 @@ import javax.validation.Valid;
 @Controller
 public class OwnerController {
 
-    //kalw to interface san kalitero practice
     @Autowired
     OwnerService ownerService;
 
@@ -40,7 +39,7 @@ public class OwnerController {
     private static final String EDIT_FORM = "ownerEditForm";
 
 
-    @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/registerOwner", method = RequestMethod.POST)
     String addUser(@Valid @ModelAttribute(REGISTER_FORM) RegisterForm registerForm, BindingResult bindingResult,
                    HttpSession session, RedirectAttributes redirectAttributes){
         if (bindingResult.hasErrors()) {
@@ -60,13 +59,13 @@ public class OwnerController {
         return "redirect:/admin/home";
     }
 
-    @RequestMapping(value = "/searchOwner", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/searchOwner", method = RequestMethod.GET)
     public String getSearchView(Model model) {
 
         return "ownerEditForm";
     }
 
-    @RequestMapping(value = "/searchOwner", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/searchOwner", method = RequestMethod.POST)
     public String doSearch(@ModelAttribute(SEARCH_FORM) SearchForm searchForm,
                            HttpSession session,
                            RedirectAttributes redirectAttributes) {
@@ -83,10 +82,10 @@ public class OwnerController {
         redirectAttributes.addFlashAttribute(OWNER, owner);
         redirectAttributes.addFlashAttribute(VEHICLES, vehicle);
 
-        return "redirect:/searchOwner";
+        return "redirect:/admin/searchOwner";
     }
 
-    @RequestMapping(value = "/editOwner", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/editOwner", method = RequestMethod.POST)
     String editUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm updateForm, BindingResult bindingResult,
                    HttpSession session, RedirectAttributes redirectAttributes){
 
@@ -97,14 +96,13 @@ public class OwnerController {
         return "redirect:/admin/home";
     }
 
-    @RequestMapping(value = "/deleteOwner", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/deleteOwner", method = RequestMethod.POST)
     String deleteUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm deleteForm, BindingResult bindingResult,
                     HttpSession session, RedirectAttributes redirectAttributes){
 
         Owner owner = ownerService.findByEmail(deleteForm.getEmail());
         ownerService.deleteOwner(owner);
         redirectAttributes.addFlashAttribute("message", "User Deleted :( ");
-
 
         return "redirect:/admin/home";
     }

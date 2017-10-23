@@ -20,7 +20,7 @@ public interface RepairService {
 
     Repair findByType(Repair.RepairType type);
 
-    void registerRepair(Repair repair) throws AuthenticationException;
+    void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException;
 
     Repair findByDateTime (Timestamp dateTime);
 

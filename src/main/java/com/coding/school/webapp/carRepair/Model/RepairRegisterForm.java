@@ -2,8 +2,6 @@ package com.coding.school.webapp.carRepair.Model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 public class RepairRegisterForm {
@@ -29,20 +27,14 @@ public class RepairRegisterForm {
     @NotNull(message = "{register.repairType.null}")
     private String repairType;
 
-    public String getDate() {
+    private String plateNumber;
+
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
     }
 
     public String getCost() {
@@ -75,5 +67,13 @@ public class RepairRegisterForm {
 
     public void setRepairType(String repairType) {
         this.repairType = repairType;
+    }
+
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
     }
 }
