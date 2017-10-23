@@ -46,45 +46,45 @@
                             <div class="col-md-12">
                                 <form class="form" role="form" method="post" action="/admin/registerOwner" accept-charset="UTF-8" id="login-nav" name="user">
 
+                                    <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
+
+                                    <div class="sub-form-group">
+                                        <select id="roleSelect" name="roleSelect">
+                                            <option value="ADMIN">Admin</option>
+                                            <option value="USER">User</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerEmail">Username</label>
                                         <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="email" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">Surname</label>
                                         <input type="text" class="form-control" id="registerLastName" placeholder="Enter First Name"name="firstName" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">AFM</label>
                                         <input type="text" class="form-control" id="registerLastName" placeholder="Enter Last Name" name="lastName"required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">Password</label>
                                         <input type="text" class="form-control" id="registerLastName" placeholder="Enter Password" name="password"required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
 
-                                        <div class="sub-form-group">
-                                            <select id="roleSelect" name="roleSelect">
-                                                <option value="ADMIN">Admin</option>
-                                                <option value="USER">User</option>
-                                            </select>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="registerVAT" placeholder="Enter Vat"name="vat" required>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="registerVAT">Brand</label>
-                                        <input type="text" class="form-control" id="registerVAT" placeholder="Enter vat"name="vat" required>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <button type="submit" OnClick="changeDisable()" class="btn btn-primary btn-block">Register User</button>
+
+                                        <div class="form-group">
+                                            <button type="submit" OnClick="changeDisable()" class="btn btn-primary btn-block">Register User</button>
+                                        </div>
+
+
                                     </div>
 
                                 </form>

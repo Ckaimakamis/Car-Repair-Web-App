@@ -120,7 +120,7 @@
 </nav>
 
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" id="worker">
     <div class="row content">
         <h2>${errorMessage!""}</h2>
 
@@ -149,7 +149,7 @@
     </#if>
     </div>
 </div>    
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center"  >
 
     <h3>Welcome to our Car Services</h3>
 
