@@ -1,46 +1,40 @@
 package com.coding.school.webapp.carRepair.Model;
 
-import com.coding.school.webapp.carRepair.Domain.Repair;
-
-import java.sql.Timestamp;
-
 public class RepairRegisterForm {
 
-    private Timestamp dateTime;
-    private Repair.RepairType type;
-    private Repair.RepairStage stage;
-    private double cost;
-    private String operations;
+  private String date;
 
-    public Timestamp getDateTime() {
-        return dateTime;
+  private String time;
+
+  private String cost;
+
+  private String operations;
+
+  private String repairStage;
+
+  private String repairType;
+
+    public String getDate() {
+        return date;
     }
 
-    public void setDateTime(Timestamp dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public Repair.RepairType getType() {
-        return type;
+    public String getTime() {
+        return time;
     }
 
-    public void setType(Repair.RepairType type) {
-        this.type = type;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public Repair.RepairStage getStage() {
-        return stage;
-    }
-
-    public void setStage(Repair.RepairStage stage) {
-        this.stage = stage;
-    }
-
-    public double getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 
@@ -52,6 +46,19 @@ public class RepairRegisterForm {
         this.operations = operations;
     }
 
+    public String getRepairStage() {
+        return repairStage;
+    }
 
+    public void setRepairStage(String repairStage) {
+        this.repairStage = repairStage;
+    }
 
+    public String getRepairType() {
+        return repairType;
+    }
+
+    public void setRepairType(String repairType) {
+        this.repairType = repairType;
+    }
 }

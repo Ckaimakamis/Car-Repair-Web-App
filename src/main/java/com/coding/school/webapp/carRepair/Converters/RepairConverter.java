@@ -6,32 +6,42 @@ import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 public class RepairConverter {
 
 
-    public static Repair buildRepairObject(RepairRegisterForm registrationForm){
-
+    public static Repair buildRepairObject(RepairRegisterForm registrationForm) {
         Repair repair = new Repair();
-        repair.setCost(registrationForm.getCost());
-        repair.setDateTime(registrationForm.getDateTime());
+        repair.setCost(Double.parseDouble(registrationForm.getCost()));
         repair.setOperations(registrationForm.getOperations());
-        repair.setStage(registrationForm.getStage());
-        if(registrationForm.getType().equals("BIG")||registrationForm.getType().equals("big")){
-            repair.setType(Repair.RepairType.BIG);
-        }else{
-            repair.setType(Repair.RepairType.SMALL);
-        }
-
-        if(registrationForm.getStage().equals("PENDING")||registrationForm.getStage().equals("pending")){
-            repair.setStage(Repair.RepairStage.PENDING);
-        }else if (registrationForm.getStage().equals("IN_PROGRESS")||registrationForm.getStage().equals("in_progress")){
-            repair.setStage(Repair.RepairStage.IN_PROGRESS);
-        }
-        else{
-            repair.setStage(Repair.RepairStage.DONE);
-        }
-
+        repair.setStage(repairStageConvert(registrationForm.getRepairStage()));
+        repair.setType(repairTypeConvert(registrationForm.getRepairType()));
+//        repair.setDateTime(); TODO see orestes answer at slack
         return repair;
     }
 
+    public static Repair.RepairType repairTypeConvert(String type) {
+        Repair.RepairType repairType = null;
+        switch (type) {
+            case "SMALL":
+                repairType = Repair.RepairType.SMALL;
+                break;
+            case "BIG":
+                repairType = Repair.RepairType.BIG;
+                break;
+        }
+        return repairType;
+    }
+
+    public static Repair.RepairStage repairStageConvert(String stage){
+        Repair.RepairStage repairStage = null;
+        switch (stage){
+            case "PENDING":
+                repairStage = Repair.RepairStage.PENDING;
+                break;
+            case "IN_PROGRESS":
+                repairStage = Repair.RepairStage.IN_PROGRESS;
+                break;
+            case "DONE":
+                repairStage = Repair.RepairStage.DONE;
+                break;
+        }
+        return repairStage;
+    }
 }
-/*  public enum RepairStage {
-        PENDING, IN_PROGRESS, DONE;
-    } */

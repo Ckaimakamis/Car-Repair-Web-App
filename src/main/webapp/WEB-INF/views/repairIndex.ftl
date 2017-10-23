@@ -44,7 +44,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="register" accept-charset="UTF-8" id="login-nav" name="createRepair">
+                                <form class="form" role="form" method="post" action="/admin/registerRepair" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Date</label>
@@ -52,18 +52,23 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label class="sr-only" for="time">Time</label>
+                                        <input type="text" class="form-control" id="time" name="time" placeholder="hh:mm" required/>
+                                    </div>
+
+                                    <div class="form-group">
                                             <label class="sr-only" for="registerVAT">Cost</label>
-                                            <input type="text" class="form-control" id="registerVAT" placeholder="Enter COST"name="vat" required>
+                                            <input type="text" class="form-control" id="cost" placeholder="Enter COST"name="cost" required>
                                     </div>
 
                                     <div class="form-group">
                                             <label class="sr-only" for="registerVAT">Operations</label>
-                                            <input type="text" class="form-control" id="registerVAT" placeholder="Enter Work"name="vat" required>
+                                            <input type="text" class="form-control" id="operations" placeholder="Enter Work"name="operations" required>
                                     </div>
 
 
                                     <div class="form-group">
-                                            <select id="searchType" name="searchType">
+                                            <select id="repairStage" name="repairStage">
                                                 <option value="PENDING">pending</option>
                                                 <option value="IN_PROGRESS">in progress</option>
                                                 <option value="DONE">done</option>
@@ -71,7 +76,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <select id="searchType" name="searchType">
+                                            <select id="repairType" name="repairType">
                                                 <option value="SMALL">small</option>
                                                 <option value="BIG">big</option>
                                             </select>
@@ -98,7 +103,7 @@
                             <div class="col-md-12">
 
 
-                                <form class="form" role="form" method="post" action="/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
+                                <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="email">Vat</label>

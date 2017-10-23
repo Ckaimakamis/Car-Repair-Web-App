@@ -63,7 +63,7 @@ public class RepairController {
         return "repairIndex";
     }
 
-    @RequestMapping(value = "/registerRepair", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/registerRepair", method = RequestMethod.POST)
     public String registerVehicle(@Valid @ModelAttribute(REPAIR_REGISTER_FORM ) RepairRegisterForm registrationForm, BindingResult bindingResult,
                           HttpSession session, RedirectAttributes redirectAttributes){
 
@@ -72,7 +72,7 @@ public class RepairController {
             redirectAttributes.addFlashAttribute("errorMessage", message);
         }else{
             try{
-                Repair repair=RepairConverter.buildRepairObject(registrationForm);
+                Repair repair = RepairConverter.buildRepairObject(registrationForm);
                 repairService.registerRepair(repair);
                 redirectAttributes.addFlashAttribute("message", "repair "+ repair.getOperations()
                         + " " + repair.getOperations() + " successfully inserted! :)");
@@ -87,7 +87,7 @@ public class RepairController {
     }
 
 
-    @RequestMapping(value = "/searchRepair", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/searchRepair", method = RequestMethod.POST)
     public String doSearch(@ModelAttribute(SEARCH_FORM) SearchRepairForm searchRepairForm,
                            HttpSession session,
                            RedirectAttributes redirectAttributes) throws ParseException {
@@ -132,7 +132,7 @@ public class RepairController {
 
         redirectAttributes.addFlashAttribute(REPAIRS, repairsByDate);
 
-        return "redirect:/admin/repair";
+        return "redirect:/admin/repairs";
     }
 
 }
