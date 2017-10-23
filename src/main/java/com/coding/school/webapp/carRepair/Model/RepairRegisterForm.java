@@ -2,13 +2,16 @@ package com.coding.school.webapp.carRepair.Model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 public class RepairRegisterForm {
 
     private static final String COST_PATTERN = "[0-9]+([,.][0-9]{1,2})?";
 
-    private String date;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime date;
 
     @NotNull(message = "{register.date.null}")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
