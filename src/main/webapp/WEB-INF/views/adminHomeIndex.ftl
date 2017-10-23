@@ -44,7 +44,7 @@
                     <li>
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form" role="form" method="post" action="/registerRepair" accept-charset="UTF-8" id="login-nav" name="user">
+                                <form class="form" role="form" method="post" action="/admin/registerOwner" accept-charset="UTF-8" id="login-nav" name="user">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Username</label>
@@ -101,7 +101,7 @@
                         <div class="row">
                             <div class="col-md-12">
 
-                                <form class="form" role="form" method="post" action="/searchOwner" accept-charset="UTF-8" id="login-nav" name = "searchForm">
+                                <form class="form" role="form" method="post" action="/admin/searchOwner" accept-charset="UTF-8" id="login-nav" name = "searchForm">
                                     <div class="form-group">
                                         <label class="sr-only" for="email">Email</label>
                                         <input type="text" class="form-control" id="searchEmail" placeholder="Enter Email or VAT"name="email" required>
@@ -142,19 +142,19 @@
 
 </body>
 
-<#--<script language="JavaScript">-->
+<script language="JavaScript">
 
-    <#--var roleSelect = document.getElementById("roleSelect");-->
-    <#--var role = $('input[name="role"]');-->
+    var roleSelect = document.getElementById("roleSelect");
+    var role = $('input[name="role"]');
 
-    <#--roleSelect.addEventListener('click', function() {-->
-        <#--role.attr('value', roleSelect.options[roleSelect.selectedIndex].value);-->
-    <#--})-->
+    roleSelect.addEventListener('click', function() {
+        role.attr('value', roleSelect.options[roleSelect.selectedIndex].value);
+    })
 
-    <#--function changeDisable() {-->
-        <#--role.attr('disabled', false);-->
-    <#--}-->
+    function changeDisable() {
+        role.attr('disabled', false);
+    }
 
-<#--</script>-->
+</script>
 
 </html>

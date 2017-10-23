@@ -38,7 +38,7 @@
       <h2>${message!""}</h2>
       <h2 style="color: red">${errorMessage!""}</h2>
     <#if owner??>
-      <form  method="post" action="/editOwner" name="ownerEditForm">
+      <form  method="post" action="/admin/editOwner" name="ownerEditForm">
       
         <div class="container">
           <label><b>Username</b></label>
@@ -95,11 +95,11 @@
 
     function SetDest1() {
         role.attr('disabled', false);
-        document.forms["ownerEditForm"].action = "/editOwner";
+        document.forms["ownerEditForm"].action = "/admin/editOwner";
     }
 
     function SetDest2() {
-        document.forms["ownerEditForm"].action = "/deleteOwner";
+        document.forms["ownerEditForm"].action = "/admin/deleteOwner";
     }
 
 </script>

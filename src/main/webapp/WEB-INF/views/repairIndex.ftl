@@ -77,7 +77,10 @@
                                             </select>
                                     </div>
 
-                                  
+                                    <div class="form-group">
+                                        <label class="sr-only" for="plateNumber">Operations</label>
+                                        <input type="text" class="form-control" id="plateNumber" placeholder="Enter vehicle's Plate" name="plateNumber" required>
+                                    </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Create Repair</button>
@@ -100,35 +103,7 @@
 
                                 <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="email">Vat</label>
-                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter Vat"name="vat" required>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="email">PlateNumber</label>
-                                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter PlateNumber"name="plateNumber" >
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="sr-only" for="date">Date</label>
-                                        <input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" required/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="sr-only" for="dateTo">Date To</label>
-                                        <input type="text" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="sr-only" for="periodSearch">Search</label>
-                                        <input type="checkbox" id="caseSearch" name="caseSearch" value="case search" placeholder="case search"> case search
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="sr-only" for="periodSearch">Search</label>
-                                        <input type="checkbox" id="periodSearch" name="periodSearch" value="period search" placeholder="period search"> period search
-                                    </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
@@ -185,63 +160,63 @@
 </body>
 
 <script>
-//    $(document).ready(function(){
-//        var vatInput = $('input[name="vat"]');
-//        var plateNumberInput=$('input[name="plateNumber"]');
-//
-//        var dateInput = $('input[name="date"]');
-//        var dateToInput=$('input[name="dateTo"]');
-//        var checkboxPeriodSearch = $('input[name="periodSearch"]');
-//        var checkBoxPeriodSearch = document.querySelector("input[name=periodSearch]");
-//
-//        var checkboxCaseSearch = $('input[name="caseSearch"]');
-//        var checkBoxCaseSearch = document.querySelector("input[name=caseSearch]");
-//
-//        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-//        dateInput.datepicker({
-//            format: 'yyyy-mm-dd',
-//            container: container,
-//            todayHighlight: true,
-//            autoclose: true
-//        });
-//        dateToInput.datepicker({
-//            format: 'yyyy-mm-dd',
-//            container: container,
-//            todayHighlight: true,
-//            autoclose: true
-//        });
-//
-//        dateToInput.hide();
-//
-//        checkBoxPeriodSearch.addEventListener('change', function() {
-//            if(this.checked) {
-//                dateToInput.required = true;
-//                dateToInput.show();
-//                dateInput.attr('placeholder', 'Select Date From');
-//                dateToInput.attr('placeholder', 'Select Date To');
-//            } else {
-//                dateToInput.required = false;
-//                dateToInput.hide();
-//                dateInput.attr('placeholder', 'YYYY-MM-DD');
-//            }
-//        });
-//
-//        plateNumberInput.hide();
-//        checkBoxCaseSearch.addEventListener('change', function() {
-//            if(this.checked) {
-//                vatInput.required = false;
-//                plateNumberInput.required = true;
-//                plateNumberInput.show();
-//                vatInput.hide();
-//            } else {
-//                vatInput.required = true;
-//                plateNumberInput.required = false;
-//                plateNumberInput.hide();
-//                vatInput.show();
-//            }
-//        });
-//
-//    })
+    $(document).ready(function(){
+        var vatInput = $('input[name="vat"]');
+        var plateNumberInput=$('input[name="plateNumber"]');
+
+        var dateInput = $('input[name="date"]');
+        var dateToInput=$('input[name="dateTo"]');
+        var checkboxPeriodSearch = $('input[name="periodSearch"]');
+        var checkBoxPeriodSearch = document.querySelector("input[name=periodSearch]");
+
+        var checkboxCaseSearch = $('input[name="caseSearch"]');
+        var checkBoxCaseSearch = document.querySelector("input[name=caseSearch]");
+
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        dateInput.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true
+        });
+        dateToInput.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true
+        });
+
+        dateToInput.hide();
+
+        checkBoxPeriodSearch.addEventListener('change', function() {
+            if(this.checked) {
+                dateToInput.required = true;
+                dateToInput.show();
+                dateInput.attr('placeholder', 'Select Date From');
+                dateToInput.attr('placeholder', 'Select Date To');
+            } else {
+                dateToInput.required = false;
+                dateToInput.hide();
+                dateInput.attr('placeholder', 'YYYY-MM-DD');
+            }
+        });
+
+        plateNumberInput.hide();
+        checkBoxCaseSearch.addEventListener('change', function() {
+            if(this.checked) {
+                vatInput.required = false;
+                plateNumberInput.required = true;
+                plateNumberInput.show();
+                vatInput.hide();
+            } else {
+                vatInput.required = true;
+                plateNumberInput.required = false;
+                plateNumberInput.hide();
+                vatInput.show();
+            }
+        });
+
+    })
 
 </script>
 

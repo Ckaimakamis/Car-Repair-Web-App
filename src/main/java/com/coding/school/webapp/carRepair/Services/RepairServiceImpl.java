@@ -51,9 +51,10 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public void registerRepair(Repair repair) throws AuthenticationException {
-        Repair existedRepair= repairRepository.findByOperations(repair.getOperations());
-        if(existedRepair== null){
+    public void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException {
+        Repair existedRepair = repairRepository.findByOperations(repair.getOperations());
+        if(existedRepair == null){
+            repair.setVehicle(vehicle);
             repairRepository.save(repair);
            }else {
                throw new RepairExistException("Repair already exists!");

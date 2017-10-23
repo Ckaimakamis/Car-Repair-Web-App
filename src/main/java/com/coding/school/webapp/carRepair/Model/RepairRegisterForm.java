@@ -6,33 +6,25 @@ import java.time.LocalDateTime;
 
 public class RepairRegisterForm {
 
-  private String date;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime date;
 
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private LocalDateTime time;
+    private String cost;
 
-  private String cost;
+    private String operations;
 
-  private String operations;
+    private String repairStage;
 
-  private String repairStage;
+    private String repairType;
 
-  private String repairType;
+    private String plateNumber;
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
     }
 
     public String getCost() {
@@ -65,5 +57,13 @@ public class RepairRegisterForm {
 
     public void setRepairType(String repairType) {
         this.repairType = repairType;
+    }
+
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
     }
 }
