@@ -3,6 +3,7 @@ package com.coding.school.webapp.carRepair.Domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
 public class Repair {
@@ -30,8 +31,21 @@ public class Repair {
     private double cost;
 
     private String operations;
+
     @ManyToOne(optional = false/*, cascade = CascadeType.MERGE*/)
     private Vehicle vehicle;
+
+
+    @OneToMany(mappedBy = "repair")
+    private Collection<Parts> parts;
+
+    public Collection<Parts> getParts() {
+        return parts;
+    }
+
+    public void setParts(Collection<Parts> parts) {
+        this.parts = parts;
+    }
 
     public Long getID() {
         return ID;
