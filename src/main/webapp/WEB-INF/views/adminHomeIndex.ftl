@@ -117,8 +117,9 @@
                     </li>
                 </ul>
             </li>
+            <div class="navbar-brand right-container">
 
-            <li class="LogOut"><a href="/logout">Log Out</a></li>
+            <li class="LogOut" id="logout"><a href="/logout">Log Out</a></li> </div>
         </ul>
     </div>
 </nav>
