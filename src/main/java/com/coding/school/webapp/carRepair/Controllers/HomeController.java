@@ -29,6 +29,8 @@ public class HomeController {
 
     private static final String VEHICLE = "vehicle";
 
+    private static final int NUMBER_OF_REPAIRS = 10;
+
     @Autowired
     RepairService repairService;
 
@@ -41,6 +43,9 @@ public class HomeController {
     @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
     String homePage(Model model, HttpSession session){
 
+        List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+
+        model.addAttribute(REPAIR_DATA, repairs);
         model.addAttribute(SEARCH_FORM, new SearchForm());
         return "adminHomeIndex";
     }

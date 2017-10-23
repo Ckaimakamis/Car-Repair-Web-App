@@ -36,7 +36,6 @@
         <table class="table">
             <thead>
             <tr>
-            <#--<th>#</th>-->
                 <th>Date Time</th>
                 <th>Type</th>
                 <th>Operations</th>
@@ -47,7 +46,6 @@
             <tbody>
             <#list repairs as newRepair>
             <tr>
-            <#--<th scope="row">1</th>-->
                 <td>${newRepair.dateTime}</td>
                 <td>${newRepair.type}</td>
                 <td>${newRepair.operations}</td>
