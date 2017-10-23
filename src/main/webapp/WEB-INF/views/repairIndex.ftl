@@ -47,8 +47,8 @@
                                 <form class="form" role="form" method="post" action="register" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="registerLastName">Surname</label>
-                                        <input type="text" class="form-control" id="registerLastName" placeholder="Enter First Name"name="firstName" required>
+                                        <label class="sr-only" for="date">Date</label>
+                                        <input type="text" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" required/>
                                     </div>
 
                                     <div class="form-group">

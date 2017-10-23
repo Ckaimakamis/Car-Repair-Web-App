@@ -39,9 +39,9 @@ public class RepairServiceImpl implements RepairService {
     public Repair findByType(Repair.RepairType type){
         return   repairRepository.findByType(type);
        }
+
     @Override
     public Repair findByDateTime (Timestamp dateTime){
-
         return repairRepository.findByDateTime(dateTime);
     }
 
@@ -52,12 +52,11 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public void registerRepair(Repair repair) throws AuthenticationException {
-        Repair existedRepair= repairRepository.findOne(repair.getID());
+        Repair existedRepair= repairRepository.findByOperations(repair.getOperations());
         if(existedRepair== null){
             repairRepository.save(repair);
            }else {
                throw new RepairExistException("Repair already exists!");
            }
        }
-
 }

@@ -25,4 +25,5 @@ public interface RepairService {
     Repair findByDateTime (Timestamp dateTime);
 
    List<Repair> findByVehicle(Vehicle vehicle);
+
 }

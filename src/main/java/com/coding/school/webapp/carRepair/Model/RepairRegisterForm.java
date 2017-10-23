@@ -51,4 +51,5 @@ public class RepairRegisterForm {
     public void setOperations(String operations) {
         this.operations = operations;
     }
+
 }

@@ -38,7 +38,7 @@ public class RepairController {
 
     private static final String REPAIRS = "repairs";
 
-    private static final String REGISTER_FORM ="createRepair";
+    private static final String REPAIR_REGISTER_FORM ="createRepair";
 
     @Autowired
     RepairService repairService;
@@ -64,7 +64,7 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/registerRepair", method = RequestMethod.POST)
-    public String addUser(@Valid @ModelAttribute(REGISTER_FORM) RepairRegisterForm registrationForm, BindingResult bindingResult,
+    public String registerVehicle(@Valid @ModelAttribute(REPAIR_REGISTER_FORM ) RepairRegisterForm registrationForm, BindingResult bindingResult,
                           HttpSession session, RedirectAttributes redirectAttributes){
 
         if (bindingResult.hasErrors()) {
@@ -76,7 +76,7 @@ public class RepairController {
                 repairService.registerRepair(repair);
                 redirectAttributes.addFlashAttribute("message", "repair "+ repair.getOperations()
                         + " " + repair.getOperations() + " successfully inserted! :)");
-            }catch (Exception e){
+            }catch(Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
         }
