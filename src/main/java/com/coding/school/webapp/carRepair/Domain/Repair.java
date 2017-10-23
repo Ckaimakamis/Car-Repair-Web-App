@@ -2,7 +2,7 @@ package com.coding.school.webapp.carRepair.Domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 public class Repair {
@@ -13,7 +13,7 @@ public class Repair {
 
     @NotNull
     @Column(nullable = false)
-    private Timestamp dateTime;
+    private LocalDateTime dateTime;
 
     @NotNull
     @Enumerated(value = EnumType.STRING)
@@ -41,11 +41,11 @@ public class Repair {
         this.ID = ID;
     }
 
-    public Timestamp getDateTime() {
+    public LocalDateTime getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Timestamp dateTime) {
+    public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
 
