@@ -2,22 +2,32 @@ package com.coding.school.webapp.carRepair.Model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 public class RepairRegisterForm {
 
-  private String date;
+    private static final String COST_PATTERN = "[0-9]+([,.][0-9]{1,2})?";
 
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private LocalDateTime time;
+    private String date;
 
-  private String cost;
+    @NotNull(message = "{register.date.null}")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime time;
 
-  private String operations;
+    @NotNull(message = "{register.cost.null}")
+    @Pattern(regexp = COST_PATTERN, message = "{register.cost.invalid")
+    private String cost;
 
-  private String repairStage;
+    @NotNull(message = "{register.operations.null}")
+    private String operations;
 
-  private String repairType;
+    @NotNull(message = "{register.stage.null}")
+    private String repairStage;
+
+    @NotNull(message = "{register.repairType.null}")
+    private String repairType;
 
     public String getDate() {
         return date;
