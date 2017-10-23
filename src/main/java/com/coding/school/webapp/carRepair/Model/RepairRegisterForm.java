@@ -1,10 +1,15 @@
 package com.coding.school.webapp.carRepair.Model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
+
 public class RepairRegisterForm {
 
   private String date;
 
-  private String time;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private LocalDateTime time;
 
   private String cost;
 
@@ -22,11 +27,11 @@ public class RepairRegisterForm {
         this.date = date;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

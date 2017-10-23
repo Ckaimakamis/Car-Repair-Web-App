@@ -50,9 +50,6 @@ public class RepairController {
     @Autowired
     VehicleService vehicleService;
 
-
-
-
     @Autowired
     private MessageSource messageSource;
 

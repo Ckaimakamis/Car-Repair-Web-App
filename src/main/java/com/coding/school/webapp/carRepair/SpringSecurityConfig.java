@@ -41,8 +41,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
-//                .and().antMatcher("/login").anonymous();
-//        http.authorizeRequests().antMatchers("/static/css/**").permitAll().anyRequest().permitAll();
                 .and()
                 .authorizeRequests()
                 .antMatchers("/resources/static/css/**", "/resources/static/js/**", "/resources/static/images/**")
