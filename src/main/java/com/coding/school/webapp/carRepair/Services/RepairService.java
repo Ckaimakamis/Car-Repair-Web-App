@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.naming.AuthenticationException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,4 +29,6 @@ public interface RepairService {
     List<Repair> findNextRepairs(int size);
 
     List<Repair> findByVehicle(Vehicle vehicle);
+
+    List<Repair> findOneDayRepairs (LocalDateTime dateTime);
 }

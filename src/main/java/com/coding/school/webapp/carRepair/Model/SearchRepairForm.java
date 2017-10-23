@@ -1,6 +1,8 @@
 package com.coding.school.webapp.carRepair.Model;
 
-import java.sql.Timestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 public class SearchRepairForm {
 
@@ -8,9 +10,11 @@ public class SearchRepairForm {
 
     private String plateNumber;
 
-    private String date;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime date;
 
-    private String dateTo;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime dateTo;
 
     private String periodSearch;
 
@@ -30,11 +34,11 @@ public class SearchRepairForm {
         this.periodSearch = periodSearch;
     }
 
-    public String getDateTo() {
+    public LocalDateTime getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(String dateTo) {
+    public void setDateTo(LocalDateTime dateTo) {
         this.dateTo = dateTo;
     }
 
@@ -46,11 +50,11 @@ public class SearchRepairForm {
         this.vat = vat;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

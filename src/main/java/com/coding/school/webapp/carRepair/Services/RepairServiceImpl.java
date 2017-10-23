@@ -1,5 +1,6 @@
 package com.coding.school.webapp.carRepair.Services;
 
+import com.coding.school.webapp.carRepair.Converters.RepairConverter;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Exceptions.RepairExistException;
@@ -68,10 +69,16 @@ public class RepairServiceImpl implements RepairService {
         if(existedRepair == null){
             repair.setVehicle(vehicle);
             repairRepository.save(repair);
-           }else {
-               throw new RepairExistException("Repair already exists!");
-           }
+        }else {
+            throw new RepairExistException("Repair already exists!");
+        }
+    }
 
+    @Override
+    public List<Repair> findOneDayRepairs (LocalDateTime dateTime){
+        LocalDateTime startOfDay = RepairConverter.getStartOfDay(dateTime);
+        LocalDateTime endOfDay = RepairConverter.getEndOfDay(dateTime);
 
-       }
+        return repairRepository.findOneDayRepairs(startOfDay, endOfDay);
+    }
 }

@@ -2,6 +2,10 @@ package com.coding.school.webapp.carRepair.Converters;
 
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
+import org.apache.tomcat.jni.Local;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class RepairConverter {
 
@@ -16,7 +20,7 @@ public class RepairConverter {
         return repair;
     }
 
-    public static Repair.RepairType repairTypeConvert(String type) {
+    private static Repair.RepairType repairTypeConvert(String type) {
         Repair.RepairType repairType = null;
         switch (type) {
             case "SMALL":
@@ -29,7 +33,7 @@ public class RepairConverter {
         return repairType;
     }
 
-    public static Repair.RepairStage repairStageConvert(String stage){
+    private static Repair.RepairStage repairStageConvert(String stage){
         Repair.RepairStage repairStage = null;
         switch (stage){
             case "PENDING":
@@ -43,5 +47,19 @@ public class RepairConverter {
                 break;
         }
         return repairStage;
+    }
+
+    public static LocalDateTime getStartOfDay(LocalDateTime dateTime){
+        String str = dateTime.toString();
+        String[] string = str.split("T");
+        String startStr = string[0] + "T" + "00:01";
+        return LocalDateTime.parse(startStr);
+    }
+
+    public static LocalDateTime getEndOfDay(LocalDateTime dateTime){
+        String str = dateTime.toString();
+        String[] string = str.split("T");
+        String endStr = string[0] + "T" + "23:59";
+        return LocalDateTime.parse(endStr);
     }
 }
