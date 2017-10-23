@@ -12,7 +12,7 @@ public class RepairConverter {
         repair.setOperations(registrationForm.getOperations());
         repair.setStage(repairStageConvert(registrationForm.getRepairStage()));
         repair.setType(repairTypeConvert(registrationForm.getRepairType()));
-        repair.setDateTime(registrationForm.getDate());
+        repair.setDateTime(registrationForm.getDateTime());
         return repair;
     }
 

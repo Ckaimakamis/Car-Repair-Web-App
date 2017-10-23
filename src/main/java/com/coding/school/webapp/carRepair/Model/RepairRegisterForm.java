@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class RepairRegisterForm {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime date;
+    private LocalDateTime dateTime;
 
     private String cost;
 
@@ -19,12 +19,12 @@ public class RepairRegisterForm {
 
     private String plateNumber;
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public String getCost() {

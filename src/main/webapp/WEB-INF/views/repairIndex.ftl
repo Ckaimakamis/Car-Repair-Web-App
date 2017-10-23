@@ -47,8 +47,8 @@
                                 <form class="form" role="form" method="post" action="/admin/registerRepair" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
-                                        <label class="sr-only" for="date">Date</label>
-                                        <input type="datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" required/>
+                                        <label class="sr-only" for="dateTime">Date</label>
+                                        <input type="datetime-local" class="form-control" id="dateTime" name="dateTime" required/>
                                     </div>
 
                                     <div class="form-group">
