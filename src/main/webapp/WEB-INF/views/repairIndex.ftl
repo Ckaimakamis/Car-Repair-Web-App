@@ -101,34 +101,36 @@
                             <div class="col-md-12">
 
 
-                                <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
+                                <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm"/>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Date</label>
-                                        <input type= "datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD">
+                                        <input type= "datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="dateTo">DateTo</label>
-                                        <input type= "datetime-local" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD">
+                                        <input type= "datetime-local" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="vat">Vat</label>
-                                        <input type= "text" class="form-control" id="vat" name="vat" placeholder="Vat">
+                                        <input type= "text" class="form-control" id="vat" name="vat" placeholder="Vat" />
                                     </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="plateNumber">plateNumber</label>
-                                        <input type= "text" class="form-control" id="plateNumber" name="plateNumber" placeholder="Plate Number">
+                                        <input type= "text" class="form-control" id="plateNumberSearch" name="plateNumber" placeholder="Plate Number"/>
                                     </div>
 
                                     <select id="searchType">
-                                        <option value="date">By Date</option>
-                                        <option value="period">By Period</option>
-                                        <option value="vat">By owner's VAT</option>
-                                        <option value="plate">By vehicle's Plate</option>
+                                        <option value="dateSel">By Date</option>
+                                        <option value="periodSel">By Period</option>
+                                        <option value="vatSel">By owner's VAT</option>
+                                        <option value="plateNumberSel">By vehicle's Plate</option>
                                     </select>
+
+                                    </br>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
@@ -193,22 +195,44 @@
 
     $(document).ready(function(){
         var searchType = document.getElementById("searchType");
-        searchType.addEventListener('click', function() {
+        var date = $('#date');
+        var dateTo = $('#dateTo');
+        var vat = $('#vat');
+        var plateNumber = $('#plateNumberSearch');
+
+        dateTo.hide();
+        vat.hide();
+        plateNumber.hide();
+
+        searchType.addEventListener("click", function() {
+            console.log(searchType.options[searchType.selectedIndex].value);
             switch(searchType.options[searchType.selectedIndex].value) {
-                case 'date':
-
+                case 'dateSel':
+                    date.show();
+                    dateTo.hide();
+                    vat.hide();
+                    plateNumber.hide();
                     break;
-                case 'period':
-
+                case 'periodSel':
+                    date.show();
+                    dateTo.show();
+                    vat.hide();
+                    plateNumber.hide();
                     break;
-                case 'vat':
-
+                case 'vatSel':
+                    date.hide();
+                    dateTo.hide();
+                    vat.show();
+                    plateNumber.hide();
                     break;
-                case 'plate':
-
+                case 'plateNumberSel':
+                    date.hide();
+                    dateTo.hide();
+                    vat.hide();
+                    plateNumber.show();
                     break;
             }
-        }
+        })
     })
 
 </script>

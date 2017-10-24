@@ -37,7 +37,7 @@
         <h2>${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     <#if repairs??>
-        <form  method="post" action="/admin/editRepair" name="repairEditForm"><#--TODO make an endpoint for this-->
+        <form  method="post" action="/admin/editRepair" name="repairEditForm">
             <#list repairs as repair>
             <div class="imgcontainer">
                 <img src="img_avatar2.png" alt="Avatar" class="avatar">
