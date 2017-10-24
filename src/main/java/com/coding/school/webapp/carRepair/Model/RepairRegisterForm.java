@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class RepairRegisterForm {
 
@@ -29,6 +30,8 @@ public class RepairRegisterForm {
     private String repairType;
 
     private String plateNumber;
+
+    private List<PartsForm> partsForms;
 
     public LocalDateTime getDateTime() {
         return dateTime;

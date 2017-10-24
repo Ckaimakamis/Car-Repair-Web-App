@@ -81,11 +81,8 @@
                                                 <option value="BIG">big</option>
                                             </select>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label class="sr-only" for="plateNumber">Operations</label>
-                                        <input type="text" class="form-control" id="plateNumber" placeholder="Enter vehicle's Plate" name="plateNumber" required>
-                                    </div>
+                                     <div id="extra-repairs"></div>
+                                     <button type="button" class="addService"><span class="glyphicon glyphicon-plus"></span></button>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Create Repair</button>
