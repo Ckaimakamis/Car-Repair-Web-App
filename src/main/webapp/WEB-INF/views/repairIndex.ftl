@@ -110,8 +110,32 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Date</label>
-                                        <input type= "datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD">
+                                        <input type= "datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD"/>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" for="dateTo">DateTo</label>
+                                        <input type= "datetime-local" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" for="vat">Vat</label>
+                                        <input type= "text" class="form-control" id="vat" name="vat" placeholder="Vat" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" for="plateNumber">plateNumber</label>
+                                        <input type= "text" class="form-control" id="plateNumberSearch" name="plateNumber" placeholder="Plate Number"/>
+                                    </div>
+
+                                    <select id="searchType" name="searchType">
+                                        <option value="dateSel">By Date</option>
+                                        <option value="periodSel">By Period</option>
+                                        <option value="vatSel">By owner's VAT</option>
+                                        <option value="plateNumberSel">By vehicle's Plate</option>
+                                    </select>
+
+                                    </br>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
