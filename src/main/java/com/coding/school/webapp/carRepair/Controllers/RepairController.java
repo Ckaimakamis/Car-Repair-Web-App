@@ -1,11 +1,13 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
 import com.coding.school.webapp.carRepair.Converters.RepairConverter;
+import com.coding.school.webapp.carRepair.Converters.VehicleConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 import com.coding.school.webapp.carRepair.Model.SearchRepairForm;
+import com.coding.school.webapp.carRepair.Model.VehicleRegisterForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import com.coding.school.webapp.carRepair.Services.RepairService;
 import com.coding.school.webapp.carRepair.Services.VehicleService;
@@ -34,11 +36,12 @@ public class RepairController {
 
     private static final String REPAIRS = "repairs";
 
-    private static final String REPAIR_REGISTER_FORM ="createRepair";
+    private static final String REPAIR_REGISTER_FORM = "createRepair";
+
+    private static final String REPAIR_EDIT_FORM = "repairEditForm";
 
     @Autowired
     RepairService repairService;
-
 
     @Autowired
     OwnerService ownerService;
@@ -91,13 +94,45 @@ public class RepairController {
 
     @RequestMapping(value = "/admin/searchRepair", method = RequestMethod.POST)
     public String doSearch(@ModelAttribute(SEARCH_FORM) SearchRepairForm searchRepairForm,
-                           HttpSession session,
                            RedirectAttributes redirectAttributes) throws ParseException {
 
-        List<Repair> repairs = repairService.findOneDayRepairs(searchRepairForm.getDate());
-        redirectAttributes.addFlashAttribute(REPAIRS, repairs);
+        List<Repair> repairs = new ArrayList<>();
+        Owner owner = ownerService.findByVat(searchRepairForm.getVat());
+        Vehicle vehicle = vehicleService.findByPlateNumber(searchRepairForm.getPlateNumber());
 
+        switch (searchRepairForm.getSearchType()) {
+            case "dateSel":
+                repairs = repairService.findOneDayRepairs(searchRepairForm.getDate());
+                break;
+            case "periodSel":
+                repairs = repairService.findManyDaysRepairs(searchRepairForm.getDate(), searchRepairForm.getDateTo());
+                break;
+            case "vatSel":
+                repairs = new ArrayList<>(owner.getVehicle().getRepairs());
+                break;
+            case "plateNumberSel":
+                repairs = new ArrayList<>(vehicle.getRepairs());
+                break;
+        }
+
+        if(repairs.size() == 0){
+            redirectAttributes.addFlashAttribute("errorMessage", "Repairs not found!");
+        }else{
+            redirectAttributes.addFlashAttribute(REPAIRS, repairs);
+        }
         return "redirect:/admin/searchRepair";
     }
 
+    @RequestMapping(value = "/admin/editRepair", method = RequestMethod.POST)
+    String editRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm updateForm, RedirectAttributes redirectAttributes){
+
+        try{
+            repairService.updateRepair(RepairConverter.buildRepairObject(updateForm));
+            redirectAttributes.addFlashAttribute("message", "Repair Updated :)");
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nRepair was not updated!");
+        }
+
+        return "redirect:/admin/repairs";
+    }
 }

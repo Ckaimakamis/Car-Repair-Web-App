@@ -37,20 +37,21 @@
         <h2>${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     <#if repairs??>
-        <form  method="post" action="/admin/editRepair" name="repairEditForm"><#--TODO make an endpoint for this-->
+        <form  method="post" action="/admin/editRepair" name="repairEditForm">
             <#list repairs as repair>
             <div class="imgcontainer">
                 <img src="img_avatar2.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
+                <input class="ID" type="text" id="ID" name="ID" value=${repair.ID}/>
                 <label><b>Enter Date</b></label>
                 </br>
-                <input type="text" id="date" placeholder="date" name="date" value=${repair.dateTime} required>
+                <input type="datetime-local" id="dateTime" placeholder="dateTime" name="dateTime" value=${repair.dateTime} required>
                 </br>
                 <label><b>Enter Repair Type</b></label>
                 </br>
-                <input type="text" id="type" placeholder="repair type" name="type" value=${repair.type} required disabled>
+                <input type="text" id="repairType" placeholder="repair type" name="repairType" value=${repair.type} required readonly="readonly">
                 </br>
                 <select id="typeSelect" name="typeSelect">
                     <option value="SMALL">small</option>
@@ -59,7 +60,7 @@
                 </br>
                 <label><b>Enter Repair Stage</b></label>
                 </br>
-                <input type="text" id="stage" placeholder="repair stage" name="stage" value=${repair.stage} required disabled>
+                <input type="text" id="repairStage" placeholder="repair stage" name="repairStage" value=${repair.stage} required readonly="readonly">
                 </br>
                 <select id="stageSelect" name="stageSelect">
                     <option value="PENDING">pending</option>
@@ -77,7 +78,7 @@
                 </br>
                 <label><b>Vehicle</b></label>
                 </br>
-                <input type="text" id="vehicle" placeholder="vehicle" name="vehicle" value=${repair.vehicle.plateNumber} required>
+                <input type="text" id="vehiplateNumbercle" placeholder="plateNumber" name="plateNumber" value=${repair.vehicle.plateNumber} required>
                 </br>
                 <button type="submit" class=".btn-primary" OnClick="SetDest1()">Update</button>
 
@@ -94,15 +95,9 @@
 </body>
 <script language="JavaScript">
 
-    function SetDest1() {
-        document.forms["repairEditForm"].action = "/editRepair";
-    }
-    function SetDest2() {
-        document.forms["repairEditForm"].action = "/deleteRepair";
-    }
-
     var typeSelect = document.getElementById("typeSelect");
     var type = $('input[name="type"]');
+    $('.ID').hide();
 
     var stageSelect = document.getElementById("stageSelect");
     var stage = $('input[name="stage"]');
@@ -114,6 +109,15 @@
     stageSelect.addEventListener('click', function() {
         stage.attr('value', stageSelect.options[stageSelect.selectedIndex].value);
     })
+
+    function SetDest1() {
+        type.disabled = false;
+        stage.disabled = false;
+        document.forms["repairEditForm"].action = "/admin/editRepair";
+    }
+    function SetDest2() {
+        document.forms["repairEditForm"].action = "/admin/editRepair";
+    }
 
 </script>
 </html>

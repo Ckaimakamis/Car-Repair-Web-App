@@ -12,6 +12,9 @@ public class RepairConverter {
 
     public static Repair buildRepairObject(RepairRegisterForm registrationForm) {
         Repair repair = new Repair();
+        if(!(registrationForm.getID() == null || registrationForm.getID().equals(""))){
+            repair.setID(Long.parseLong(registrationForm.getID().split("/")[0]));
+        }
         repair.setCost(Double.parseDouble(registrationForm.getCost()));
         repair.setOperations(registrationForm.getOperations());
         repair.setStage(repairStageConvert(registrationForm.getRepairStage()));

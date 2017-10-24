@@ -16,7 +16,7 @@ public class SearchRepairForm {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTo;
 
-    private String periodSearch;
+    private String searchType;
 
     public String getPlateNumber() {
         return plateNumber;
@@ -24,14 +24,6 @@ public class SearchRepairForm {
 
     public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
-    }
-
-    public String getPeriodSearch() {
-        return periodSearch;
-    }
-
-    public void setPeriodSearch(String periodSearch) {
-        this.periodSearch = periodSearch;
     }
 
     public LocalDateTime getDateTo() {
@@ -58,5 +50,11 @@ public class SearchRepairForm {
         this.date = date;
     }
 
+    public String getSearchType() {
+        return searchType;
+    }
 
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
+    }
 }

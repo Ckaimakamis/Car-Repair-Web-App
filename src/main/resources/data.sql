@@ -8,7 +8,7 @@ INSERT INTO carRepair.vehicle (color, model, plate_number, year, owner_id) VALUE
 INSERT INTO carRepair.vehicle (color, model, plate_number, year, owner_id) VALUES ('blue', 'mercedes', 'BND-5555', '2014', 3);
 INSERT INTO carRepair.vehicle (color, model, plate_number, year, owner_id) VALUES ('magenta', 'ford', 'TVY-5587', '2017', 4);
 
-INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_id) VALUES (50, '2017-10-25 15:50:45', 'oils', 'PENDING', 'SMALL', 1);
+INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_id) VALUES (50, '2017-10-26 15:50:45', 'oils', 'PENDING', 'SMALL', 1);
 INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_id) VALUES (80, '2017-10-25 15:50:45', 'filters', 'IN_PROGRESS', 'SMALL', 2);
 INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_id) VALUES (90, '2017-10-25 15:50:45', 'filters, oils', 'IN_PROGRESS', 'BIG', 3);
 INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_id) VALUES (100, '2017-10-25 15:50:45', 'engine repair', 'DONE', 'BIG', 4);

@@ -10,12 +10,10 @@ public class RepairRegisterForm {
 
     private static final String COST_PATTERN = "[0-9]+([,.][0-9]{1,2})?";
 
+    private String ID;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
-
-    @NotNull(message = "{register.date.null}")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime time;
 
     @NotNull(message = "{register.cost.null}")
     @Pattern(regexp = COST_PATTERN, message = "{register.cost.invalid")
@@ -78,5 +76,13 @@ public class RepairRegisterForm {
 
     public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }
