@@ -78,3 +78,10 @@ footer {
         border-top:0 none;
     }
 }
+#worker{
+    background-image: url(/static/images/worker.png);
+    background-position: center;
+    background-size: 1500px 475px;
+    background-repeat: no-repeat, repeat;
+    padding: 15px;
+}
