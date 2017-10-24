@@ -78,8 +78,8 @@ public class RepairServiceImpl implements RepairService {
     public List<Repair> findOneDayRepairs (LocalDateTime dateTime){
         LocalDateTime startOfDay = RepairConverter.getStartOfDay(dateTime);
         LocalDateTime endOfDay = RepairConverter.getEndOfDay(dateTime);
-
-        return repairRepository.findOneDayRepairs(startOfDay, endOfDay);
+        List<Repair> repairs = repairRepository.findOneDayRepairs(startOfDay, endOfDay);
+        return repairs;
     }
 
     @Override
@@ -94,5 +94,16 @@ public class RepairServiceImpl implements RepairService {
     public void updateRepair(Repair repair) {
         repairRepository.updateRepair(repair.getDateTime(), repair.getType(),
                 repair.getStage(), repair.getCost(), repair.getOperations(), repair.getID());
+    }
+
+    @Override
+    public Repair findRepair(Long id) {
+        Repair repair = repairRepository.findOne(id);
+        return  repair;
+    }
+
+    @Override
+    public void deleteRepair(Repair repair) {
+        repairRepository.delete(repair);
     }
 }

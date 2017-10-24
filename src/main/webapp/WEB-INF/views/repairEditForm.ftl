@@ -36,9 +36,8 @@
     <div class="row content">
         <h2>${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
-    <#if repairs??>
+    <#if repair??>
         <form  method="post" action="/admin/editRepair" name="repairEditForm">
-            <#list repairs as repair>
             <div class="imgcontainer">
                 <img src="img_avatar2.png" alt="Avatar" class="avatar">
             </div>
@@ -85,7 +84,6 @@
                 </br>
                 <button type="submit" class="cancelbtn" OnClick="SetDest2()">Delete </button>
             </div>
-        </#list>
         </form>
 
     </#if>
@@ -116,7 +114,7 @@
         document.forms["repairEditForm"].action = "/admin/editRepair";
     }
     function SetDest2() {
-        document.forms["repairEditForm"].action = "/admin/editRepair";
+        document.forms["repairEditForm"].action = "/admin/deleteRepair";
     }
 
 </script>

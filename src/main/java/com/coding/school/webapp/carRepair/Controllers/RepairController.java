@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,6 +36,8 @@ public class RepairController {
     private static final String SEARCH_FORM = "searchRepairForm";
 
     private static final String REPAIRS = "repairs";
+
+    private static final String REPAIR = "repair";
 
     private static final String REPAIR_REGISTER_FORM = "createRepair";
 
@@ -86,10 +89,16 @@ public class RepairController {
         return "redirect:/admin/repairs";
     }
 
+    @RequestMapping(value = "/admin/showRepair/{id}", method = RequestMethod.GET)
+    public String showRepairEdit(Model model, @PathVariable(value = "id") String id) {
+        Repair repair = repairService.findRepair(Long.parseLong(id.split("/")[0]));
+        model.addAttribute(REPAIR, repair);
+        return "repairEditForm";
+    }
+
     @RequestMapping(value = "/admin/searchRepair", method = RequestMethod.GET)
     public String getSearchView(Model model) {
-
-        return "repairEditForm";
+        return "selectRepairForm";
     }
 
     @RequestMapping(value = "/admin/searchRepair", method = RequestMethod.POST)
@@ -134,5 +143,19 @@ public class RepairController {
         }
 
         return "redirect:/admin/repairs";
+    }
+
+    @RequestMapping(value = "/admin/deleteRepair", method = RequestMethod.POST)
+    String deleteRepair(@Valid @ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm deleteForm, RedirectAttributes redirectAttributes){
+
+        try{
+            Repair repair = repairService.findRepair(Long.parseLong(deleteForm.getID().split("/")[0]));
+            repairService.deleteRepair(repair);
+            redirectAttributes.addFlashAttribute("message", "Repair Deleted :(");
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nRepair was not deleted!");
+        }
+
+        return "redirect:/admin/vehicles";
     }
 }
