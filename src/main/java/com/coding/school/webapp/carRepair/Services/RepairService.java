@@ -35,4 +35,8 @@ public interface RepairService {
     List<Repair> findManyDaysRepairs (LocalDateTime dateFrom , LocalDateTime dateTo);
 
     void updateRepair(Repair repair);
+
+    Repair findRepair(Long id);
+
+    void deleteRepair(Repair repair);
 }
