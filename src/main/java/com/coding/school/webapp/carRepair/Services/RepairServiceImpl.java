@@ -89,4 +89,10 @@ public class RepairServiceImpl implements RepairService {
 
         return repairRepository.findOneDayRepairs(startOfDay, endOfDay);
     }
+
+    @Override
+    public void updateRepair(Repair repair) {
+        repairRepository.updateRepair(repair.getDateTime(), repair.getType(),
+                repair.getStage(), repair.getCost(), repair.getOperations(), repair.getID());
+    }
 }

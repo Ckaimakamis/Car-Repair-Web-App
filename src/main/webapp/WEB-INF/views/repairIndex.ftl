@@ -123,7 +123,7 @@
                                         <input type= "text" class="form-control" id="plateNumberSearch" name="plateNumber" placeholder="Plate Number"/>
                                     </div>
 
-                                    <select id="searchType">
+                                    <select id="searchType" name="searchType">
                                         <option value="dateSel">By Date</option>
                                         <option value="periodSel">By Period</option>
                                         <option value="vatSel">By owner's VAT</option>
