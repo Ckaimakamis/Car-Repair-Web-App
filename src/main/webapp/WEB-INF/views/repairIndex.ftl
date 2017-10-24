@@ -195,63 +195,46 @@
 
 <script>
     $(document).ready(function(){
-        var vatInput = $('input[name="vat"]');
-        var plateNumberInput=$('input[name="plateNumber"]');
+        var searchType = document.getElementById("searchType");
+        var date = $('#date');
+        var dateTo = $('#dateTo');
+        var vat = $('#vat');
+        var plateNumber = $('#plateNumberSearch');
 
-        var dateInput = $('input[name="date"]');
-        var dateToInput=$('input[name="dateTo"]');
-        var checkboxPeriodSearch = $('input[name="periodSearch"]');
-        var checkBoxPeriodSearch = document.querySelector("input[name=periodSearch]");
+        dateTo.hide();
+        vat.hide();
+        plateNumber.hide();
 
-        var checkboxCaseSearch = $('input[name="caseSearch"]');
-        var checkBoxCaseSearch = document.querySelector("input[name=caseSearch]");
-
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-//        dateInput.datepicker({
-//            format: 'yyyy-mm-dd',
-//            container: container,
-//            todayHighlight: true,
-//            autoclose: true
-//        });
-//        dateToInput.datepicker({
-//            format: 'yyyy-mm-dd',
-//            container: container,
-//            todayHighlight: true,
-//            autoclose: true
-//        });
-
-        dateToInput.hide();
-
-        checkBoxPeriodSearch.addEventListener('change', function() {
-            if(this.checked) {
-                dateToInput.required = true;
-                dateToInput.show();
-                dateInput.attr('placeholder', 'Select Date From');
-                dateToInput.attr('placeholder', 'Select Date To');
-            } else {
-                dateToInput.required = false;
-                dateToInput.hide();
-                dateInput.attr('placeholder', 'YYYY-MM-DD');
+        searchType.addEventListener("click", function() {
+            console.log(searchType.options[searchType.selectedIndex].value);
+            switch(searchType.options[searchType.selectedIndex].value) {
+                case 'dateSel':
+                    date.show();
+                    dateTo.hide();
+                    vat.hide();
+                    plateNumber.hide();
+                    break;
+                case 'periodSel':
+                    date.show();
+                    dateTo.show();
+                    vat.hide();
+                    plateNumber.hide();
+                    break;
+                case 'vatSel':
+                    date.hide();
+                    dateTo.hide();
+                    vat.show();
+                    plateNumber.hide();
+                    break;
+                case 'plateNumberSel':
+                    date.hide();
+                    dateTo.hide();
+                    vat.hide();
+                    plateNumber.show();
+                    break;
             }
-        });
-
-        plateNumberInput.hide();
-        checkBoxCaseSearch.addEventListener('change', function() {
-            if(this.checked) {
-                vatInput.required = false;
-                plateNumberInput.required = true;
-                plateNumberInput.show();
-                vatInput.hide();
-            } else {
-                vatInput.required = true;
-                plateNumberInput.required = false;
-                plateNumberInput.hide();
-                vatInput.show();
-            }
-        });
-
+        })
     })
-
     var $newCost = "<select><option value='TIRES'>TIRES</option><option value='BRAKES'>BRAKES</option><option value='FENDER'>FENDER</option><option value='WINDOWS'>WINDOWS</option></select><input type='text' />";
 
     var $el=$('#extra-repairs');
