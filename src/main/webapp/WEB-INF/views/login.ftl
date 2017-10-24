@@ -13,23 +13,10 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <div class="navbar-header">
-                <p class="navbar-brand"id="repairsId">CAR Repairs<p>
-            </div>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-        </div>
-    </div>
-</nav>
-
-<div class="container-fluid text-center">
-    <div class="row content">
+<div class="container-fluid text-center" id="login">
         <form action="/login" method="post" id="loginForm" name="loginForm">
             <div class="imgcontainer">
-                <img src="/images/tsantaki.png" alt="Avatar" class="avatar">
+                <img src="/images/thetida.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
@@ -46,8 +33,8 @@
         </form>
 
 
-    </div>
 </div>
+<footer class="container-fluid text-center"></footer>
 
 </body>
 </html>

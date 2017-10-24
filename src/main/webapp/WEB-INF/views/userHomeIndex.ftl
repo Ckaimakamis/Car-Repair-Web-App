@@ -33,28 +33,6 @@
 
 <div class="container-fluid text-center" id="worker">
     <div class="row content">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Date Time</th>
-                <th>Type</th>
-                <th>Operations</th>
-                <th>Stage</th>
-                <th>Cost</th>
-            </tr>
-            </thead>
-            <tbody align="left">
-            <#list repairs as newRepair>
-            <tr>
-                <td>${newRepair.dateTime}</td>
-                <td>${newRepair.type}</td>
-                <td>${newRepair.operations}</td>
-                <td>${newRepair.stage}</td>
-                <td>${newRepair.cost} $</td>
-            </tr>
-            </#list>
-            </tbody>
-        </table>
 
         <div class="text-center">
         <#if repairs?size == 0>

@@ -155,28 +155,28 @@
     <div class="row content">
         <table class="table">
             <thead>
-            <tr>
-                <th>Date Time</th>
-                <th>Type</th>
-                <th>Operations</th>
-                <th>Stage</th>
-                <th>Cost</th>
-                <th>Plate</th>
-                <th>Vehicle</th>
-                <th>Owner</th>
+            <tr id="headTable">
+                <th style="text-align:center">Date Time</th>
+                <th style="text-align:center">Type</th>
+                <th style="text-align:center">Operations</th>
+                <th style="text-align:center">Stage</th>
+                <th style="text-align:center">Cost</th>
+                <th style="text-align:center">Plate</th>
+                <th style="text-align:center">Vehicle</th>
+                <th style="text-align:center">Owner</th>
             </tr>
             </thead>
-            <tbody align="left">
+            <tbody >
             <#list repairs as newRepair>
-            <tr>
-                <td>${newRepair.dateTime}</td>
-                <td>${newRepair.type}</td>
-                <td>${newRepair.operations}</td>
-                <td>${newRepair.stage}</td>
-                <td>${newRepair.cost} $</td>
-                <td>${newRepair.vehicle.plateNumber}</td>
-                <td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
-                <td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
+            <tr id="bodyTable">
+                <td style="text-align:center">${newRepair.dateTime}</td>
+                <td style="text-align:center">${newRepair.type}</td>
+                <td style="text-align:center">${newRepair.operations}</td>
+                <td style="text-align:center"> ${newRepair.stage}</td>
+                <td style="text-align:center">${newRepair.cost} $</td>
+                <td style="text-align:center">${newRepair.vehicle.plateNumber}</td>
+                <td style="text-align:center">${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
+                <td style="text-align:center">${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
             </tr>
             </#list>
             </tbody>
@@ -251,6 +251,13 @@
         });
 
     })
+
+    var $newCost = "<select><option value='TIRES'>TIRES</option><option value='BRAKES'>BRAKES</option><option value='FENDER'>FENDER</option><option value='WINDOWS'>WINDOWS</option></select><input type='text' />";
+
+    var $el=$('#extra-repairs');
+    $('.addService').click(function(){
+        $el.append($newCost);
+    });
 
 </script>
 

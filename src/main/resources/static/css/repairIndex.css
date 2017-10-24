@@ -85,3 +85,15 @@ footer {
     background-repeat: no-repeat, repeat;
     padding: 15px;
 }
+#headTable{
+    font-weight: bold;
+    font-size: 180%;
+    font-style: normal ;
+    color: red;
+}
+#bodyTable{
+    font-weight: bold;
+    font-size: 120%;
+    font-style: normal ;
+    color: black;
+}
