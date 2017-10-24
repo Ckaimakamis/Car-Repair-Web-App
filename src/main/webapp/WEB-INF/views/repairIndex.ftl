@@ -122,7 +122,7 @@
 </nav>
 
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" id="worker">
     <div class="row content">
         <h2>${errorMessage!""}</h2>
 
