@@ -171,18 +171,6 @@
         var checkBoxCaseSearch = document.querySelector("input[name=caseSearch]");
 
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        dateInput.datepicker({
-            format: 'yyyy-mm-dd',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
-        dateToInput.datepicker({
-            format: 'yyyy-mm-dd',
-            container: container,
-            todayHighlight: true,
-            autoclose: true
-        });
 
         dateToInput.hide();
 

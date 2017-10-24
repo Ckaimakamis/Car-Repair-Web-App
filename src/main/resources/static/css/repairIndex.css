@@ -79,7 +79,7 @@ footer {
     }
 }
 #worker{
-    background-image: url(static/images/worker.png);
+    background-image: url(../images/worker.png);
     background-position: center;
     background-size: 1500px 475px;
     background-repeat: no-repeat, repeat;
