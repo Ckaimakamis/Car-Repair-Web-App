@@ -43,6 +43,8 @@ public class RepairController {
 
     private static final String REPAIR_EDIT_FORM = "repairEditForm";
 
+    private static final int NUMBER_OF_REPAIRS = 10;
+
     @Autowired
     RepairService repairService;
 
@@ -133,7 +135,8 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/editRepair", method = RequestMethod.POST)
-    String editRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm updateForm, RedirectAttributes redirectAttributes){
+    String editRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm updateForm,
+                      HttpSession session, RedirectAttributes redirectAttributes){
 
         try{
             repairService.updateRepair(RepairConverter.buildRepairObject(updateForm));
@@ -141,17 +144,22 @@ public class RepairController {
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nRepair was not updated!");
         }
+        List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+        session.setAttribute(REPAIRS, repairs);
 
         return "redirect:/admin/repairs";
     }
 
     @RequestMapping(value = "/admin/deleteRepair", method = RequestMethod.POST)
-    String deleteRepair(@Valid @ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm deleteForm, RedirectAttributes redirectAttributes){
+    String deleteRepair(@Valid @ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm deleteForm,
+                        HttpSession session, RedirectAttributes redirectAttributes){
 
         try{
             Repair repair = repairService.findRepair(Long.parseLong(deleteForm.getID().split("/")[0]));
             repairService.deleteRepair(repair);
             redirectAttributes.addFlashAttribute("message", "Repair Deleted :(");
+            List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+            session.setAttribute(REPAIRS, repairs);
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nRepair was not deleted!");
         }
