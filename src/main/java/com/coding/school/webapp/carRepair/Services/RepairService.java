@@ -31,4 +31,6 @@ public interface RepairService {
     List<Repair> findByVehicle(Vehicle vehicle);
 
     List<Repair> findOneDayRepairs (LocalDateTime dateTime);
+
+    List<Repair> findManyDaysRepairs (LocalDateTime dateFrom , LocalDateTime dateTo);
 }

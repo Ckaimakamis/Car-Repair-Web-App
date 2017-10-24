@@ -93,8 +93,12 @@ public class RepairController {
     public String doSearch(@ModelAttribute(SEARCH_FORM) SearchRepairForm searchRepairForm,
                            HttpSession session,
                            RedirectAttributes redirectAttributes) throws ParseException {
-
-        List<Repair> repairs = repairService.findOneDayRepairs(searchRepairForm.getDate());
+        List<Repair> repairs = new ArrayList<>();
+        if(searchRepairForm.getDate()!=null && searchRepairForm.getDateTo()==null) {
+            repairs = repairService.findOneDayRepairs(searchRepairForm.getDate());
+        }else if(searchRepairForm.getDate()!=null && searchRepairForm.getDateTo()!=null){
+            repairs = repairService.findManyDaysRepairs(searchRepairForm.getDate(),searchRepairForm.getDateTo());
+        }
         redirectAttributes.addFlashAttribute(REPAIRS, repairs);
 
         return "redirect:/admin/searchRepair";

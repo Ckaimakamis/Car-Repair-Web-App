@@ -35,4 +35,9 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
     @Query("SELECT r FROM Repair r WHERE " +
             "r.dateTime>=?1 AND r.dateTime<=?2")
     List<Repair> findOneDayRepairs(LocalDateTime startOfDay, LocalDateTime endOfDay);
+
+    @Query("SELECT r FROM Repair r WHERE " +
+            "r.dateTime>=?1 AND r.dateTime<=?2")
+    List<Repair> findManyDaysRepairs(LocalDateTime startOfDay, LocalDateTime endOfDay);
+
 }
