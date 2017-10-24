@@ -6,11 +6,13 @@ import org.springframework.stereotype.Service;
 
 import javax.naming.AuthenticationException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public interface RepairService {
+
 
     Repair findByCost(double cost);
 
@@ -22,10 +24,11 @@ public interface RepairService {
 
     void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException;
 
-    Repair findByDateTime (Timestamp dateTime);
+    Repair findByDateTime(Timestamp dateTime);
 
-   List<Repair> findByVehicle(Vehicle vehicle);
+    List<Repair> findNextRepairs(int size);
 
+    List<Repair> findByVehicle(Vehicle vehicle);
 
-
+    List<Repair> findOneDayRepairs (LocalDateTime dateTime);
 }
