@@ -108,25 +108,20 @@
                                         <input type= "datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD">
                                     </div>
 
-                                    <#--<div class="form-group">-->
-                                        <#--<label class="sr-only" for="date">Date</label>-->
-                                        <#--<input type= "datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD">-->
-                                    <#--</div>-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="dateTo">DateTo</label>
+                                        <input type= "datetime-local" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD">
+                                    </div>
 
-                                    <#--<div class="form-group">-->
-                                        <#--<label class="sr-only" for="dateTo">DateTo</label>-->
-                                        <#--<input type= "datetime-local" class="form-control" id="dateTo" name="dateTo" placeholder="YYYY-MM-DD">-->
-                                    <#--</div>-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="vat">Vat</label>
+                                        <input type= "text" class="form-control" id="vat" name="vat" placeholder="Vat">
+                                    </div>
 
-                                    <#--<div class="form-group">-->
-                                        <#--<label class="sr-only" for="dateTo">Vat</label>-->
-                                        <#--<input type= "text" class="form-control" id="vat" name="vat" placeholder="Vat">-->
-                                    <#--</div>-->
-
-                                    <#--<div class="form-group">-->
-                                        <#--<label class="sr-only" for="dateTo">plateNumber</label>-->
-                                        <#--<input type= "text" class="form-control" id="plateNumber" name="plateNumber" placeholder="Vat">-->
-                                    <#--</div>-->
+                                    <div class="form-group">
+                                        <label class="sr-only" for="plateNumber">plateNumber</label>
+                                        <input type= "text" class="form-control" id="plateNumber" name="plateNumber" placeholder="Plate Number">
+                                    </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Search</button>
