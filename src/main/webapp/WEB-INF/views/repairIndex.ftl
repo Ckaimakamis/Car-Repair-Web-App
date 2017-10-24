@@ -48,6 +48,8 @@
 
                                     <div class="form-group">
                                         <input type="datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" required/>
+                                        <label class="sr-only" for="dateTime">Date</label>
+                                        <input type="datetime-local" class="form-control" id="dateTime" name="dateTime" required/>
                                     </div>
 
                                     <div class="form-group">
@@ -78,7 +80,10 @@
                                             </select>
                                     </div>
 
-
+                                    <div class="form-group">
+                                        <label class="sr-only" for="plateNumber">Operations</label>
+                                        <input type="text" class="form-control" id="plateNumber" placeholder="Enter vehicle's Plate" name="plateNumber" required>
+                                    </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Create Repair</button>
@@ -120,7 +125,7 @@
 </nav>
 
 
-<div class="container-fluid text-center" id="worker">
+<div class="container-fluid text-center">
     <div class="row content">
         <h2>${errorMessage!""}</h2>
 
@@ -149,7 +154,7 @@
     </#if>
     </div>
 </div>    
-<footer class="container-fluid text-center"  >
+<footer class="container-fluid text-center">
 
     <h3>Welcome to our Car Services</h3>
 
@@ -171,6 +176,18 @@
         var checkBoxCaseSearch = document.querySelector("input[name=caseSearch]");
 
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        dateInput.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true
+        });
+        dateToInput.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true
+        });
 
         dateToInput.hide();
 

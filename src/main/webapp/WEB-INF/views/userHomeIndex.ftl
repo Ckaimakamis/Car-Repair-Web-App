@@ -36,7 +36,6 @@
         <table class="table">
             <thead>
             <tr>
-            <#--<th>#</th>-->
                 <th>Date Time</th>
                 <th>Type</th>
                 <th>Operations</th>
@@ -44,15 +43,14 @@
                 <th>Cost</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody align="left">
             <#list repairs as newRepair>
             <tr>
-            <#--<th scope="row">1</th>-->
                 <td>${newRepair.dateTime}</td>
                 <td>${newRepair.type}</td>
                 <td>${newRepair.operations}</td>
                 <td>${newRepair.stage}</td>
-                <td>${newRepair.cost}</td>
+                <td>${newRepair.cost} $</td>
             </tr>
             </#list>
             </tbody>

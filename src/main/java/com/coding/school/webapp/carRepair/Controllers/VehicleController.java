@@ -42,9 +42,11 @@ public class VehicleController {
 
     private static final String OWNER = "owner";
 
-    @RequestMapping(value = "/admin/vehicles", method = RequestMethod.GET)
-    String serveVehiclePage(Model model){
+    private static final String REPAIRS = "repairs";
 
+    @RequestMapping(value = "/admin/vehicles", method = RequestMethod.GET)
+    String serveVehiclePage(Model model, HttpSession session){
+        model.addAttribute(REPAIRS, session.getAttribute(REPAIRS));
         return "vehicleIndex";
     }
 

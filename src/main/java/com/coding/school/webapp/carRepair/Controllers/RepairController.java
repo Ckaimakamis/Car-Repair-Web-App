@@ -1,15 +1,11 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
-import com.coding.school.webapp.carRepair.Converters.OwnerConverter;
 import com.coding.school.webapp.carRepair.Converters.RepairConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
-import com.coding.school.webapp.carRepair.Model.RegisterForm;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
-import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Model.SearchRepairForm;
-import com.coding.school.webapp.carRepair.Repositories.RepairRepository;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import com.coding.school.webapp.carRepair.Services.RepairService;
 import com.coding.school.webapp.carRepair.Services.VehicleService;
@@ -55,8 +51,8 @@ public class RepairController {
 
 
     @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
-    public String exposeRepairSite(Model model) {
-
+    public String exposeRepairSite(Model model, HttpSession session) {
+        model.addAttribute(REPAIRS, session.getAttribute(REPAIRS));
         return "repairIndex";
     }
 
@@ -87,53 +83,21 @@ public class RepairController {
         return "redirect:/admin/repairs";
     }
 
+    @RequestMapping(value = "/admin/searchRepair", method = RequestMethod.GET)
+    public String getSearchView(Model model) {
+
+        return "repairEditForm";
+    }
 
     @RequestMapping(value = "/admin/searchRepair", method = RequestMethod.POST)
     public String doSearch(@ModelAttribute(SEARCH_FORM) SearchRepairForm searchRepairForm,
                            HttpSession session,
                            RedirectAttributes redirectAttributes) throws ParseException {
 
-        Vehicle vehicle = vehicleService.findByPlateNumber(searchRepairForm.getPlateNumber());
-        Owner owner = ownerService.findByVat(searchRepairForm.getVat());
+        List<Repair> repairs = repairService.findOneDayRepairs(searchRepairForm.getDate());
+        redirectAttributes.addFlashAttribute(REPAIRS, repairs);
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        List<Repair> repairsByDate = new ArrayList<>();
-        List<Repair> repairs;
-
-        if (owner != null) {
-            repairs = (List<Repair>) owner.getVehicle().getRepairs();
-        }else if (vehicle != null){
-            repairs = (List<Repair>) vehicle.getRepairs();
-        }else {
-            repairs = null;
-        }
-
-        for (Repair repair : repairs) {
-            String stringRepairDate = dateFormat.format(repair.getDateTime());
-            java.util.Date repairDate = dateFormat.parse(stringRepairDate);
-
-            if (searchRepairForm.getPeriodSearch() != null) {
-                java.util.Date fromDate = dateFormat.parse(searchRepairForm.getDate());
-                java.util.Date toDate = dateFormat.parse(searchRepairForm.getDateTo());
-                if ((repairDate.after(fromDate) || repairDate.equals(fromDate)) &&
-                        (repairDate.before(toDate)) || repairDate.equals(toDate)) {
-                    repairsByDate.add(repair);
-                }
-
-            } else {
-                if (stringRepairDate.equals(searchRepairForm.getDate())) {
-                    repairsByDate.add(repair);
-                }
-            }
-        }
-
-        if (repairs == null) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Repair not found");
-        }
-
-        redirectAttributes.addFlashAttribute(REPAIRS, repairsByDate);
-
-        return "redirect:/admin/repairs";
+        return "redirect:/admin/searchRepair";
     }
 
 }

@@ -3,7 +3,6 @@ package com.coding.school.webapp.carRepair.Domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 @Entity
 public class Repair {
@@ -33,6 +32,8 @@ public class Repair {
     private String operations;
 
     @ManyToOne(optional = false/*, cascade = CascadeType.MERGE*/)
+
+    @ManyToOne(optional = false)
     private Vehicle vehicle;
 
 
