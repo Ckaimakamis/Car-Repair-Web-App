@@ -242,7 +242,7 @@
         $el.append($newCost);
     });
 
-     /*   var operations= ('#operations').val();
+     /* var operations= ('#operations').val();
         var dateTime=('#dateTime').val();
         var plateNumber=('#plateNumber').val();
         var repairStage=('#repairStage').val();
