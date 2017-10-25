@@ -22,6 +22,10 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         </div>
+        <ul class="nav navbar-nav">
+            <li class="Home"><a href="/admin/home">Home</a></li>
+            <li class="LogOut"><a href="/logout">Log Out</a></li>
+        </ul>
     </div>
 </nav>
 
