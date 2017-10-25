@@ -242,6 +242,13 @@
         $el.append($newCost);
     });
 
+        var operations= ('#operations').val();
+        var dateTime=('#dateTime').val();
+        var plateNumber=('#plateNumber').val();
+        var repairStage=('#repairStage').val();
+        var repairType=('#repairType').val();
+        var cost=('#cost').val();
+
 </script>
 
 </html>
