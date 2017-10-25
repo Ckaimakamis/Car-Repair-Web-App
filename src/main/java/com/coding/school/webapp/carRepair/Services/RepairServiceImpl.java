@@ -50,7 +50,7 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public List<Repair> findNextRepairs(int size) {
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = RepairConverter.getStartOfDay(LocalDateTime.now());
         List<Repair> repairs = repairRepository.findRepairs(now);
         if(repairs.size() > size){
             return repairs.subList(0, size-1);

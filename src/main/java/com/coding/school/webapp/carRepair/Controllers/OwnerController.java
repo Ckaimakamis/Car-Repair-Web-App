@@ -102,7 +102,7 @@ public class OwnerController {
 
         Owner owner = ownerService.findByEmail(deleteForm.getEmail());
         ownerService.deleteOwner(owner);
-        redirectAttributes.addFlashAttribute("message", "User Deleted :( ");
+        redirectAttributes.addFlashAttribute("message", "User Deleted");
 
         return "redirect:/admin/home";
     }

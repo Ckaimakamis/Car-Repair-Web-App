@@ -68,7 +68,7 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
+                                        <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="ADMIN" required>
 
                                         <div class="sub-form-group">
                                             <select id="roleSelect" name="roleSelect">
@@ -155,7 +155,7 @@
             </#list>
             </tbody>
         </table>
-        <h2>${message!""}</h2>
+        <h2 style="color: limegreen">${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     </div>
 </div>
@@ -172,6 +172,7 @@
 
 <script language="JavaScript">
 
+    $('#registerRole').hide();
     var roleSelect = document.getElementById("roleSelect");
     var role = $('input[name="role"]');
 
