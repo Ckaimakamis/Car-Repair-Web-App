@@ -148,7 +148,7 @@
             </#list>
             </tbody>
         </table>
-        <h2>${message!""}</h2>
+        <h2 style="color: limegreen">${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     </div>
 </div>

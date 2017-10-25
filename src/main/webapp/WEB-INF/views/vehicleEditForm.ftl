@@ -36,7 +36,7 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-      <h2>${message!""}</h2>
+      <h2 style="color: limegreen">${message!""}</h2>
       <h2 style="color: red">${errorMessage!""}</h2>
     <#if vehicle??>
       <form  method="post" action="/admin/editVehicle" name="vehicleEditForm">

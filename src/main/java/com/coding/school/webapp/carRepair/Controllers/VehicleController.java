@@ -93,7 +93,7 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/admin/searchVehicle", method = RequestMethod.POST)
-    public String searchVehicle(@Valid @ModelAttribute(VEHICLE_SEARCH_FORM) SearchForm searchForm, RedirectAttributes redirectAttributes){
+    public String searchVehicle(@ModelAttribute(VEHICLE_SEARCH_FORM) SearchForm searchForm, RedirectAttributes redirectAttributes){
 
         Vehicle vehicle = null;
         Owner owner = null;
@@ -118,7 +118,7 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/admin/editVehicle", method = RequestMethod.POST)
-    String editVehicle(@Valid @ModelAttribute(VEHICLE_EDIT_FORM) VehicleRegisterForm updateForm, RedirectAttributes redirectAttributes){
+    String editVehicle(@ModelAttribute(VEHICLE_EDIT_FORM) VehicleRegisterForm updateForm, RedirectAttributes redirectAttributes){
 
         try{
             vehicleService.updateVehicle(VehicleConverter.buildVehicleObject(updateForm));
@@ -137,7 +137,7 @@ public class VehicleController {
         try{
             Vehicle vehicle = vehicleService.findByPlateNumber(deleteForm.getPlateNumber());
             vehicleService.deleteVehicle(vehicle);
-            redirectAttributes.addFlashAttribute("message", "Vehicle Deleted :(");
+            redirectAttributes.addFlashAttribute("message", "Vehicle Deleted");
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nVehicle was not deleted!");
         }
