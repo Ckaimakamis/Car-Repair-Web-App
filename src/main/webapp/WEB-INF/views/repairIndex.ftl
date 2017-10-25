@@ -81,6 +81,7 @@
                                                 <option value="BIG">big</option>
                                             </select>
                                     </div>
+
                                      <div id="extra-repairs"></div>
                                      <button type="button" class="addService"><span class="glyphicon glyphicon-plus"></span></button>
 
@@ -235,7 +236,11 @@
             }
         })
     })
-    var $newCost = "<select><option value='TIRES'>TIRES</option><option value='BRAKES'>BRAKES</option><option value='FENDER'>FENDER</option><option value='WINDOWS'>WINDOWS</option></select><input type='text' />";
+    var $newCost = "<select><option value='TIRES'>TIRES</option>" +
+            "<option value='BRAKES'>BRAKES</option>" +
+            "<option value='FENDER'>FENDER</option>" +
+            "<option value='WINDOWS'>WINDOWS</option>" +
+            "</select><input type='text' />";
 
     var $el=$('#extra-repairs');
     $('.addService').click(function(){
