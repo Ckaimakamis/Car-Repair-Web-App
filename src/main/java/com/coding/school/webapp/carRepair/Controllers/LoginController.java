@@ -1,7 +1,6 @@
 package com.coding.school.webapp.carRepair.Controllers;
 
 import com.coding.school.webapp.carRepair.Model.LoginForm;
-import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
 import com.coding.school.webapp.carRepair.Services.OwnerServiceImpl;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,7 @@ public class LoginController {
     private static final String LOGIN_FORM = "loginForm";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, /*@Valid @ModelAttribute(LOGIN_FORM) LoginForm form,*/ @RequestParam(name = "error", required = false) String error) {
+    public String login(Model model, @RequestParam(name = "error", required = false) String error) {
         if (error != null) {
             LOG.error("User not found!");
             model.addAttribute("errorMessage", "User not found! Please try again");
