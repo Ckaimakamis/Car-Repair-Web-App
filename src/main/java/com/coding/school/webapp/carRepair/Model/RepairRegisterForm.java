@@ -1,11 +1,13 @@
 package com.coding.school.webapp.carRepair.Model;
 
+import com.coding.school.webapp.carRepair.Domain.Parts;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 public class RepairRegisterForm {
@@ -13,7 +15,7 @@ public class RepairRegisterForm {
     private static final String COST_PATTERN = "[0-9]+([,.][0-9]{1,2})?";
 
     private String ID;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 //    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
 
@@ -33,7 +35,7 @@ public class RepairRegisterForm {
     private String plateNumber;
 
 
-    private List<PartsForm> partsForms;
+    private List<Parts> partsForms;
 
 
     public LocalDateTime getDateTime() {
@@ -92,11 +94,11 @@ public class RepairRegisterForm {
         this.ID = ID;
     }
 
-    public List<PartsForm> getPartsForms() {
+    public List<Parts> getPartsForms() {
         return partsForms;
     }
 
-    public void setPartsForms(List<PartsForm> partsForms) {
+    public void setPartsForms(List<Parts> partsForms) {
         this.partsForms = partsForms;
     }
 }

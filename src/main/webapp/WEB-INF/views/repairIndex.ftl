@@ -251,7 +251,7 @@
     });
     function Submit() {
         var operations= $('#operations').val();
-        var dateTime=$('#dateTime')[0].value
+        var dateTime=$('#dateTime')[0].value.toString();
         var plateNumber=$('#plateNumber').val();
         var repairStage=$('#repairStage').val();
         var repairType=$('#repairType').val();

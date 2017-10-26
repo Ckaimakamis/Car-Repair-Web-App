@@ -1,11 +1,15 @@
 package com.coding.school.webapp.carRepair.Converters;
 
+import com.coding.school.webapp.carRepair.Domain.Parts;
 import com.coding.school.webapp.carRepair.Domain.Repair;
+import com.coding.school.webapp.carRepair.Model.PartsForm;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 public class RepairConverter {
 
@@ -15,13 +19,21 @@ public class RepairConverter {
         if(!(registrationForm.getID() == null || registrationForm.getID().equals(""))){
             repair.setID(Long.parseLong(registrationForm.getID().split("/")[0]));
         }
-        repair.setCost(Double.parseDouble(registrationForm.getCost()));
         repair.setOperations(registrationForm.getOperations());
         repair.setStage(repairStageConvert(registrationForm.getRepairStage()));
         repair.setType(repairTypeConvert(registrationForm.getRepairType()));
         repair.setDateTime(registrationForm.getDateTime());
+        repair.setParts(registrationForm.getPartsForms());
+        repair.setCost(0.0);
+        List<Parts> parts = (List<Parts>) repair.getParts();
+        for(Parts part : parts){
+            repair.setCost(repair.getCost() + part.getCost());
+        }
         return repair;
     }
+
+
+
 
     private static Repair.RepairType repairTypeConvert(String type) {
         Repair.RepairType repairType = null;

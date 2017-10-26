@@ -32,13 +32,12 @@ public class Repair {
 
     private String operations;
 
-
     @ManyToOne(optional = false)
     private Vehicle vehicle;
 
-
     @OneToMany(mappedBy = "repair")
     private Collection<Parts> parts;
+
 
     public Collection<Parts> getParts() {
         return parts;
