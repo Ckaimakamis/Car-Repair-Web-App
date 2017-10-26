@@ -30,12 +30,10 @@ public class Repair {
     @Column(nullable = false)
     private double cost;
 
-    private String operations;
-
     @ManyToOne(optional = false)
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "repair")
+    @ManyToMany(mappedBy = "repair")
     private Collection<Parts> parts;
 
 
@@ -85,14 +83,6 @@ public class Repair {
 
     public void setCost(double cost) {
         this.cost = cost;
-    }
-
-    public String getOperations() {
-        return operations;
-    }
-
-    public void setOperations(String operations) {
-        this.operations = operations;
     }
 
     public Vehicle getVehicle() {

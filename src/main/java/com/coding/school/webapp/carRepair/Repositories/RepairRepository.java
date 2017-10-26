@@ -18,13 +18,9 @@ import java.util.List;
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
 
-    Repair findByPartsAndVehicle(List<Parts> parts, Vehicle vehicle);
-
     Repair findByCost(double cost);
 
     Repair findByStage(Repair.RepairStage stage);
-
-    Repair findByOperations(String operations);
 
     Repair findByType(Repair.RepairType type);
 
@@ -47,7 +43,7 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Repair o SET o.dateTime=?1, o.type=?2, " +
-            "o.stage=?3, o.cost=?4, o.operations=?5 WHERE o.ID=?6")
+            "o.stage=?3, o.cost=?4, o.parts=?5 WHERE o.ID=?6")
     void updateRepair(LocalDateTime dateTime, Repair.RepairType type, Repair.RepairStage stage,
-                      double cost, String operations, Long id);
+                      double cost, Collection<Parts> parts, Long id);
 }

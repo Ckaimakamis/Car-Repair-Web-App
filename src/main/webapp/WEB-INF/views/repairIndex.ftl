@@ -52,17 +52,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Cost</label>
-                                            <input type="text" class="form-control" id="cost" placeholder="Enter COST"name="cost" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Operations</label>
-                                            <input type="text" class="form-control" id="operations" placeholder="Enter Work"name="operations" required>
-                                    </div>
-
-
-                                    <div class="form-group">
                                         <input type="text" class="form-control" id="plateNumber" placeholder="Enter Vehicle's Plate" name="plateNumber" required>
                                     </div>
 

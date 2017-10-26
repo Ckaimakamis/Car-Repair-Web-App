@@ -35,11 +35,6 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Repair findByOperations(String operations){
-        return repairRepository.findByOperations(operations);
-    }
-
-    @Override
     public Repair findByType(Repair.RepairType type){
         return   repairRepository.findByType(type);
        }
@@ -93,7 +88,7 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public void updateRepair(Repair repair) {
         repairRepository.updateRepair(repair.getDateTime(), repair.getType(),
-                repair.getStage(), repair.getCost(), repair.getOperations(), repair.getID());
+                repair.getStage(), repair.getCost(), repair.getParts(), repair.getID());
     }
 
     @Override

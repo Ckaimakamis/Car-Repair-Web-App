@@ -19,7 +19,6 @@ public class RepairConverter {
         if(!(registrationForm.getID() == null || registrationForm.getID().equals(""))){
             repair.setID(Long.parseLong(registrationForm.getID().split("/")[0]));
         }
-        repair.setOperations(registrationForm.getOperations());
         repair.setStage(repairStageConvert(registrationForm.getRepairStage()));
         repair.setType(repairTypeConvert(registrationForm.getRepairType()));
         repair.setDateTime(registrationForm.getDateTime());

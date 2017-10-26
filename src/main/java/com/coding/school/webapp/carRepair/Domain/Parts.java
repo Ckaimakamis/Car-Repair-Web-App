@@ -2,6 +2,7 @@ package com.coding.school.webapp.carRepair.Domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 @Entity
 public class Parts {
@@ -46,14 +47,14 @@ public class Parts {
         TIRES,BRAKES,FENDER,WINDOWS
     }
 
-    @ManyToOne(optional = false)
-    private Repair repair;
+    @ManyToMany()
+    private Collection<Repair> repair;
 
-    public Repair getRepair() {
+    public Collection<Repair> getRepair() {
         return repair;
     }
 
-    public void setRepair(Repair repair) {
+    public void setRepair(Collection<Repair> repair) {
         this.repair = repair;
     }
 }

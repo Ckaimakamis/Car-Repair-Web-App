@@ -13,7 +13,7 @@ INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_
 INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_id) VALUES (90, '2017-10-25 15:50:45', 'filters, oils', 'IN_PROGRESS', 'BIG', 3);
 INSERT INTO carRepair.repair (cost, date_time, operations, stage, type, vehicle_id) VALUES (100, '2017-10-25 15:50:45', 'engine repair', 'DONE', 'BIG', 4);
 
-INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (50,'TIRES',1);
-INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (80,'BRAKES',2);
-INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (90,'FENDER',3);
-INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (100,'WINDOWS',4);
+-- INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (50,'TIRES',1);
+-- INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (80,'BRAKES',2);
+-- INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (90,'FENDER',3);
+-- INSERT INTO carRepair.parts (cost, type, repair_id) VALUES (100,'WINDOWS',4);

@@ -15,16 +15,9 @@ public class RepairRegisterForm {
     private static final String COST_PATTERN = "[0-9]+([,.][0-9]{1,2})?";
 
     private String ID;
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
 //    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
-
-    @NotNull(message = "{register.cost.null}")
-    @Pattern(regexp = COST_PATTERN, message = "{register.cost.invalid")
-    private String cost;
-
-    @NotNull(message = "{register.operations.null}")
-    private String operations;
 
     @NotNull(message = "{register.stage.null}")
     private String repairStage;
@@ -37,29 +30,12 @@ public class RepairRegisterForm {
 
     private List<Parts> partsForms;
 
-
     public LocalDateTime getDateTime() {
         return dateTime;
     }
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
-    }
-
-    public String getCost() {
-        return cost;
-    }
-
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
-    public String getOperations() {
-        return operations;
-    }
-
-    public void setOperations(String operations) {
-        this.operations = operations;
     }
 
     public String getRepairStage() {

@@ -78,8 +78,7 @@ public class RepairController {
                     return "redirect:/admin/repairs";
                 }
                 repairService.registerRepair(repair, vehicle);
-                redirectAttributes.addFlashAttribute("message", "repair "+ repair.getOperations()
-                        + " " + repair.getOperations() + " successfully inserted! :)");
+                redirectAttributes.addFlashAttribute("message", "repair " + " successfully inserted! :)");
             }catch(Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
