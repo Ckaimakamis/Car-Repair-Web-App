@@ -272,9 +272,9 @@
             dataType: 'json',
             contentType : 'application/json',
             mimeType : 'application/json',
-            success: function(jsonString) {
-
-            }
+            success: function(result) {
+                window.location="admin/repairs"
+                     }
         });
     }
 
