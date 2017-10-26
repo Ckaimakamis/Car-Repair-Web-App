@@ -55,7 +55,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+
 }
 
 button:hover {
@@ -112,4 +112,17 @@ span.psw {
     font-size: 200%;
     font-style: normal ;
     color: white;
+}
+#login{
+    background-image: url(../images/login.jpg);
+    background-position: center;
+    background-size: 1500px 475px;
+    background-repeat: no-repeat, repeat;
+    padding: 100px;
+}
+#headerWidth{
+    padding: 25px;
+}
+footer {
+    background-image: url(../images/login.jpg);
 }

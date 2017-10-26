@@ -52,15 +52,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Cost</label>
-                                            <input type="text" class="form-control" id="cost" placeholder="Enter COST"name="cost" required>
+                                        <input type="text" class="form-control" id="plateNumber" placeholder="Enter Vehicle's Plate" name="plateNumber" required>
                                     </div>
-
-                                    <div class="form-group">
-                                            <label class="sr-only" for="registerVAT">Operations</label>
-                                            <input type="text" class="form-control" id="operations" placeholder="Enter Work"name="operations" required>
-                                    </div>
-
 
                                     <div class="form-group">
                                             <select id="repairStage" name="repairStage">
@@ -77,13 +70,13 @@
                                             </select>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="sr-only" for="plateNumber">Operations</label>
-                                        <input type="text" class="form-control" id="plateNumber" placeholder="Enter vehicle's Plate" name="plateNumber" required>
-                                    </div>
+                                     <div id="extra-repairs">
+
+                                     </div>
+                                     <button type="button" class="addService"><span class="glyphicon glyphicon-plus"></span></button>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Create Repair</button>
+                                        <button type="button" onclick="Submit()" class="btn btn-primary btn-block">Create Repair</button>
                                     </div>
 
                                 </form>
@@ -101,7 +94,7 @@
                             <div class="col-md-12">
 
 
-                                <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm"/>
+                                <form class="form" role="form" method="post" action="/admin/searchRepair" accept-charset="UTF-8" id="login-nav" name = "searchRepairForm">
 
                                     <div class="form-group">
                                         <label class="sr-only" for="date">Date</label>
@@ -133,7 +126,7 @@
                                     </br>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Search</button>
+                                        <button type="submit"  class="btn btn-primary btn-block">Search</button>
                                     </div>
 
                                 </form>
@@ -153,28 +146,28 @@
     <div class="row content">
         <table class="table">
             <thead>
-            <tr>
-                <th>Date Time</th>
-                <th>Type</th>
-                <th>Operations</th>
-                <th>Stage</th>
-                <th>Cost</th>
-                <th>Plate</th>
-                <th>Vehicle</th>
-                <th>Owner</th>
+            <tr id="headTable">
+                <th style="text-align:center">Date Time</th>
+                <th style="text-align:center">Type</th>
+                <th style="text-align:center">Operations</th>
+                <th style="text-align:center">Stage</th>
+                <th style="text-align:center">Cost</th>
+                <th style="text-align:center">Plate</th>
+                <th style="text-align:center">Vehicle</th>
+                <th style="text-align:center">Owner</th>
             </tr>
             </thead>
-            <tbody align="left">
+            <tbody >
             <#list repairs as newRepair>
-            <tr>
-                <td>${newRepair.dateTime}</td>
-                <td>${newRepair.type}</td>
-                <td>${newRepair.operations}</td>
-                <td>${newRepair.stage}</td>
-                <td>${newRepair.cost} $</td>
-                <td>${newRepair.vehicle.plateNumber}</td>
-                <td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
-                <td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
+            <tr id="bodyTable">
+                <td style="text-align:center">${newRepair.dateTime}</td>
+                <td style="text-align:center">${newRepair.type}</td>
+                <td style="text-align:center">${newRepair.operations}</td>
+                <td style="text-align:center"> ${newRepair.stage}</td>
+                <td style="text-align:center">${newRepair.cost} $</td>
+                <td style="text-align:center">${newRepair.vehicle.plateNumber}</td>
+                <td style="text-align:center">${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
+                <td style="text-align:center">${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
             </tr>
             </#list>
             </tbody>
@@ -192,7 +185,6 @@
 </body>
 
 <script>
-
     $(document).ready(function(){
         var searchType = document.getElementById("searchType");
         var date = $('#date');
@@ -234,6 +226,63 @@
             }
         })
     })
+    var i =0;
+
+    var $el=$('#extra-repairs');
+    $('.addService').click(function(){
+        var $newCost = "<div id='Part"+i+"'><select><option value='TIRES'>TIRES</option>" +
+                "<option value='BRAKES'>BRAKES</option>" +
+                "<option value='FENDER'>FENDER</option>" +
+                "<option value='WINDOWS'>WINDOWS</option>" +
+                "</select><input type='text' /></div>";
+        $el.append($newCost);
+        i++;
+    });
+    function Submit() {
+        var operations= $('#operations').val();
+        var dateTime=$('#dateTime')[0].value.toString();
+        var plateNumber=$('#plateNumber').val();
+        var repairStage=$('#repairStage').val();
+        var repairType=$('#repairType').val();
+        var cost=$('#cost').val();
+        var parts=$('#extra-repairs')[0];  //edw exw to prwto div to megalo
+        //ola t mesa div
+        var children=parts.children;
+        var arrayParts = [];
+        for(var j=0; j<children.length; j++){
+            var child= children[j];
+            var select=child.children[0];
+            var input=child.children[1];
+            var selectValue= select.value
+            var inputValue=input.value
+            var partItem ={};// keno JSON object
+            partItem.type = selectValue; //{type:timh tou selectValue}
+            partItem.cost = inputValue; // {type:timh tou selectValue,cost:timh tou inputValue}
+            arrayParts.push(partItem);
+        }
+
+        var repair = {};
+        repair.operations = operations;
+        repair.dateTime = dateTime;
+        repair.plateNumber = plateNumber;
+        repair.repairStage = repairStage;
+        repair.repairType = repairType
+        repair.cost = cost;
+        repair.partsForms = arrayParts;
+        $.ajax({
+            type: "POST",
+            url: "/admin/registerRepair",
+            data: JSON.stringify(repair),
+            dataType: 'json',
+            contentType : 'application/json',
+            mimeType : 'application/json',
+            success: function (data) {
+                window.location.reload(true);
+            }
+        });
+    }
+
+
 
 </script>
 

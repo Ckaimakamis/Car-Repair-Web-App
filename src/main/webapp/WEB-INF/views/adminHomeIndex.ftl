@@ -46,6 +46,15 @@
                             <div class="col-md-12">
                                 <form class="form" role="form" method="post" action="/admin/registerOwner" accept-charset="UTF-8" id="login-nav" name="user">
 
+                                    <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
+
+                                    <div class="sub-form-group">
+                                        <select id="roleSelect" name="roleSelect">
+                                            <option value="ADMIN">Admin</option>
+                                            <option value="USER">User</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Username</label>
                                         <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="email" required>
@@ -68,15 +77,8 @@
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerRole">Brand</label>
-                                        <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="ADMIN" required>
+                                        <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
 
-                                        <div class="sub-form-group">
-                                            <select id="roleSelect" name="roleSelect">
-                                                <option value="ADMIN">Admin</option>
-                                                <option value="USER">User</option>
-                                            </select>
-                                        </div>
-                                    </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerVAT">Brand</label>
@@ -125,7 +127,7 @@
 </nav>
 
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" id="worker">
     <div class="row content">
         <#--<table class="table">-->
             <#--<thead>-->
