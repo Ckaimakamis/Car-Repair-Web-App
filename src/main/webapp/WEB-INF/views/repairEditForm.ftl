@@ -73,7 +73,7 @@
                 </br>
                 <label><b>Enter Operations</b></label>
                 </br>
-                <input type="text" id="operations" placeholder="operations" name="operations" value=${repair.operations} required>
+                <input type="text" id="operations" placeholder="operations" name="operations" value='${repair.operations}' required>
                 </br>
                 <label><b>Vehicle</b></label>
                 </br>
