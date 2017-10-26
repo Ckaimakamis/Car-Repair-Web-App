@@ -33,17 +33,6 @@ public class Repair {
     @ManyToOne(optional = false)
     private Vehicle vehicle;
 
-    @ManyToMany(mappedBy = "repair", cascade = CascadeType.ALL)
-    private Collection<Parts> parts;
-
-
-    public Collection<Parts> getParts() {
-        return parts;
-    }
-
-    public void setParts(Collection<Parts> parts) {
-        this.parts = parts;
-    }
 
     public Long getID() {
         return ID;
@@ -99,5 +88,16 @@ public class Repair {
 
     public enum RepairType {
         BIG, SMALL
+    }
+
+    @OneToMany(mappedBy = "repair", cascade = CascadeType.ALL)
+    private Collection<Parts> parts;
+
+    public Collection<Parts> getParts() {
+        return parts;
+    }
+
+    public void setParts(Collection<Parts> parts) {
+        this.parts = parts;
     }
 }

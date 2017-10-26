@@ -18,6 +18,9 @@ public class Parts {
     @NotNull
     private double cost;
 
+    @ManyToOne(optional = false)
+    private Repair repair;
+
     public Long getID() {
         return ID;
     }
@@ -42,19 +45,15 @@ public class Parts {
         this.cost = cost;
     }
 
-
-    public enum PartsType {
-        TIRES,BRAKES,FENDER,WINDOWS
-    }
-
-    @ManyToMany()
-    private Collection<Repair> repair;
-
-    public Collection<Repair> getRepair() {
+    public Repair getRepair() {
         return repair;
     }
 
-    public void setRepair(Collection<Repair> repair) {
+    public void setRepair(Repair repair) {
         this.repair = repair;
+    }
+
+    public enum PartsType {
+        TIRES,BRAKES,FENDER,WINDOWS
     }
 }
