@@ -149,7 +149,6 @@
             <tr id="headTable">
                 <th style="text-align:center">Date Time</th>
                 <th style="text-align:center">Type</th>
-                <th style="text-align:center">Operations</th>
                 <th style="text-align:center">Stage</th>
                 <th style="text-align:center">Cost</th>
                 <th style="text-align:center">Plate</th>
@@ -162,7 +161,6 @@
             <tr id="bodyTable">
                 <td style="text-align:center">${newRepair.dateTime}</td>
                 <td style="text-align:center">${newRepair.type}</td>
-                <td style="text-align:center">${newRepair.operations}</td>
                 <td style="text-align:center"> ${newRepair.stage}</td>
                 <td style="text-align:center">${newRepair.cost} $</td>
                 <td style="text-align:center">${newRepair.vehicle.plateNumber}</td>
@@ -239,7 +237,6 @@
         i++;
     });
     function Submit() {
-        var operations= $('#operations').val();
         var dateTime=$('#dateTime')[0].value.toString();
         var plateNumber=$('#plateNumber').val();
         var repairStage=$('#repairStage').val();
@@ -262,7 +259,6 @@
         }
 
         var repair = {};
-        repair.operations = operations;
         repair.dateTime = dateTime;
         repair.plateNumber = plateNumber;
         repair.repairStage = repairStage;
@@ -276,9 +272,9 @@
             dataType: 'json',
             contentType : 'application/json',
             mimeType : 'application/json',
-            success: function (data) {
-                window.location.reload(true);
-            }
+            success: function(result) {
+                window.location="admin/repairs"
+                     }
         });
     }
 
