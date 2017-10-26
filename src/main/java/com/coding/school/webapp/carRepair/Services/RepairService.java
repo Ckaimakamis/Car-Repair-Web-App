@@ -18,8 +18,6 @@ public interface RepairService {
 
     Repair findByStage(Repair.RepairStage stage);
 
-    Repair findByOperations(String operations);
-
     Repair findByType(Repair.RepairType type);
 
     void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException;

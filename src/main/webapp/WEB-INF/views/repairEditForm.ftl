@@ -23,7 +23,8 @@
                 <p class="navbar-brand"id="repairsId">CAR Repairs<p>
             </div>
             <ul class="nav navbar-nav">
-                <li class="#"><a href="#">Home</a></li>
+                <li class="Home"><a href="/admin/home">Home</a></li>
+                <li class="LogOut"><a href="/logout">Log Out</a></li>
             </ul>
 
         </div>
@@ -34,12 +35,11 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <h2>${message!""}</h2>
+        <h2 style="color: limegreen">${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     <#if repair??>
         <form  method="post" action="/admin/editRepair" name="repairEditForm">
             <div class="imgcontainer">
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
@@ -73,11 +73,11 @@
                 </br>
                 <label><b>Enter Operations</b></label>
                 </br>
-                <input type="text" id="operations" placeholder="operations" name="operations" value=${repair.operations} required>
+                <input type="text" id="operations" placeholder="operations" name="operations" value='${repair.operations}' required>
                 </br>
                 <label><b>Vehicle</b></label>
                 </br>
-                <input type="text" id="vehiplateNumbercle" placeholder="plateNumber" name="plateNumber" value=${repair.vehicle.plateNumber} required>
+                <input type="text" id="vehiplateNumbercle" placeholder="plateNumber" name="plateNumber" value=${repair.vehicle.plateNumber} required readonly="readonly">
                 </br>
                 <button type="submit" class=".btn-primary" OnClick="SetDest1()">Update</button>
 
@@ -94,28 +94,46 @@
 <script language="JavaScript">
 
     var typeSelect = document.getElementById("typeSelect");
-    var type = $('input[name="type"]');
+    var repairType = $('input[name="repairType"]');
     $('.ID').hide();
 
     var stageSelect = document.getElementById("stageSelect");
-    var stage = $('input[name="stage"]');
+    var repairStage = $('input[name="repairStage"]');
 
     typeSelect.addEventListener('click', function() {
-        type.attr('value', typeSelect.options[typeSelect.selectedIndex].value);
+        repairType.attr('readonly', false);
+        repairType.attr('value', typeSelect.options[typeSelect.selectedIndex].value);
+        repairType.attr('readonly', true);
     })
 
     stageSelect.addEventListener('click', function() {
-        stage.attr('value', stageSelect.options[stageSelect.selectedIndex].value);
+        repairStage.attr('value', stageSelect.options[stageSelect.selectedIndex].value);
     })
 
     function SetDest1() {
-        type.disabled = false;
-        stage.disabled = false;
         document.forms["repairEditForm"].action = "/admin/editRepair";
     }
     function SetDest2() {
         document.forms["repairEditForm"].action = "/admin/deleteRepair";
     }
+
+//    var repairType = $('input[name="repairType"]');
+//    var typeSelect = document.getElementById("typeSelect");
+//
+//    typeSelect.addEventListener('click', function() {
+//        repairType.attr('readonly', false);
+//        repairType.attr('value', repairType.options[repairType.selectedIndex].value);
+//        repairType.attr('readonly', true);
+//    })
+//
+//    var repairStage = $('input[name="repairStage"]');
+//    var stageSelect = document.getElementById("stageSelect");
+//
+//    stageSelect.addEventListener('click', function() {
+//        repairStage.attr('readonly', false);
+//        repairStage.attr('value', repairStage.options[repairStage.selectedIndex].value);
+//        repairStage.attr('readonly', true);
+//    })
 
 </script>
 </html>

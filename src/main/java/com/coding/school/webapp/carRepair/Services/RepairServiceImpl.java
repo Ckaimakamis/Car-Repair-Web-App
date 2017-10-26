@@ -1,6 +1,7 @@
 package com.coding.school.webapp.carRepair.Services;
 
 import com.coding.school.webapp.carRepair.Converters.RepairConverter;
+import com.coding.school.webapp.carRepair.Domain.Parts;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Exceptions.RepairExistException;
@@ -34,11 +35,6 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Repair findByOperations(String operations){
-        return repairRepository.findByOperations(operations);
-    }
-
-    @Override
     public Repair findByType(Repair.RepairType type){
         return   repairRepository.findByType(type);
        }
@@ -50,7 +46,7 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public List<Repair> findNextRepairs(int size) {
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = RepairConverter.getStartOfDay(LocalDateTime.now());
         List<Repair> repairs = repairRepository.findRepairs(now);
         if(repairs.size() > size){
             return repairs.subList(0, size-1);
@@ -65,12 +61,11 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException {
-        Repair existedRepair = repairRepository.findByOperations(repair.getOperations());
-        if(existedRepair == null){
-            repair.setVehicle(vehicle);
+        repair.setVehicle(vehicle);
+        try{
             repairRepository.save(repair);
-        }else {
-            throw new RepairExistException("Repair already exists!");
+        } catch (Exception e) {
+            throw new RepairExistException("Ooops! Something went wrong! Repair was not inserted");
         }
     }
 
@@ -93,7 +88,7 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public void updateRepair(Repair repair) {
         repairRepository.updateRepair(repair.getDateTime(), repair.getType(),
-                repair.getStage(), repair.getCost(), repair.getOperations(), repair.getID());
+                repair.getStage(), repair.getCost(), repair.getParts(), repair.getID());
     }
 
     @Override

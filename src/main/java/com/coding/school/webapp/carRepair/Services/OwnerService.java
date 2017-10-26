@@ -14,9 +14,13 @@ public interface OwnerService {
 
     Owner findByEmailOrVat(String email , String vat);
 
-    Owner findByVat( String vat);
+    Owner findByVat(String vat);
+
+    Owner getOnlineOwner(String username, String password);
 
     void updateOwner(Owner owner);
 
     void deleteOwner(Owner owner);
+
+    void logout(String username, String password);
 }

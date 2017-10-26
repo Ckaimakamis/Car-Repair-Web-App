@@ -172,7 +172,7 @@
             </#list>
             </tbody>
         </table>
-        <h2>${message!""}</h2>
+        <h2 style="color: limegreen">${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     </div>
 </div>    
@@ -250,12 +250,11 @@
         var children=parts.children;
         var arrayParts = [];
         for(var j=0; j<children.length; j++){
-
-           var child= children[j];
-           var select=child.children[0];
-           var input=child.children[1];
-           var selectValue= select.value
-           var inputValue=input.value
+            var child= children[j];
+            var select=child.children[0];
+            var input=child.children[1];
+            var selectValue= select.value
+            var inputValue=input.value
             var partItem ={};// keno JSON object
             partItem.type = selectValue; //{type:timh tou selectValue}
             partItem.cost = inputValue; // {type:timh tou selectValue,cost:timh tou inputValue}
@@ -277,8 +276,8 @@
             dataType: 'json',
             contentType : 'application/json',
             mimeType : 'application/json',
-            success: function(result) {
-                window.location ="admin/repairs"
+            success: function (data) {
+                window.location.reload(true);
             }
         });
     }

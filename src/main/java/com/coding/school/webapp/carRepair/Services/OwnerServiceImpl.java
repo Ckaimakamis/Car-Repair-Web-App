@@ -42,11 +42,6 @@ public class OwnerServiceImpl implements OwnerService{
         }
     }
 
-    private static String getCredentials(String username, String password) {
-
-        return username + ":" + password;
-    }
-
     @Override
     public Owner findByEmail(String email) {
         return ownerRepository.findByEmail(email);
@@ -71,6 +66,21 @@ public class OwnerServiceImpl implements OwnerService{
     @Override
     public void deleteOwner(Owner owner) {
         ownerRepository.delete(owner.getID());
+    }
+
+    @Override
+    public void logout(String username, String password) {
+        Owner owner = ownerRepository.findByEmailAndPassword(username, password);
+        loggedInUsers.remove(getCredentials(username, password), owner);
+    }
+
+    public Owner getOnlineOwner(String userName, String password){
+       return loggedInUsers.get(getCredentials(userName, password));
+    }
+
+    private static String getCredentials(String username, String password) {
+
+        return username + ":" + password;
     }
 
 }

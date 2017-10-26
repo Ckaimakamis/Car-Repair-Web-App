@@ -46,6 +46,15 @@
                             <div class="col-md-12">
                                 <form class="form" role="form" method="post" action="/admin/registerOwner" accept-charset="UTF-8" id="login-nav" name="user">
 
+                                    <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
+
+                                    <div class="sub-form-group">
+                                        <select id="roleSelect" name="roleSelect">
+                                            <option value="ADMIN">Admin</option>
+                                            <option value="USER">User</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="sr-only" for="registerEmail">Username</label>
                                         <input type="text" class="form-control" id="registerEmail" placeholder="Enter Email" name="email" required>
@@ -70,13 +79,6 @@
                                         <label class="sr-only" for="registerRole">Brand</label>
                                         <input type="text" class="form-control" id="registerRole" placeholder="Select Role" name="role" value="USER" required disabled>
 
-                                        <div class="sub-form-group">
-                                            <select id="roleSelect" name="roleSelect">
-                                                <option value="ADMIN">Admin</option>
-                                                <option value="USER">User</option>
-                                            </select>
-                                        </div>
-                                    </div>
 
                                     <div class="form-group">
                                         <label class="sr-only" for="registerVAT">Brand</label>
@@ -125,37 +127,37 @@
 </nav>
 
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center" id="worker">
     <div class="row content">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Date Time</th>
-                <th>Type</th>
-                <th>Operations</th>
-                <th>Stage</th>
-                <th>Cost</th>
-                <th>Plate</th>
-                <th>Vehicle</th>
-                <th>Owner</th>
-            </tr>
-            </thead>
-            <tbody align="left">
-            <#list repairs as newRepair>
-            <tr>
-                <td>${newRepair.dateTime}</td>
-                <td>${newRepair.type}</td>
-                <td>${newRepair.operations}</td>
-                <td>${newRepair.stage}</td>
-                <td>${newRepair.cost} $</td>
-                <td>${newRepair.vehicle.plateNumber}</td>
-                <td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
-                <td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
-            </tr>
-            </#list>
-            </tbody>
-        </table>
-        <h2>${message!""}</h2>
+        <#--<table class="table">-->
+            <#--<thead>-->
+            <#--<tr>-->
+                <#--<th>Date Time</th>-->
+                <#--<th>Type</th>-->
+                <#--<th>Operations</th>-->
+                <#--<th>Stage</th>-->
+                <#--<th>Cost</th>-->
+                <#--<th>Plate</th>-->
+                <#--<th>Vehicle</th>-->
+                <#--<th>Owner</th>-->
+            <#--</tr>-->
+            <#--</thead>-->
+            <#--<tbody align="left">-->
+            <#--<#list repairs as newRepair>-->
+            <#--<tr>-->
+                <#--<td>${newRepair.dateTime}</td>-->
+                <#--<td>${newRepair.type}</td>-->
+                <#--<td>${newRepair.operations}</td>-->
+                <#--<td>${newRepair.stage}</td>-->
+                <#--<td>${newRepair.cost} $</td>-->
+                <#--<td>${newRepair.vehicle.plateNumber}</td>-->
+                <#--<td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>-->
+                <#--<td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>-->
+            <#--</tr>-->
+            <#--</#list>-->
+            <#--</tbody>-->
+        <#--</table>-->
+        <h2 style="color: limegreen">${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     </div>
 </div>
@@ -172,6 +174,7 @@
 
 <script language="JavaScript">
 
+    $('#registerRole').hide();
     var roleSelect = document.getElementById("roleSelect");
     var role = $('input[name="role"]');
 

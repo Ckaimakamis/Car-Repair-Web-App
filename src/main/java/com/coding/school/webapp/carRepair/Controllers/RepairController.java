@@ -16,10 +16,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -65,8 +62,8 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/registerRepair", method = RequestMethod.POST)
-    public String registerRepair(@Valid @ModelAttribute(REPAIR_REGISTER_FORM ) RepairRegisterForm registrationForm, BindingResult bindingResult,
-                          HttpSession session, RedirectAttributes redirectAttributes){
+    public String registerRepair(@Valid  @RequestBody RepairRegisterForm registrationForm, BindingResult bindingResult,
+                                 HttpSession session, RedirectAttributes redirectAttributes){
 
         if (bindingResult.hasErrors()) {
             String message = messageSource.getMessage(bindingResult.getAllErrors().get(0), null);
@@ -81,8 +78,7 @@ public class RepairController {
                     return "redirect:/admin/repairs";
                 }
                 repairService.registerRepair(repair, vehicle);
-                redirectAttributes.addFlashAttribute("message", "repair "+ repair.getOperations()
-                        + " " + repair.getOperations() + " successfully inserted! :)");
+                redirectAttributes.addFlashAttribute("message", "repair " + " successfully inserted! :)");
             }catch(Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
@@ -119,9 +115,19 @@ public class RepairController {
                 repairs = repairService.findManyDaysRepairs(searchRepairForm.getDate(), searchRepairForm.getDateTo());
                 break;
             case "vatSel":
+                if(owner == null){
+                    redirectAttributes.addFlashAttribute("errorMessage", "There is no user with VAT "
+                            + searchRepairForm.getVat());
+                    return "redirect:/admin/repairs";
+                }
                 repairs = new ArrayList<>(owner.getVehicle().getRepairs());
                 break;
             case "plateNumberSel":
+                if(vehicle == null){
+                    redirectAttributes.addFlashAttribute("errorMessage", "There is no vehicle with plate number "
+                            + searchRepairForm.getPlateNumber());
+                    return "redirect:/admin/repairs";
+                }
                 repairs = new ArrayList<>(vehicle.getRepairs());
                 break;
         }

@@ -24,6 +24,7 @@
             <p class="navbar-brand"id="repairsId">CAR Repairs<p>
         </div>
         <ul class="nav navbar-nav">
+            <li class="Home"><a href="/admin/home">Home</a></li>
             <li class="LogOut"><a href="/logout">Log Out</a></li>
         </ul>        
 
@@ -35,7 +36,7 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-      <h2>${message!""}</h2>
+      <h2 style="color: limegreen">${message!""}</h2>
       <h2 style="color: red">${errorMessage!""}</h2>
     <#if owner??>
       <form  method="post" action="/admin/editOwner" name="ownerEditForm">
@@ -91,6 +92,7 @@
 
     roleSelect.addEventListener('click', function() {
         role.attr('value', roleSelect.options[roleSelect.selectedIndex].value);
+        repairType.attr('value', repairType.options[repairType.selectedIndex].value);
     })
 
     function SetDest1() {

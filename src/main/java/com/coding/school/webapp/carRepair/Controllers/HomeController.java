@@ -21,8 +21,6 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private static final String REGISTER_FORM = "user";
-
     private static final String SEARCH_FORM = "searchForm";
 
     private static final String REPAIR_DATA = "repairs";
@@ -53,13 +51,14 @@ public class HomeController {
 
 
     @RequestMapping(value = "/user/home", method = RequestMethod.GET)
-    String userHomePage(Model model, HttpSession session){
+    String userHomePage(Model model){
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        String username = (String) auth.getPrincipal(); // username is user email
+        String username = (String) auth.getPrincipal();
+        String password = (String) auth.getCredentials();
 
-        Owner owner = ownerService.findByEmail(username);
+        Owner owner = ownerService.getOnlineOwner(username, password);
         Vehicle vehicle = vehicleService.findByOwner(owner);
         if(vehicle != null){
             model.addAttribute(VEHICLE, vehicle);
