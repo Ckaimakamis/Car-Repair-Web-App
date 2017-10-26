@@ -33,7 +33,7 @@ public class Repair {
     @ManyToOne(optional = false)
     private Vehicle vehicle;
 
-    @ManyToMany(mappedBy = "repair")
+    @ManyToMany(mappedBy = "repair", cascade = CascadeType.ALL)
     private Collection<Parts> parts;
 
 
