@@ -82,11 +82,13 @@
                                             </select>
                                     </div>
 
-                                     <div id="extra-repairs"></div>
+                                     <div id="extra-repairs">
+
+                                     </div>
                                      <button type="button" class="addService"><span class="glyphicon glyphicon-plus"></span></button>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Create Repair</button>
+                                        <button type="button" onclick="Submit()" class="btn btn-primary btn-block">Create Repair</button>
                                     </div>
 
                                 </form>
@@ -136,7 +138,7 @@
                                     </br>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Search</button>
+                                        <button type="submit"  class="btn btn-primary btn-block">Search</button>
                                     </div>
 
                                 </form>
@@ -236,23 +238,62 @@
             }
         })
     })
-    var $newCost = "<select><option value='TIRES'>TIRES</option>" +
-            "<option value='BRAKES'>BRAKES</option>" +
-            "<option value='FENDER'>FENDER</option>" +
-            "<option value='WINDOWS'>WINDOWS</option>" +
-            "</select><input type='text' />";
+    var i =0;
 
     var $el=$('#extra-repairs');
     $('.addService').click(function(){
+        var $newCost = "<div id='Part"+i+"'><select><option value='TIRES'>TIRES</option>" +
+                "<option value='BRAKES'>BRAKES</option>" +
+                "<option value='FENDER'>FENDER</option>" +
+                "<option value='WINDOWS'>WINDOWS</option>" +
+                "</select><input type='text' /></div>";
         $el.append($newCost);
+        i++;
     });
+    function Submit() {
+        var operations= $('#operations').val();
+        var dateTime=$('#dateTime')[0].value
+        var plateNumber=$('#plateNumber').val();
+        var repairStage=$('#repairStage').val();
+        var repairType=$('#repairType').val();
+        var cost=$('#cost').val();
+        var parts=$('#extra-repairs')[0];  //edw exw to prwto div to megalo
+        //ola t mesa div
+        var children=parts.children;
+        var arrayParts = [];
+        for(var j=0; j<children.length; j++){
 
-     /* var operations= ('#operations').val();
-        var dateTime=('#dateTime').val();
-        var plateNumber=('#plateNumber').val();
-        var repairStage=('#repairStage').val();
-        var repairType=('#repairType').val();
-        var cost=('#cost').val();    */
+           var child= children[j];
+           var select=child.children[0];
+           var input=child.children[1];
+           var selectValue= select.value
+           var inputValue=input.value
+            var partItem ={};// keno JSON object
+            partItem.type = selectValue; //{type:timh tou selectValue}
+            partItem.cost = inputValue; // {type:timh tou selectValue,cost:timh tou inputValue}
+            arrayParts.push(partItem);
+        }
+        
+        var repair = {};
+        repair.operations = operations;
+        repair.dateTime = dateTime;
+        repair.plateNumber = plateNumber;
+        repair.repairStage = repairStage;
+        repair.repairType = repairType
+        repair.cost = cost;
+        repair.partsForms = arrayParts;
+        $.ajax({
+            type: "POST",
+            url: "/admin/registerRepair",
+            data: JSON.stringify(repair),
+            dataType: 'json',
+            contentType : 'application/json',
+            mimeType : 'application/json'
+
+        });
+    }
+
+
 
 </script>
 

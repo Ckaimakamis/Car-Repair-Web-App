@@ -31,6 +31,7 @@ public class RepairRegisterForm {
 
     private String plateNumber;
 
+
     private List<PartsForm> partsForms;
 
 
@@ -88,5 +89,13 @@ public class RepairRegisterForm {
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public List<PartsForm> getPartsForms() {
+        return partsForms;
+    }
+
+    public void setPartsForms(List<PartsForm> partsForms) {
+        this.partsForms = partsForms;
     }
 }
