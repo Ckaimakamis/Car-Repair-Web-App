@@ -81,6 +81,7 @@ public class RepairController {
                 session.setAttribute(REPAIRS, repairs);
                 redirectAttributes.addFlashAttribute("message", "repair " + " successfully inserted! :)");
             }catch(Exception e){
+                e.printStackTrace();
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
         }

@@ -63,6 +63,11 @@ public class RepairServiceImpl implements RepairService {
     public void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException {
         repair.setVehicle(vehicle);
         try{
+            List<Parts> parts = (List<Parts>) repair.getParts();
+            for(Parts part : parts){
+                part.setRepair(repair);
+            }
+            repair.setParts(parts);
             repairRepository.save(repair);
         } catch (Exception e) {
             throw new RepairExistException("Ooops! Something went wrong! Repair was not inserted");
