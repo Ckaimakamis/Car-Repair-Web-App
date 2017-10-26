@@ -62,7 +62,7 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/registerRepair", method = RequestMethod.POST)
-    public String registerRepair(  @RequestBody RepairRegisterForm registrationForm, BindingResult bindingResult,
+    public String registerRepair(@Valid  @RequestBody RepairRegisterForm registrationForm, BindingResult bindingResult,
                                  HttpSession session, RedirectAttributes redirectAttributes){
 
         if (bindingResult.hasErrors()) {

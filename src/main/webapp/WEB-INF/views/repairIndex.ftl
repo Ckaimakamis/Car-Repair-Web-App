@@ -47,7 +47,6 @@
                                 <form class="form" role="form" method="post" action="/admin/registerRepair" accept-charset="UTF-8" id="login-nav" name="createRepair">
 
                                     <div class="form-group">
-                                        <input type="datetime-local" class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" required/>
                                         <label class="sr-only" for="dateTime">Date</label>
                                         <input type="datetime-local" class="form-control" id="dateTime" name="dateTime" required/>
                                     </div>
@@ -273,7 +272,7 @@
             partItem.cost = inputValue; // {type:timh tou selectValue,cost:timh tou inputValue}
             arrayParts.push(partItem);
         }
-        
+
         var repair = {};
         repair.operations = operations;
         repair.dateTime = dateTime;
@@ -288,8 +287,7 @@
             data: JSON.stringify(repair),
             dataType: 'json',
             contentType : 'application/json',
-            mimeType : 'application/json'
-
+            mimeType : 'application/json',
         });
     }
 

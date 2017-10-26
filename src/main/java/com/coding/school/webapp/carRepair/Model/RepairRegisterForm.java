@@ -1,5 +1,6 @@
 package com.coding.school.webapp.carRepair.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
@@ -12,8 +13,8 @@ public class RepairRegisterForm {
     private static final String COST_PATTERN = "[0-9]+([,.][0-9]{1,2})?";
 
     private String ID;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
 
     @NotNull(message = "{register.cost.null}")
