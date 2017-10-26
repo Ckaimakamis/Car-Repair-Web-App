@@ -5,6 +5,7 @@ import com.coding.school.webapp.carRepair.Converters.VehicleConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
+import com.coding.school.webapp.carRepair.Model.RepairForAllForm;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 import com.coding.school.webapp.carRepair.Model.SearchRepairForm;
 import com.coding.school.webapp.carRepair.Model.VehicleRegisterForm;
@@ -36,8 +37,6 @@ public class RepairController {
 
     private static final String REPAIR = "repair";
 
-    private static final String REPAIR_REGISTER_FORM = "createRepair";
-
     private static final String REPAIR_EDIT_FORM = "repairEditForm";
 
     private static final int NUMBER_OF_REPAIRS = 10;
@@ -62,7 +61,7 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/registerRepair", method = RequestMethod.POST)
-    public String registerRepair(@Valid  @RequestBody RepairRegisterForm registrationForm, BindingResult bindingResult,
+    public String registerRepair(@Valid @RequestBody RepairRegisterForm registrationForm, BindingResult bindingResult,
                                  HttpSession session, RedirectAttributes redirectAttributes){
 
         if (bindingResult.hasErrors()) {
@@ -70,7 +69,7 @@ public class RepairController {
             redirectAttributes.addFlashAttribute("errorMessage", message);
         }else{
             try{
-                Repair repair = RepairConverter.buildRepairObject(registrationForm);
+                Repair repair = RepairConverter.buildRepairFromRegisterObject(registrationForm);
                 Vehicle vehicle = vehicleService.findByPlateNumber(registrationForm.getPlateNumber());
                 if(vehicle == null){
                     redirectAttributes.addFlashAttribute("errorMessage", "There is no vehicle with plate number "
@@ -78,6 +77,8 @@ public class RepairController {
                     return "redirect:/admin/repairs";
                 }
                 repairService.registerRepair(repair, vehicle);
+                List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+                session.setAttribute(REPAIRS, repairs);
                 redirectAttributes.addFlashAttribute("message", "repair " + " successfully inserted! :)");
             }catch(Exception e){
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
@@ -141,7 +142,7 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/editRepair", method = RequestMethod.POST)
-    String editRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm updateForm,
+    String editRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairForAllForm updateForm,
                       HttpSession session, RedirectAttributes redirectAttributes){
 
         try{
@@ -157,7 +158,7 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/deleteRepair", method = RequestMethod.POST)
-    String deleteRepair(@Valid @ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm deleteForm,
+    String deleteRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairForAllForm deleteForm,
                         HttpSession session, RedirectAttributes redirectAttributes){
 
         try{

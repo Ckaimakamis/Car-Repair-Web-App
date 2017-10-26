@@ -59,7 +59,7 @@
                 </br>
                 <label><b>Enter Repair Stage</b></label>
                 </br>
-                <input type="text" id="repairStage" placeholder="repair stage" name="repairStage" value=${repair.stage} required readonly="readonly">
+                <input class="ID" type="text" id="repairStage" placeholder="repair stage" name="repairStage" value=${repair.stage} required readonly="readonly">
                 </br>
                 <select id="stageSelect" name="stageSelect">
                     <option value="PENDING">pending</option>
@@ -71,13 +71,10 @@
                 </br>
                 <input type="text" id="cost" placeholder="cost" name="cost" value=${repair.cost} required>
                 </br>
-                <label><b>Enter Operations</b></label>
-                </br>
-                <input type="text" id="operations" placeholder="operations" name="operations" value='${repair.operations}' required>
                 </br>
                 <label><b>Vehicle</b></label>
                 </br>
-                <input type="text" id="vehiplateNumbercle" placeholder="plateNumber" name="plateNumber" value=${repair.vehicle.plateNumber} required readonly="readonly">
+                <input type="text" id="plateNumbe" placeholder="plateNumber" name="plateNumber" value=${repair.vehicle.plateNumber} required readonly="readonly">
                 </br>
                 <button type="submit" class=".btn-primary" OnClick="SetDest1()">Update</button>
 
@@ -95,7 +92,7 @@
 
     var typeSelect = document.getElementById("typeSelect");
     var repairType = $('input[name="repairType"]');
-    $('.ID').hide();
+    $('#ID').hide();
 
     var stageSelect = document.getElementById("stageSelect");
     var repairStage = $('input[name="repairStage"]');

@@ -3,6 +3,7 @@ package com.coding.school.webapp.carRepair.Converters;
 import com.coding.school.webapp.carRepair.Domain.Parts;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Model.PartsForm;
+import com.coding.school.webapp.carRepair.Model.RepairForAllForm;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.util.List;
 public class RepairConverter {
 
 
-    public static Repair buildRepairObject(RepairRegisterForm registrationForm) {
+    public static Repair buildRepairObject(RepairForAllForm registrationForm) {
         Repair repair = new Repair();
         if(!(registrationForm.getID() == null || registrationForm.getID().equals(""))){
             repair.setID(Long.parseLong(registrationForm.getID().split("/")[0]));
@@ -29,8 +30,22 @@ public class RepairConverter {
         return repair;
     }
 
-
-
+    public static Repair buildRepairFromRegisterObject(RepairRegisterForm registrationForm) {
+        Repair repair = new Repair();
+        if(!(registrationForm.getID() == null || registrationForm.getID().equals(""))){
+            repair.setID(Long.parseLong(registrationForm.getID().split("/")[0]));
+        }
+        repair.setStage(repairStageConvert(registrationForm.getRepairStage()));
+        repair.setType(repairTypeConvert(registrationForm.getRepairType()));
+        repair.setDateTime(registrationForm.getDateTime());
+        repair.setParts(registrationForm.getPartsForms());
+        repair.setCost(0.0);
+        List<Parts> parts = (List<Parts>) repair.getParts();
+        for(Parts part : parts){
+            repair.setCost(repair.getCost() + part.getCost());
+        }
+        return repair;
+    }
 
     private static Repair.RepairType repairTypeConvert(String type) {
         Repair.RepairType repairType = null;

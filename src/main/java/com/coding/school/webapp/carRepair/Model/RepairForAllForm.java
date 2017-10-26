@@ -5,18 +5,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 
-public class RepairRegisterForm {
+public class RepairForAllForm {
 
     private static final String COST_PATTERN = "[0-9]+([,.][0-9]{1,2})?";
 
     private String ID;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
-//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
 
     @NotNull(message = "{register.stage.null}")
