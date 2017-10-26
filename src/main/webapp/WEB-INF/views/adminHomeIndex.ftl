@@ -127,34 +127,34 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Date Time</th>
-                <th>Type</th>
-                <th>Operations</th>
-                <th>Stage</th>
-                <th>Cost</th>
-                <th>Plate</th>
-                <th>Vehicle</th>
-                <th>Owner</th>
-            </tr>
-            </thead>
-            <tbody align="left">
-            <#list repairs as newRepair>
-            <tr>
-                <td>${newRepair.dateTime}</td>
-                <td>${newRepair.type}</td>
-                <td>${newRepair.operations}</td>
-                <td>${newRepair.stage}</td>
-                <td>${newRepair.cost} $</td>
-                <td>${newRepair.vehicle.plateNumber}</td>
-                <td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>
-                <td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>
-            </tr>
-            </#list>
-            </tbody>
-        </table>
+        <#--<table class="table">-->
+            <#--<thead>-->
+            <#--<tr>-->
+                <#--<th>Date Time</th>-->
+                <#--<th>Type</th>-->
+                <#--<th>Operations</th>-->
+                <#--<th>Stage</th>-->
+                <#--<th>Cost</th>-->
+                <#--<th>Plate</th>-->
+                <#--<th>Vehicle</th>-->
+                <#--<th>Owner</th>-->
+            <#--</tr>-->
+            <#--</thead>-->
+            <#--<tbody align="left">-->
+            <#--<#list repairs as newRepair>-->
+            <#--<tr>-->
+                <#--<td>${newRepair.dateTime}</td>-->
+                <#--<td>${newRepair.type}</td>-->
+                <#--<td>${newRepair.operations}</td>-->
+                <#--<td>${newRepair.stage}</td>-->
+                <#--<td>${newRepair.cost} $</td>-->
+                <#--<td>${newRepair.vehicle.plateNumber}</td>-->
+                <#--<td>${newRepair.vehicle.model} ${newRepair.vehicle.year}</td>-->
+                <#--<td>${newRepair.vehicle.owner.firstName} ${newRepair.vehicle.owner.lastName}</td>-->
+            <#--</tr>-->
+            <#--</#list>-->
+            <#--</tbody>-->
+        <#--</table>-->
         <h2 style="color: limegreen">${message!""}</h2>
         <h2 style="color: red">${errorMessage!""}</h2>
     </div>

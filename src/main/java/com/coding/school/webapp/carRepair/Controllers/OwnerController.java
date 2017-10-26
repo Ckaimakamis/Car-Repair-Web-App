@@ -2,10 +2,12 @@ package com.coding.school.webapp.carRepair.Controllers;
 
 import com.coding.school.webapp.carRepair.Converters.OwnerConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
+import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Model.RegisterForm;
 import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
+import com.coding.school.webapp.carRepair.Services.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -18,12 +20,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class OwnerController {
 
     @Autowired
     OwnerService ownerService;
+
+    @Autowired
+    RepairService repairService;
 
     @Autowired
     private MessageSource messageSource;
@@ -37,6 +43,10 @@ public class OwnerController {
     private static final String REGISTER_FORM = "user";
 
     private static final String EDIT_FORM = "ownerEditForm";
+
+    private static final String REPAIRS = "repairs";
+
+    private static final int NUMBER_OF_REPAIRS = 10;
 
 
     @RequestMapping(value = "/admin/registerOwner", method = RequestMethod.POST)
@@ -89,8 +99,14 @@ public class OwnerController {
     String editUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm updateForm, BindingResult bindingResult,
                    HttpSession session, RedirectAttributes redirectAttributes){
 
+        try{
 
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nOwner was not updated!");
+        }
         ownerService.updateOwner(OwnerConverter.buildUserObject(updateForm));
+        List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+        session.setAttribute(REPAIRS, repairs);
         redirectAttributes.addFlashAttribute("message", "User Updated :)");
 
         return "redirect:/admin/home";
@@ -100,9 +116,15 @@ public class OwnerController {
     String deleteUser(@Valid @ModelAttribute(EDIT_FORM) RegisterForm deleteForm, BindingResult bindingResult,
                     HttpSession session, RedirectAttributes redirectAttributes){
 
-        Owner owner = ownerService.findByEmail(deleteForm.getEmail());
-        ownerService.deleteOwner(owner);
-        redirectAttributes.addFlashAttribute("message", "User Deleted");
+        try{
+            Owner owner = ownerService.findByEmail(deleteForm.getEmail());
+            ownerService.deleteOwner(owner);
+            List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+            session.setAttribute(REPAIRS, repairs);
+            redirectAttributes.addFlashAttribute("message", "User Deleted");
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nUser was not deleted!");
+        }
 
         return "redirect:/admin/home";
     }

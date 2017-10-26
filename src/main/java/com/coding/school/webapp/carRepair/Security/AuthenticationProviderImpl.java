@@ -25,7 +25,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         String username = authentication.getName().trim();
         String password = authentication.getCredentials().toString().trim();
 
-        Owner owner = ownerService  .login(username, password);
+        Owner owner = ownerService.login(username, password);
         String role = owner.getRole().toString();
         if(role != null){
             Set<GrantedAuthority> authorities = new HashSet<>();

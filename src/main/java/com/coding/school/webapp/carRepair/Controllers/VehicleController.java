@@ -2,10 +2,12 @@ package com.coding.school.webapp.carRepair.Controllers;
 
 import com.coding.school.webapp.carRepair.Converters.VehicleConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
+import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Model.SearchForm;
 import com.coding.school.webapp.carRepair.Model.VehicleRegisterForm;
 import com.coding.school.webapp.carRepair.Services.OwnerService;
+import com.coding.school.webapp.carRepair.Services.RepairService;
 import com.coding.school.webapp.carRepair.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -19,15 +21,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class VehicleController {
 
     @Autowired
+    OwnerService ownerService;
+
+    @Autowired
     VehicleService vehicleService;
 
     @Autowired
-    OwnerService ownerService;
+    RepairService repairService;
 
     @Autowired
     private MessageSource messageSource;
@@ -43,6 +49,8 @@ public class VehicleController {
     private static final String OWNER = "owner";
 
     private static final String REPAIRS = "repairs";
+
+    private static final int NUMBER_OF_REPAIRS = 10;
 
     @RequestMapping(value = "/admin/vehicles", method = RequestMethod.GET)
     String serveVehiclePage(Model model, HttpSession session){
@@ -79,10 +87,8 @@ public class VehicleController {
                     redirectAttributes.addFlashAttribute("errorMessage", "User " + owner.getFirstName() + " "
                             + owner.getLastName() +" already has a vehicle!");
                 }
-
             }
         }
-
         return "redirect:/admin/vehicles";
     }
 
@@ -118,10 +124,13 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/admin/editVehicle", method = RequestMethod.POST)
-    String editVehicle(@ModelAttribute(VEHICLE_EDIT_FORM) VehicleRegisterForm updateForm, RedirectAttributes redirectAttributes){
+    String editVehicle(@ModelAttribute(VEHICLE_EDIT_FORM) VehicleRegisterForm updateForm,
+                       HttpSession session, RedirectAttributes redirectAttributes){
 
         try{
             vehicleService.updateVehicle(VehicleConverter.buildVehicleObject(updateForm));
+            List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+            session.setAttribute(REPAIRS, repairs);
             redirectAttributes.addFlashAttribute("message", "Vehicle Updated :)");
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nVehicle was not updated!");
@@ -137,6 +146,8 @@ public class VehicleController {
         try{
             Vehicle vehicle = vehicleService.findByPlateNumber(deleteForm.getPlateNumber());
             vehicleService.deleteVehicle(vehicle);
+            List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+            session.setAttribute(REPAIRS, repairs);
             redirectAttributes.addFlashAttribute("message", "Vehicle Deleted");
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage", "Ooops something went wrong\nVehicle was not deleted!");

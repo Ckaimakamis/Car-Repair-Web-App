@@ -19,4 +19,6 @@ public interface OwnerService {
     void updateOwner(Owner owner);
 
     void deleteOwner(Owner owner);
+
+    void logout(String username, String password);
 }

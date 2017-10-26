@@ -73,4 +73,10 @@ public class OwnerServiceImpl implements OwnerService{
         ownerRepository.delete(owner.getID());
     }
 
+    @Override
+    public void logout(String username, String password) {
+        Owner owner = ownerRepository.findByEmailAndPassword(username, password);
+        loggedInUsers.remove(getCredentials(username, password), owner);
+    }
+
 }
