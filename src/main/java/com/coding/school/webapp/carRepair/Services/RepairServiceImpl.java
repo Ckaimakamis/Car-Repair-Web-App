@@ -1,6 +1,7 @@
 package com.coding.school.webapp.carRepair.Services;
 
 import com.coding.school.webapp.carRepair.Converters.RepairConverter;
+import com.coding.school.webapp.carRepair.Domain.Parts;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import com.coding.school.webapp.carRepair.Exceptions.RepairExistException;
@@ -65,12 +66,11 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public void registerRepair(Repair repair, Vehicle vehicle) throws AuthenticationException {
-        Repair existedRepair = repairRepository.findByOperations(repair.getOperations());
-        if(existedRepair == null){
-            repair.setVehicle(vehicle);
+        repair.setVehicle(vehicle);
+        try{
             repairRepository.save(repair);
-        }else {
-            throw new RepairExistException("Repair already exists!");
+        } catch (Exception e) {
+            throw new RepairExistException("Ooops! Something went wrong! Repair was not inserted");
         }
     }
 

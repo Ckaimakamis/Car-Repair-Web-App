@@ -1,5 +1,6 @@
 package com.coding.school.webapp.carRepair.Repositories;
 
+import com.coding.school.webapp.carRepair.Domain.Parts;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,12 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.naming.AuthenticationException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
 
-
+    Repair findByPartsAndVehicle(List<Parts> parts, Vehicle vehicle);
 
     Repair findByCost(double cost);
 
