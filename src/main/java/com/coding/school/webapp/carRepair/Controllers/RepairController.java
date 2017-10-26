@@ -121,9 +121,19 @@ public class RepairController {
                 repairs = repairService.findManyDaysRepairs(searchRepairForm.getDate(), searchRepairForm.getDateTo());
                 break;
             case "vatSel":
+                if(owner == null){
+                    redirectAttributes.addFlashAttribute("errorMessage", "There is no user with VAT "
+                            + searchRepairForm.getVat());
+                    return "redirect:/admin/repairs";
+                }
                 repairs = new ArrayList<>(owner.getVehicle().getRepairs());
                 break;
             case "plateNumberSel":
+                if(vehicle == null){
+                    redirectAttributes.addFlashAttribute("errorMessage", "There is no vehicle with plate number "
+                            + searchRepairForm.getPlateNumber());
+                    return "redirect:/admin/repairs";
+                }
                 repairs = new ArrayList<>(vehicle.getRepairs());
                 break;
         }
