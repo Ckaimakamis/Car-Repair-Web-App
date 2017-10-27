@@ -56,6 +56,8 @@ public class RepairController {
 
     @RequestMapping(value = "/admin/repairs", method = RequestMethod.GET)
     public String exposeRepairSite(Model model, HttpSession session) {
+        List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
+        session.setAttribute(REPAIRS, repairs);
         model.addAttribute(REPAIRS, session.getAttribute(REPAIRS));
         return "repairIndex";
     }

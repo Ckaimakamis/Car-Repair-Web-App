@@ -25,7 +25,7 @@
                 <input type="text" placeholder="Email" name="email" required>
                 <br/>
                 <label><b>Enter Password</b></label>
-                <input type="text" placeholder="Password" name="password" required>
+                <input type="password" placeholder="Password" name="password" required>
                 <br/>
 
                 <button type="submit">Login</button>
