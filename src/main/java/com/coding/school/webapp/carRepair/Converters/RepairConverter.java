@@ -2,12 +2,10 @@ package com.coding.school.webapp.carRepair.Converters;
 
 import com.coding.school.webapp.carRepair.Domain.Parts;
 import com.coding.school.webapp.carRepair.Domain.Repair;
-import com.coding.school.webapp.carRepair.Model.PartsForm;
 import com.coding.school.webapp.carRepair.Model.RepairForAllForm;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 
 public class RepairConverter {
