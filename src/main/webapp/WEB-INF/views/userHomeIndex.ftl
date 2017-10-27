@@ -38,7 +38,6 @@
             <tr>
                 <th>Date Time</th>
                 <th>Type</th>
-                <th>Operations</th>
                 <th>Stage</th>
                 <th>Cost</th>
             </tr>
@@ -48,7 +47,6 @@
             <tr>
                 <td>${newRepair.dateTime}</td>
                 <td>${newRepair.type}</td>
-                <td>${newRepair.operations}</td>
                 <td>${newRepair.stage}</td>
                 <td>${newRepair.cost} $</td>
             </tr>
