@@ -5,6 +5,7 @@ import com.coding.school.webapp.carRepair.Converters.VehicleConverter;
 import com.coding.school.webapp.carRepair.Domain.Owner;
 import com.coding.school.webapp.carRepair.Domain.Repair;
 import com.coding.school.webapp.carRepair.Domain.Vehicle;
+import com.coding.school.webapp.carRepair.Model.RepairForAllForm;
 import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 import com.coding.school.webapp.carRepair.Model.SearchRepairForm;
 import com.coding.school.webapp.carRepair.Model.VehicleRegisterForm;
@@ -16,10 +17,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -38,8 +36,6 @@ public class RepairController {
     private static final String REPAIRS = "repairs";
 
     private static final String REPAIR = "repair";
-
-    private static final String REPAIR_REGISTER_FORM = "createRepair";
 
     private static final String REPAIR_EDIT_FORM = "repairEditForm";
 
@@ -65,15 +61,15 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/registerRepair", method = RequestMethod.POST)
-    public String registerRepair(@Valid @ModelAttribute(REPAIR_REGISTER_FORM ) RepairRegisterForm registrationForm, BindingResult bindingResult,
-                          HttpSession session, RedirectAttributes redirectAttributes){
+    public String registerRepair(@Valid @RequestBody RepairRegisterForm registrationForm, BindingResult bindingResult,
+                                 HttpSession session, RedirectAttributes redirectAttributes){
 
         if (bindingResult.hasErrors()) {
             String message = messageSource.getMessage(bindingResult.getAllErrors().get(0), null);
             redirectAttributes.addFlashAttribute("errorMessage", message);
         }else{
             try{
-                Repair repair = RepairConverter.buildRepairObject(registrationForm);
+                Repair repair = RepairConverter.buildRepairFromRegisterObject(registrationForm);
                 Vehicle vehicle = vehicleService.findByPlateNumber(registrationForm.getPlateNumber());
                 if(vehicle == null){
                     redirectAttributes.addFlashAttribute("errorMessage", "There is no vehicle with plate number "
@@ -81,11 +77,11 @@ public class RepairController {
                     return "redirect:/admin/repairs";
                 }
                 repairService.registerRepair(repair, vehicle);
-                redirectAttributes.addFlashAttribute("message", "repair "+ repair.getOperations()
-                        + " " + repair.getOperations() + " successfully inserted! :)");
                 List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
                 session.setAttribute(REPAIRS, repairs);
+                redirectAttributes.addFlashAttribute("message", "repair " + " successfully inserted! :)");
             }catch(Exception e){
+                e.printStackTrace();
                 redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             }
         }
@@ -147,7 +143,7 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/editRepair", method = RequestMethod.POST)
-    String editRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm updateForm,
+    String editRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairForAllForm updateForm,
                       HttpSession session, RedirectAttributes redirectAttributes){
 
         try{
@@ -163,13 +159,13 @@ public class RepairController {
     }
 
     @RequestMapping(value = "/admin/deleteRepair", method = RequestMethod.POST)
-    String deleteRepair(@Valid @ModelAttribute(REPAIR_EDIT_FORM) RepairRegisterForm deleteForm,
+    String deleteRepair(@ModelAttribute(REPAIR_EDIT_FORM) RepairForAllForm deleteForm,
                         HttpSession session, RedirectAttributes redirectAttributes){
 
         try{
             Repair repair = repairService.findRepair(Long.parseLong(deleteForm.getID().split("/")[0]));
             repairService.deleteRepair(repair);
-            redirectAttributes.addFlashAttribute("message", "Repair Deleted");
+            redirectAttributes.addFlashAttribute("message", "Repair Deleted :(");
             List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
             session.setAttribute(REPAIRS, repairs);
         }catch (Exception e){

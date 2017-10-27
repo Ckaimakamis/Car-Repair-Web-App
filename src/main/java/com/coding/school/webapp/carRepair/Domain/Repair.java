@@ -3,6 +3,7 @@ package com.coding.school.webapp.carRepair.Domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Entity
 public class Repair {
@@ -29,10 +30,11 @@ public class Repair {
     @Column(nullable = false)
     private double cost;
 
-    private String operations;
-
     @ManyToOne(optional = false)
     private Vehicle vehicle;
+
+    @OneToMany(mappedBy = "repair", cascade = CascadeType.ALL)
+    private Collection<Parts> parts;
 
     public Long getID() {
         return ID;
@@ -74,20 +76,20 @@ public class Repair {
         this.cost = cost;
     }
 
-    public String getOperations() {
-        return operations;
-    }
-
-    public void setOperations(String operations) {
-        this.operations = operations;
-    }
-
     public Vehicle getVehicle() {
         return vehicle;
     }
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public Collection<Parts> getParts() {
+        return parts;
+    }
+
+    public void setParts(Collection<Parts> parts) {
+        this.parts = parts;
     }
 
     public enum RepairStage {

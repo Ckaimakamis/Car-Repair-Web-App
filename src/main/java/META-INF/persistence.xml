@@ -5,6 +5,7 @@
         <class>com.coding.school.webapp.carRepair.Domain.Owner</class>
         <class>com.coding.school.webapp.carRepair.Domain.Repair</class>
         <class>com.coding.school.webapp.carRepair.Domain.Vehicle</class>
+        <class>com.coding.school.webapp.carRepair.Domain.Parts</class>
     </persistence-unit>
 
 </persistence>

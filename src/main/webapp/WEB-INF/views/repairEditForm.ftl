@@ -46,11 +46,12 @@
                 <input class="ID" type="text" id="ID" name="ID" value=${repair.ID}/>
                 <label><b>Enter Date</b></label>
                 </br>
-                <input type="datetime-local" id="dateTime" placeholder="dateTime" name="dateTime" value=${repair.dateTime} required>
+                <input type="datetime-local" id="dateTime" placeholder="dateTime" name="dateTime" value=${repair.dateTime} required/>
+                </br>
                 </br>
                 <label><b>Enter Repair Type</b></label>
                 </br>
-                <input type="text" id="repairType" placeholder="repair type" name="repairType" value=${repair.type} required readonly="readonly">
+                <input type="text" id="repairType" placeholder="repair type" name="repairType" value=${repair.type} required readonly="readonly"/>
                 </br>
                 <select id="typeSelect" name="typeSelect">
                     <option value="SMALL">small</option>
@@ -59,7 +60,7 @@
                 </br>
                 <label><b>Enter Repair Stage</b></label>
                 </br>
-                <input type="text" id="repairStage" placeholder="repair stage" name="repairStage" value=${repair.stage} required readonly="readonly">
+                <input class="ID" type="text" id="repairStage" placeholder="repair stage" name="repairStage" value=${repair.stage} required readonly="readonly"/>
                 </br>
                 <select id="stageSelect" name="stageSelect">
                     <option value="PENDING">pending</option>
@@ -69,15 +70,21 @@
                 </br>
                 <label><b>Enter Cost</b></label>
                 </br>
-                <input type="text" id="cost" placeholder="cost" name="cost" value=${repair.cost} required>
+                <input type="text" id="cost" placeholder="cost" name="cost" value=${repair.cost} required readonly="readonly"/>
                 </br>
-                <label><b>Enter Operations</b></label>
                 </br>
-                <input type="text" id="operations" placeholder="operations" name="operations" value='${repair.operations}' required>
+                <#if repair.parts??>
+                    <label><b>Part(s)</b></label></br>
+                    <#list repair.parts as part>
+                        <input type="text" id="partType" placeholder="partType" name="partType" value="${part.type} (${part.cost} $)" required readonly="readonly"/>
+                        <br/>
+                    </#list>
+                </#if>
+                </br>
                 </br>
                 <label><b>Vehicle</b></label>
                 </br>
-                <input type="text" id="vehiplateNumbercle" placeholder="plateNumber" name="plateNumber" value=${repair.vehicle.plateNumber} required readonly="readonly">
+                <input type="text" id="plateNumbe" placeholder="plateNumber" name="plateNumber" value=${repair.vehicle.plateNumber} required readonly="readonly"/>
                 </br>
                 <button type="submit" class=".btn-primary" OnClick="SetDest1()">Update</button>
 
@@ -95,7 +102,7 @@
 
     var typeSelect = document.getElementById("typeSelect");
     var repairType = $('input[name="repairType"]');
-    $('.ID').hide();
+    $('#ID').hide();
 
     var stageSelect = document.getElementById("stageSelect");
     var repairStage = $('input[name="repairStage"]');
