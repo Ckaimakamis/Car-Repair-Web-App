@@ -91,3 +91,9 @@ footer {
     background-repeat: no-repeat, repeat;
     padding: 15px;
 }
+
+table{
+
+    background-color: #dddddd;
+    opacity: 0.8;
+}
