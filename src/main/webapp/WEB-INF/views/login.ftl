@@ -18,6 +18,7 @@
             <div class="imgcontainer">
                 <img src="/images/thetida.png" alt="Avatar" class="avatar">
             </div>
+            <h2 style="color: red">${errorMessage!""}</h2>
 
             <div class="container">
                 <label><b>Enter Username</b></label>
