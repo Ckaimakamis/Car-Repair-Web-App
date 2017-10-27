@@ -56,7 +56,6 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         String username = (String) auth.getPrincipal();
-//        String password = (String) auth.getCredentials();
 
         Owner owner = ownerService.findByEmail(username);
         Vehicle vehicle = vehicleService.findByOwner(owner);
