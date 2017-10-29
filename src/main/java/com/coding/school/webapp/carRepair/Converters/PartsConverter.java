@@ -14,7 +14,7 @@ public class PartsConverter {
         parts.setCost(partsForm.getCost());
         parts.setType(partsForm.getType());
         parts.setRepair(repair);
-        return null;
+        return parts;
     }
 
     private static Parts.PartsType partsTypeConverter(String type){

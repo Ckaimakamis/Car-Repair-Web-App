@@ -1,7 +1,5 @@
 package com.coding.school.webapp.carRepair.Model;
 
-import com.coding.school.webapp.carRepair.Domain.Parts;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
@@ -25,7 +23,7 @@ public class RepairForAllForm {
 
     private String plateNumber;
 
-    private List<Parts> partsForms;
+    private List<PartsForm> partsForms;
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -67,11 +65,11 @@ public class RepairForAllForm {
         this.ID = ID;
     }
 
-    public List<Parts> getPartsForms() {
+    public List<PartsForm> getPartsForms() {
         return partsForms;
     }
 
-    public void setPartsForms(List<Parts> partsForms) {
+    public void setPartsForms(List<PartsForm> partsForms) {
         this.partsForms = partsForms;
     }
 }

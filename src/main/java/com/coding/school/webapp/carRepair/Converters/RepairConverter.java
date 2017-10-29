@@ -7,9 +7,9 @@ import com.coding.school.webapp.carRepair.Model.RepairRegisterForm;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RepairConverter {
-
 
     public static Repair buildRepairObject(RepairForAllForm registrationForm) {
         Repair repair = new Repair();
@@ -19,7 +19,7 @@ public class RepairConverter {
         repair.setStage(repairStageConvert(registrationForm.getRepairStage()));
         repair.setType(repairTypeConvert(registrationForm.getRepairType()));
         repair.setDateTime(registrationForm.getDateTime());
-        repair.setParts(registrationForm.getPartsForms());
+        repair.setParts(registrationForm.getPartsForms().stream().map(e -> PartsConverter.buildPartsObject(e, repair)).collect(Collectors.toList()));
         repair.setCost(0.0);
         List<Parts> parts = (List<Parts>) repair.getParts();
         for(Parts part : parts){
@@ -36,7 +36,7 @@ public class RepairConverter {
         repair.setStage(repairStageConvert(registrationForm.getRepairStage()));
         repair.setType(repairTypeConvert(registrationForm.getRepairType()));
         repair.setDateTime(registrationForm.getDateTime());
-        repair.setParts(registrationForm.getPartsForms());
+        repair.setParts(registrationForm.getPartsForms().stream().map(e -> PartsConverter.buildPartsObject(e, repair)).collect(Collectors.toList()));
         repair.setCost(0.0);
         List<Parts> parts = (List<Parts>) repair.getParts();
         for(Parts part : parts){

@@ -167,7 +167,7 @@ public class RepairController {
         try{
             Repair repair = repairService.findRepair(Long.parseLong(deleteForm.getID().split("/")[0]));
             repairService.deleteRepair(repair);
-            redirectAttributes.addFlashAttribute("message", "Repair Deleted :(");
+            redirectAttributes.addFlashAttribute("message", "Repair Deleted");
             List<Repair> repairs = repairService.findNextRepairs(NUMBER_OF_REPAIRS);
             session.setAttribute(REPAIRS, repairs);
         }catch (Exception e){
